@@ -1,1 +1,13 @@
 tools_thumbnail_cache.bin
+tools_asset_info.bin
+*.vpcf_c
+*.vtex_c
+*.vxml_c
+*.vcss_c
+
+panorama_debugger.cfg
+*.vmat_c
+*.vjs_c
+desktop.ini
+maps/
+*.sublime-workspace
