@@ -1,6 +1,6 @@
 require('libraries/notifications')
 
-function CTreeTagGameMode:OnNPCSpawned(keys)
+function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start here
     DebugPrint("------------------------------------------------------------------")
     local npc = EntIndexToHScript(keys.entindex)
     local heroname = npc:GetUnitName()
@@ -9,10 +9,10 @@ function CTreeTagGameMode:OnNPCSpawned(keys)
     
     
     
-    local tempdeadentcount = CTreeTagGameMode.DeadEntCount
+    local tempdeadentcount = CTreeTagGameMode.DeadEntCount 
     DebugPrint(heroname)
 
-    --function to remove excess dead ent
+    --function to remove excess dead ent from reviving due to bug 
     if npc.bFirstSpawned == true then   
         if heroname == "npc_dota_hero_earth_spirit" then
             npc:SetRespawnsDisabled(true) 
@@ -34,7 +34,7 @@ function CTreeTagGameMode:OnNPCSpawned(keys)
 
     
 
-    --skill upgrade
+    --innate skill upgrade
   
     local innateAbilityName = "inferno_tree_cutting"
     local innateAbility2Name = "inferno_aoe_destroy_tree"
@@ -42,12 +42,23 @@ function CTreeTagGameMode:OnNPCSpawned(keys)
     local innateAbility4Name = "picktree"
     local innateAbility5Name = "pickinferno"
     local innateAbility6Name = "dailyinfgold"
+
+    --Ent innate skill 
+    if npc:IsRealHero() and npc:HasAbility(innateAbility3Name) then
+        npc:FindAbilityByName(innateAbility3Name):SetLevel(1)
+    end
+    if npc:IsRealHero() and npc:HasAbility(innateAbility4Name) then
+        npc:FindAbilityByName(innateAbility4Name):SetLevel(1)
+    end
+    if npc:IsRealHero() and npc:HasAbility(innateAbility5Name) then
+        npc:FindAbilityByName(innateAbility5Name):SetLevel(1)
+    end
     
     if heroname == "npc_dota_hero_doom_bringer" then 
         
-        if npc.bFirstSpawned == nil then 
+        if npc.bFirstSpawned == nil then  --prevents skills from resetting
             
-            --inferno skill
+            --inferno innate skill
             if npc:IsRealHero() and npc:HasAbility(innateAbilityName) then
                 npc:FindAbilityByName(innateAbilityName):SetLevel(1)
             end
@@ -60,24 +71,16 @@ function CTreeTagGameMode:OnNPCSpawned(keys)
                 npc:FindAbilityByName(innateAbility6Name):SetLevel(1)
             end
         end
-        --Respawn debugging
+        --Prevents inferno from getting stuck when spawned 
+
         local position = npc:GetAbsOrigin()
         FindClearSpaceForUnit(npc, position, true)
     end
         
-    --dead ent skill + axe
-    if npc:IsRealHero() and npc:HasAbility(innateAbility3Name) then
-        npc:FindAbilityByName(innateAbility3Name):SetLevel(1)
-    end
-    if npc:IsRealHero() and npc:HasAbility(innateAbility4Name) then
-        npc:FindAbilityByName(innateAbility4Name):SetLevel(1)
-    end
-    if npc:IsRealHero() and npc:HasAbility(innateAbility5Name) then
-        npc:FindAbilityByName(innateAbility5Name):SetLevel(1)
-    end
+   
 
-    --Reroute to OnHeroIngame
-    if npc:IsRealHero() and npc.bFirstSpawned == nil then
+    --Reroute to OnHeroIngame in Addongamemode
+    if npc:IsRealHero() and npc.bFirstSpawned == nil then --unit only enters when spawned for first time
         npc.bFirstSpawned = true
         CTreeTagGameMode:OnHeroInGame(npc)
         
@@ -103,7 +106,7 @@ function CTreeTagGameMode:OnNPCSpawned(keys)
      
 end
 
-function CTreeTagGameMode:OnEntityKilled(keys)
+function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is killed
     DebugPrint("====================================================")
     DebugPrint("ENTITY KILLED = : ")
     --Killed entity
@@ -184,10 +187,12 @@ function CTreeTagGameMode:OnEntityKilled(keys)
             CTreeTagGameMode.InfernoCount = CTreeTagGameMode.InfernoCount - 1
         end
 
-        --temporary baseclass. gotta change it after this.
+        
     elseif baseclass == "npc_dota_creep" then 
 
-        --KILL MINIMAP ENTITY FUNCTION
+        --KILL MINIMAP ENTITY FUNCTION 
+
+        --kills minimap entity when building is killed
         DebugPrint("Dota Creature Killed")
         local minimapEntities = Entities:FindAllByClassname("npc_dota_building")
         killed.minimapEntity.correspondingEntity = "dead"
@@ -214,7 +219,9 @@ function checkinfernovictory()
 end
 
 function StartVictoryTimer()
-    --Change when releasing---------------- 35 mins plus extra mins =2105 sec
+    --Starts victory timer for ent. Its 35 minutes for now
+    --Total game time : 35 minutes + extra 5 seconds
+    -- 35 mins plus extra mins =2105 sec
     Timers:CreateTimer(2105, function()
         GameRules:SetGameWinner(DOTA_TEAM_GOODGUYS)
         DebugPrint("Dota Team GOod guy has won due to time running out")
@@ -222,7 +229,7 @@ function StartVictoryTimer()
         DebugPrint(currentGameTime)
     end)
 
-    --Give inferno special power at last 5 min. Tumpang sikit la at this function lol
+    --Give inferno special power at last 2.5 min. Placed here just because i lazy lol
     --1805 refer to min 32.5 when he get the power up ... 1955 for reference
     Timers:CreateTimer(1955, function()
         local allinferno = Entities:FindAllByClassname("npc_dota_hero_doom_bringer")

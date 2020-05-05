@@ -8,22 +8,18 @@ else
 	DebugPrint("[BAREBONES] If this is not your first time, you probably used script_reload in console.")
 end
 
-
-require('libraries/timers')                      -- Core lua library
-
-
---3tag's own require
+--Required Files
+require('libraries/timers')                   
 require("_precache")
 require('internal/util')
 require("hero_util")
 require('libraries/notifications')
-
 require("pick_abilities_radiant")
-
 require("events")
 require("settings")
 require("_util")
 
+--Precache models,particles and sounds. Put your precache in the _precache.lua file
 function Precache(context)
 	preCacheResources(context)
 end
@@ -35,8 +31,7 @@ function Activate()
 	CTreeTagGameMode:InitGameMode()
 end
 
--- Set this to true if you want to see a complete debug output of all events/processes done by trollnelves2
--- You can also change the cvar 'trollnelves2_spew' at any time to 1 or 0 for output/no output
+-- DEBUG SPEW is in the settings.lua for debugging purposes. Set to false when releasing to public
 
 
 function CTreeTagGameMode:InitGameMode()
@@ -44,13 +39,13 @@ function CTreeTagGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, "GlobalThink", 1 )
 
     --if GetMapName() == "mines_trio" then
-	-- different team sizes for different maps okok todo:
+	-- different team sizes for different maps
 	
 	--set teamnumbers
-    GameRules:SetCustomGameTeamMaxPlayers(2, 8)
-	GameRules:SetCustomGameTeamMaxPlayers(3, 3)
+    GameRules:SetCustomGameTeamMaxPlayers(2, 8) -- Team 2 : 8 players (Ents)
+	GameRules:SetCustomGameTeamMaxPlayers(3, 3)	-- Team 3 : 3 players (Inferno)
 	
-	GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
+	GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")	--force all to spawn as wisp
     GameRules:GetGameModeEntity():SetCustomHeroMaxLevel(1)
     GameRules:GetGameModeEntity():SetBuybackEnabled(false)
 
@@ -60,7 +55,9 @@ function CTreeTagGameMode:InitGameMode()
 	GameRules:SetSameHeroSelectionEnabled(true)
 	GameRules:SetHeroRespawnEnabled(true)
 	GameRules:SetUseUniversalShopMode(false)
-    GameRules:SetHeroSelectionTime(0) -- hero selection is not skipped unless this is set to 0 it seems
+
+	--time settings
+    GameRules:SetHeroSelectionTime(0)
 	GameRules:SetPreGameTime(2105)
 	GameRules:SetPostGameTime(30.0)
 	GameRules:SetShowcaseTime(0)
@@ -68,18 +65,25 @@ function CTreeTagGameMode:InitGameMode()
     GameRules:SetRuneSpawnTime(0)
     GameRules:SetFirstBloodActive(false)
 	GameRules:SetUseBaseGoldBountyOnHeroes(true)
+
+	--ListenToGameEvent Section
+
 	ListenToGameEvent('npc_spawned', Dynamic_Wrap(CTreeTagGameMode, 'OnNPCSpawned'), self)
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(CTreeTagGameMode, 'OnEntityKilled'), self)
 	
-	CTreeTagGameMode.EntCount = 0
-	CTreeTagGameMode.DeadEntCount = 0
-	CTreeTagGameMode.ExtraDeadEntCount = 0
-	CTreeTagGameMode.InfernoCount = 0
-	CTreeTagGameMode.StartVictoryTimer = 0 --dont touch this
-	CTreeTagGameMode.RunAtStart = false -- Run functions at the start of the game
-	CTreeTagGameMode.EnterMessageFunction = true --Fires message
+	--Global Variables
 
-	CTreeTagGameMode.DeveloperMode = false --set to false when releasing including the debugspew
+	CTreeTagGameMode.EntCount = 0 --Keeps count of ent alive
+	CTreeTagGameMode.DeadEntCount = 0	--Keeps count of dead ent alive
+	CTreeTagGameMode.ExtraDeadEntCount = 0 --Keeps count of earth spirit respawning due to bug
+	CTreeTagGameMode.InfernoCount = 0	--Keeps count of inferno alive
+	CTreeTagGameMode.StartVictoryTimer = 0 --Start victory timer stuff. Always set to 0
+	CTreeTagGameMode.RunAtStart = false -- Run functions at the start of the game
+	CTreeTagGameMode.EnterMessageFunction = true --Fires message but currently not in use coz broken
+
+	CTreeTagGameMode.DeveloperMode = false --not used for now
+
+	--debug spew
 
 	local spew = 0
   if TREETAG_DEBUG_SPEW then
@@ -91,35 +95,15 @@ function CTreeTagGameMode:InitGameMode()
 end
 
 function CTreeTagGameMode:PreStart()
+	--PreStart stuff
 	--CreateMinimapBuildings() broken
 	StartCreatingMinimapBuildings()
 end
 
-function CreateMinimapBuildings()
-	DebugPrint("Creating MiniMap Buildings for example")
-	Timers:CreateTimer(0.3,function()
-		if GameRules:State_Get() > DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
-			return
-		end	
-		local allEntities = Entities:FindAllByClassname("npc_dota_creep")
-		for _, unit in pairs(allEntities) do
-			if not unit:IsNull() and not unit.minimapEntity and unit:GetTeamNumber() ~= DOTA_TEAM_BADGUYS and IsLocationVisible(DOTA_TEAM_BADGUYS, unit:GetAbsOrigin()) then
-				
-				local position = unit:GetAbsOrigin()
-				
-				local playerID = unit:GetPlayerOwnerID()
-				
-				building = CreateUnitByName("minimap_entity", position, false, unit:GetOwner(), unit:GetOwner(), unit:GetTeamNumber())
-				building:SetOwner(unit:GetOwner())
-				building:AddNewModifier(building, nil, "modifier_minimap", {})
-			end
-		end
-				
-		return 0.3
-	end)
-end
 function StartCreatingMinimapBuildings()
-	DebugPrint("Creating minimap building")
+
+	--Create Minimap Entity on Buildings when inferno sees the buildings
+
 	Timers:CreateTimer(0.3,function()
 		if GameRules:State_Get() > DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 			return
@@ -166,15 +150,18 @@ function CTreeTagGameMode:OnThink()
  
 end
 
--- Initialize a hero when it spawns for the first time
+
 function CTreeTagGameMode:OnHeroInGame(hero)
+	-- Initialize a hero when it spawns for the first time. 
+	
+
 	DebugPrint("=======================================================[OnHeroInGame] accessed")
 	
 	local currentGameTime = GameRules:GetDOTATime(false,false)
-
-	
-	
 	local heroname = hero:GetUnitName()
+
+
+	--starting game function to assign heroes to ent and inferno
 
 	if heroname == "npc_dota_hero_wisp" then 
 		
@@ -185,7 +172,12 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 		local team = hero:GetTeam()
 
 		if team == DOTA_TEAM_GOODGUYS then
-			CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount + 1
+			--ENT--
+
+			CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount + 1  --Add one count to ent alive
+
+			--initializing ent 
+
 			hero:AddAbility("picktree")
 			ability = hero:FindAbilityByName("picktree")
 			ability:SetLevel(1)
@@ -193,6 +185,7 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 			
+			--auto picks hero
 			Timers:CreateTimer(5, function()
 				if heroname == "npc_dota_hero_wisp" then
 				
@@ -207,7 +200,13 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			
 			
 		else
-			CTreeTagGameMode.InfernoCount = CTreeTagGameMode.InfernoCount + 1
+
+			--INFERNO--
+
+			CTreeTagGameMode.InfernoCount = CTreeTagGameMode.InfernoCount + 1	--Add one count to inferno alive
+
+			--initializing inferno
+
 			hero:AddAbility("pickinferno")
 			ability = hero:FindAbilityByName("pickinferno")
 			ability:SetLevel(1)
@@ -215,7 +214,7 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 			
-
+			--autopick inferno. Could be removed and used for picking different inferno heroes
 			Timers:CreateTimer(35, function()
 				if heroname == "npc_dota_hero_wisp" then
 						
@@ -232,6 +231,8 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			
 		
 	else
+
+		--could be used for initializing different units
 		DebugPrint("[TREETAG] A hero has spawned")
 	end
 end

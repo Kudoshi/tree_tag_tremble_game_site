@@ -1,5 +1,7 @@
 -- The following three functions are necessary for building helper.
 
+--Kudoshi: I never touched any of these stuff :o
+
 function build( keys )
 	local player = keys.caster:GetPlayerOwner()
 	local pID = player:GetPlayerID()

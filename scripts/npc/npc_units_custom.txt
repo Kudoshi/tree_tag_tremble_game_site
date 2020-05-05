@@ -1,6 +1,10 @@
 // https://moddota.com/forums/discussion/1415/combining-kv-files-using-base
 #base "units/npc_dota_custom_dummy_unit.txt"
 #base "units/npc_dota_custom_illusion_base.txt"
+//BaseClass
+// npc_dota_creep = buildings
+// npc_dota_creature = creeps/minions/units that can walk and not buildings
+// npc_dota_building = minimap. Dont create any unit on this baseclass
 
 "DOTAUnits"
 {

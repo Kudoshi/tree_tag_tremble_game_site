@@ -1,3 +1,4 @@
+--changing some api commands
 
 function clearInventory(hero)
     for i=0,15 do

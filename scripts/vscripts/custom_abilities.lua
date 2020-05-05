@@ -4,6 +4,9 @@ require("_util")
 moditem = nil
 
 function placeGhost(keys)
+
+    --checks whether area is buildable or not
+
     if(keys.caster:GetTeam()==3) then
         return nil;
     end
@@ -178,16 +181,18 @@ function placeminenogold(keys)
     end
 end
 
+--see this as an example for placing buildings
 function placeBuilding(keys)
+    --checks which team is building it. If team 3 builds it, dont build anything.
     if(keys.caster:GetTeam()==3) then
         return nil;
     end
 
-    PLACED_BUILDING_RADIUS = 45.0;
+    PLACED_BUILDING_RADIUS = 45.0; 
 
     blocking_counter = 0
-
-    groundclickpos = GetGroundPosition(keys.target_points[1], nil)
+    --initializing position clicked
+    groundclickpos = GetGroundPosition(keys.target_points[1], nil)  
 
     xpos = GridNav:WorldToGridPosX(groundclickpos.x)
     ypos = GridNav:WorldToGridPosY(groundclickpos.y)
@@ -195,6 +200,7 @@ function placeBuilding(keys)
     groundclickpos.x = GridNav:GridPosToWorldCenterX(xpos)
     groundclickpos.y = GridNav:GridPosToWorldCenterY(ypos)
 
+    --checking whether position clicked is buildable
 
     if GridNav:IsTraversable(groundclickpos) then
     else
@@ -207,6 +213,7 @@ function placeBuilding(keys)
         end
     end
 
+    --build unit if not blocked
     if( blocking_counter < 1) then
         tower = CreateUnitByName("npc_treetag_building_mine_1", groundclickpos, false, keys.caster, keys.caster:GetOwner(), keys.caster:GetTeamNumber() ) 
         
@@ -220,10 +227,10 @@ function placeBuilding(keys)
        
         
         
-       
+       --2 lines below prevents caster(a.k.a the builder) from getting stuck on the building built
         
         local position = keys.caster:GetAbsOrigin()
-        FindClearSpaceForUnit(keys.caster, position, true)
+        FindClearSpaceForUnit(keys.caster, position, true)  
     else
         keys.caster:ModifyGold(keys.AbilityGoldCost,false,0)
         sendError(keys.caster:GetPlayerOwnerID(), "Cannot build there")
@@ -710,7 +717,7 @@ end
 
 
 
-function suicidefarm(keys)
+function suicidefarm(keys) --not used
     -- farm refund amounts
     if keys.caster:GetUnitName() == "npc_treetag_building_mine_2" then
         keys.caster:GetPlayerOwner():GetAssignedHero():ModifyGold(50,true,0)
@@ -743,14 +750,14 @@ function suicidefarm(keys)
     keys.caster:RemoveSelf()   -- must come AFTER refunds
 end
 
-function resetfarm(keys)
+function resetfarm(keys)    --not used
     if keys.caster:GetPlayerOwner() == nil then
         return
     end
     keys.caster:GetPlayerOwner():GetAssignedHero():GetItemInSlot(0):SetActivated(true)
 end
 
-function swapteam(keys)
+function swapteam(keys)   --not used
     print("Current team of player "..keys.caster:GetPlayerOwnerID()..": "..keys.caster:GetTeam())
     if keys.caster:GetTeam()==2 then
         local newteam = 3;
@@ -767,11 +774,11 @@ function swapteam(keys)
     end
 end
 
-function explosionsoundoncaster(keys)
+function explosionsoundoncaster(keys)      --not used
     EmitSoundOnLocationWithCaster(keys.caster:GetAbsOrigin(),"Creep_Siege_Radiant.Destruction",keys.caster)
 end
 
-function suicide(keys)
+function suicide(keys)         --not used
     local refundwallmod = 0.75
     local refundwallmodmana = 0.75
 
@@ -870,7 +877,7 @@ end
 
 
 --used for cosmetic pets in a thinker
-function followcaster(keys)
+function followcaster(keys)    --not used
     if keys.target == nil then
         return nil
     end
@@ -904,7 +911,7 @@ function followcaster(keys)
     end
 end
 
-function validatesuicidetarget(keys)
+function validatesuicidetarget(keys)   --not used
     if keys.target:GetPlayerOwner()~=keys.caster:GetPlayerOwner() then
         keys.caster:Interrupt()
         keys.caster:InterruptChannel()
@@ -927,7 +934,7 @@ function validatesuicidetarget(keys)
 end
 
 
-function speedifnobuildings(keys)
+function speedifnobuildings(keys)   --not used
     for _,unit in pairs( Entities:FindAllByClassnameWithin("npc_dota_creep", keys.caster:GetAbsOrigin(), 500)) do
         if unit:GetTeam() == keys.caster:GetTeam() then
             if string.find(unit:GetUnitName(), "npc_treetag_building_turret")
@@ -953,7 +960,7 @@ end
 
 --gem of true sight see invis
 
-function givetruesight(keys)
+function givetruesight(keys)   --not used
     if not gemitem then
         gemitem = CreateItem("item_gem", keys.caster, keys.caster)
     end
@@ -961,11 +968,11 @@ function givetruesight(keys)
 
 end 
 
-function setabilitytarget(keys)
+function setabilitytarget(keys)   --not used
     keys.ability.target=keys.target
 end
 
-function canceliftargetdead(keys)
+function canceliftargetdead(keys)   --not used
     if keys.ability.target == nil or keys.ability.target:IsNull() then
         keys.caster:Interrupt()
         keys.caster:InterruptChannel()
@@ -978,7 +985,7 @@ end
 
 -- generic-ish autocast thinker
 -- used for chronoboost
-function autocastspell(keys)
+function autocastspell(keys)   --not used
     -- example:
     --local targetstring = "npc_treetag_building_mine";
     --local spelltocast = "chronoboost";
@@ -1039,7 +1046,7 @@ function autocastspell(keys)
 end
 
 -- autocast repair thinker
-function autorepair(keys)
+function autorepair(keys)      --not used
     if not keys.caster:IsIdle() then
         return 0.5
     end
@@ -1072,13 +1079,13 @@ function autorepair(keys)
         keys.caster:GetPlayerOwnerID())
 end
 
-function clearmodel(keys)
+function clearmodel(keys)      --not used
     keys.caster:SetModelScale(0.01)
 end
 
 -- used as a passive drain for timbersaw tree destroy
 -- witchdoctor heal style
-function eatmana(keys)
+function eatmana(keys)     --not used
     mana = keys.ability:GetCaster():GetMana()
     if mana<20 then
         keys.ability:ToggleAbility()
@@ -1091,7 +1098,7 @@ end
 
 
 
-function goldattack(keys)
+function goldattack(keys)      --not used
     local armor = keys.target:GetPhysicalArmorValue();
     local armormod = 1
 
@@ -1170,7 +1177,7 @@ function interruptifnotech(keys)
 end
 
 
-function cancelifnomana(keys)
+function cancelifnomana(keys)      --not used
     --local manacost = keys.ability:GetManaCost(0)
     --local heromana = keys.caster:GetPlayerOwner():GetAssignedHero():GetMana()
     --print(manacost.."/"..heromana)
@@ -1182,7 +1189,7 @@ end
 
 
 
-function refundcost(keys)
+function refundcost(keys)   
     keys.caster:GetPlayerOwner():GetAssignedHero():ModifyGold(keys.ability:GetGoldCost(1), true, 0)
 end
 
@@ -1212,7 +1219,7 @@ function dailyinfgold(keys)
     keys.caster:GetPlayerOwner():GetAssignedHero():ModifyGold(15, true, 0)
 end
 
-function passiveincome(keys)
+function passiveincome(keys)    --resource tree's gold income
     if keys.caster == nil or keys.caster:GetPlayerOwner() == nil then
         return nil
     end
@@ -1271,7 +1278,7 @@ function passivegold(keys)
 end
 
 
-function turretreducedamage(keys)
+function turretreducedamage(keys)   --not used
     for _,unit in pairs( Entities:FindAllByClassnameWithin("npc_dota_creep", keys.caster:GetAbsOrigin(), 600)) do
         if unit:GetTeam() == keys.caster:GetTeam() then
             if unit:GetPlayerOwnerID() ~= keys.caster:GetPlayerOwnerID() then
@@ -1289,7 +1296,7 @@ function turretreducedamage(keys)
     end
 end
 
-function RevealArea( event )
+function RevealArea( event )    --copied from troll vs elves 3
 
     if event.caster == nil or event.caster:GetPlayerOwner() == nil then
         return nil
@@ -1534,6 +1541,8 @@ function Blink(keys)
 end
 
 function crystalball(keys)
+    
+    --used to activate crystal ball. Coz of a bug that prevents true sight from activating on purchase.
     DebugPrint("crystal ball activated")
     local caster = keys.caster
     caster:RemoveItem(caster:FindItemInInventory("item_activate_crystal_ball_of_true_eye"))

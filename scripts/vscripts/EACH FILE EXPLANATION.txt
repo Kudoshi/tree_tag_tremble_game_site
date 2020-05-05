@@ -1,0 +1,50 @@
+V1.0 -updated 5/5/2020 - Kudoshi
+
+-added "" for colour coding for your eyes"
+
+"MAINPAGE AREA"
+
+
+
+"_precache.lua" = For precaching models,particles and sounds.
+
+"_util.lua" = Custom API for popping up numbers 
+
+"abilities.lua" = Not sure how it is being used or whether it is in use... It seems like its an abandoned file by the original creator 
+
+"addon_game_mode.lua" = Most of the game setup
+
+"cosmetic.lib" = Havent touched this. I think it removes cosmetics? Which in future this file should be removed
+
+"custom_abilities.lua" = Most of the abilities and spell functions are here 
+
+"events.lua" = For Game setup as well as events
+
+"hero_util.lua" = Custom function to spawn hero and upgrade their abilities on spawn
+
+"pick_abilities_radiant.lua" = For Adding hero item on spawn
+
+"settings.lua" = Only contains debug spew
+
+
+
+
+"MODIFIERS FILE" -For modifiers
+
+"LIBRARIES file" -Name implied
+"Libraries/modifiers" -For modifiers as well . No reasons why i have 2 modifiers file 
+
+"internal"  -Contains functions for DEBUGPRINT
+
+"abilities" -Contains abilities coded in PURE lua 
+
+PRECAUTION OR WARNING
+
+Use DebugPrint("Example messages for debugging purposes") to print messages for debugging mode as it can disabled easily when releasing to public 
+
+
+
+
+
+
+

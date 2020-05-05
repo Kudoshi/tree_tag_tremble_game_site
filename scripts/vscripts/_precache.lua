@@ -1,5 +1,6 @@
 
 function preCacheResources(context)
+    --alot of precache here are from previous games
     PrecacheResource("model_folder", "models/items/furion", context)
     PrecacheResource("particle_folder", "econ/items/natures_prophet", context)
 

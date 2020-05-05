@@ -47,6 +47,7 @@ function addRadiantItems(hero)
     end
 end
 
+--Inferno's item
 function addDireItems(hero)
     local itemNames = {
         'item_ward_observe'
