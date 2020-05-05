@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+  
+  "maps"      "treetagrebuild"
+  "IsPlayable"  "1"
+  "treetagrebuild"
+  {
+    "MaxPlayers"                    "11"
+  }
+  
+}

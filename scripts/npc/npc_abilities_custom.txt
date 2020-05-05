@@ -1,0 +1,2851 @@
+// Dota Heroes File
+"DOTAAbilities"
+{
+	//////////////////
+	///inferno skill////
+	////////////////////
+
+	"melting_sun"
+    {
+        // General
+        //-------------------------------------------------------------------------------------------------------------
+        "BaseClass"                        "vengefulspirit_magic_missile"
+        "AbilityBehavior"                "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"            "DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BUILDING"
+        "AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"AbilityCastPoint"       	    "0.5"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"135 145 155 165"
+		"AbilityTextureName"   		    "phoenix_icarus_dive_stop"
+		"AbilityCastRange"  		    "1000 1100 1200 1300"
+		"AbilityCooldown"               "18.0 17.0 16.0 15.0"
+		"AbilityDamage"					"350 600 900 1250"
+		"AbilitySound"					"Hero_WinterWyvern.ArcticBurn.Cast" 
+		//above sound effect does not work
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"magic_missile_speed"	"850"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"magic_missile_stun"	"2.0 3.0 4.0 5.0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"magic_missile_damage"	"450 700 950 1250"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+	"inferno_tree_cutting"
+	{
+		"BaseClass"             		"ability_datadriven"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+		"AbilityCastPoint"       	    "1.7 1.5 1.0 0.8"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"0"
+		"AbilityTextureName"   		    "tiny_tree_grab"
+		"AbilityCastRange"  		    "1"
+		"AbilityCooldown"               "1.7 1.5 1.3 1.2"
+		//ability sound effect not inserted yet. 
+
+		"LevelsBetweenUpgrades"         "3"
+		
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTree"
+			}
+		}
+	}
+
+	"inferno_aoe_destroy_tree"
+	{
+		// General
+		
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"			"lina_light_strike_array"
+		"AbilitySound"					"Ability.LightStrikeArray"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+
+		"AbilityCastRange"				"420"
+		"AbilityCastPoint"				"0.6"
+		"MaxLevel"                      ""
+		"AoERadius"					"%tree_aoe"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tree_aoe"			"265"
+			}
+		}
+
+		//OnChannelSucceeded Can be used
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTreeAoE"
+				"Radius"			"%tree_aoe"
+				"Target"			"POINT"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	"inferno_dragon_wave"
+	{
+		// General
+		"BaseClass"                     "lina_dragon_slave"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Lina.DragonSlave"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.45"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"25 22 18 15"
+		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"220 320 420 520"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"155 165 175 180"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_speed"		"350"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_initial"	"240"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_width_end"		"280"
+			}
+			
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"dragon_slave_distance"			"925"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
+	}
+
+ "doom_scorch"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------		
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"			"phoenix_supernova"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"3"
+		
+		"AoERadius"					"%tree_aoe"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ULTIMATE"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"450"
+		"AbilityCooldown"				"180 170 160"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"250"
+		"AOERadius" "450"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"explodedamage"		"110 130 150"
+								
+			}
+			
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tree_aoe"			"450"
+			}
+		}
+
+		
+		"OnSpellStart"
+		{
+			
+			"CreateThinker"
+			{
+				"ModifierName"	"treeburst"
+				"Target"		"CASTER"
+			}
+			
+			
+			
+		}
+		"Modifiers"
+		{
+			"treeburst"
+			{
+				"IsDebuff" "0"
+                "IsPurgable" "0"
+				"ThinkInterval" "0.5"
+				"Duration"		"6"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/tree_management.lua"
+						"Function"			"UltDestroyTree"
+						"Radius"			"%tree_aoe"
+						"Target"			"CASTER"
+						
+					}
+
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PURE"
+						"Damage"        "%explodedamage"
+						"Target"
+						{
+							"Center"    "CASTER"
+							"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Type"      "DOTA_UNIT_TARGET_ALL"
+							"Radius"    "450"
+							
+						}
+					}
+
+				}
+
+			}
+			
+		}
+		
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+    "inferno_endgame"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------		
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"AbilityTextureName"			"phoenix_supernova"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		
+		"FightRecapLevel"				"1"
+		"MaxLevel"						"1"
+		
+		"AoERadius"					"%tree_aoe"
+		
+		
+		"AOERadius" "550"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"explodedamage"		"100"
+								
+			}
+			
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tree_aoe"			"550"
+			}
+		}
+
+		
+		"OnUpgrade"
+		{
+			
+			"CreateThinker"
+			{
+				"ModifierName"	"treeburst"
+				"Target"		"CASTER"
+			}
+			
+			
+			
+		}
+		"Modifiers"
+		{
+			"treeburst"
+			{
+				"IsDebuff" "0"
+                "IsPurgable" "0"
+                
+				"ThinkInterval" "0.5"
+				"Duration"		"305"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"abilities/tree_management.lua"
+						"Function"			"UltDestroyTree"
+						"Radius"			"%tree_aoe"
+						"Target"			"CASTER"
+						
+					}
+
+					"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PURE"
+						"Damage"        "%explodedamage"
+						"Target"
+						{
+							"Center"    "CASTER"
+							"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Type"      "DOTA_UNIT_TARGET_ALL"
+							"Radius"    "550"
+							
+						}
+					}
+
+				}
+
+			}
+			
+		}
+		
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+	//////////////////
+	///Ent Skill/////
+	////////////////
+
+ "ent_tree_cutting"
+	{
+		"BaseClass"             		"ability_datadriven"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+		"AbilityCastPoint"       	    "0.5"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"0"
+		"AbilityTextureName"   		    "tiny_tree_grab"
+		"AbilityCastRange"  		    "1"
+		"MaxLevel" 						""
+		"AbilityCooldown"               "1.5"
+		//ability sound effect not inserted yet. 
+		
+
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTree"
+			}
+		}
+	}
+
+	
+	
+ "ent_aoe_destroy_tree"
+	{
+		// General
+		
+		"BaseClass"                     "ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"			"lina_light_strike_array"
+		"AbilitySound"					"Ability.LightStrikeArray"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+
+		"AbilityCastRange"				"420"
+		"AbilityCastPoint"				"1.0"
+		"MaxLevel"                      ""
+		"AoERadius"					"%tree_aoe"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tree_aoe"			"250"
+			}
+		}
+
+		//OnChannelSucceeded Can be used
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTreeAoE"
+				"Radius"			"%tree_aoe"
+				"Target"			"POINT"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+ "ent_blink"
+	{
+		// General
+		"BaseClass" 					"antimage_blink"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.4 0.4 0.4 0.4"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13"
+		"MaxLevel"						""
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"10"
+		
+		"AbilitySound"					"Hero_Antimage.Blink_out"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"880"
+				
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"min_blink_range"		"200"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+
+	"regrow_trees"
+
+	{
+
+		"BaseClass"					"ability_datadriven"
+
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityTextureName"		"treant_eyes_in_the_forest"
+
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+
+
+		"AbilityCastPoint"				"0.2"
+
+
+		"MaxLevel"					""
+
+		"AbilityCastRange"			"425"
+
+		"AbilityCooldown"			"15"
+
+		"AbilityManaCost"			"15"
+
+		"AoERadius"				 	"%affect_aoe"
+
+
+
+		"AbilitySpecial"
+
+		{
+
+			"01"
+
+			{
+
+				"var_type"			"FIELD_INTEGER"
+
+				"affect_aoe"		"250"
+
+			}
+
+		}
+
+
+
+		"OnSpellStart"
+
+		{
+
+			"RunScript"
+
+			{
+
+				"ScriptFile"		"abilities/tree_management.lua"
+
+				"Function"			"RegrowTreeAoE"
+
+				"Radius"			"%affect_aoe"
+
+				"Target"			"POINT"
+
+			}
+
+		}
+
+	}
+
+	"savedeadent"
+	{
+		"BaseClass"					"ability_datadriven"
+		"MaxLevel"					"1"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityTextureName"            "savedeadent"
+        
+
+        "AbilityCastPoint"              "0.2"
+        "AbilityCooldown"               "3"
+        "AbilityManaCost"               "0"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		
+		
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "savedeadentlua"
+            }
+        }
+	}
+		
+
+	"invul"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"MaxLevel" 						"1"
+        "AbilityTextureName"            "invul"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	
+		"Modifiers"
+		{
+			"modifier_building"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE" "MODIFIER_STATE_VALUE_ENABLED" // Makes most abilities don't affect this. Use custom damage
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED" // Prevents moving
+					"MODIFIER_STATE_SPECIALLY_DENIABLE" "MODIFIER_STATE_VALUE_ENABLED" // Allows attacking own buildings
+					"MODIFIER_STATE_LOW_ATTACK_PRIORITY" "MODIFIER_STATE_VALUE_ENABLED" // Makes it a secondary target when A-clicking ground
+					
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
+				}
+			}
+		}		
+	}
+
+	////////////////////////////////////////////////////////////
+	///////PICK HERO SKILL/////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////
+
+	"picktree"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "treeface"
+        "MaxLevel"                      "1"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "2.0"
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/pick_abilities_radiant.lua"
+                "Function"          "picktree"
+            }
+        }
+    }
+
+	"pickinferno"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "timberface2"
+        "MaxLevel"                      "1"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "2.0"
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/pick_abilities_radiant.lua"
+                "Function"          "pickinferno"
+            }
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////
+    ////////////////////INVISIBILITY SKILL///////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+    //this skill is broken and shall be fixed in the future
+    "invisibility"
+    {
+        "BaseClass"                     "ability_datadriven"
+		//"ScriptFile"				    "abilities/betainvis"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityTextureName"			"clinkz_wind_walk"
+		"AbilityCooldown"				"0"
+		"MaxLevel"						"1"
+        "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"            "DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
+        //"AbilityUnitTargetFlags"        "DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE | DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+		"AbilityCastPoint"       	    "0.5"
+		//"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"50"
+		
+		"AbilityCastRange"  		    "500"
+		
+		//"AbilityDamage"					"350 600 900 1250"
+
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+			"particle"			"particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf"
+		}
+
+        "OnAbilityPhaseStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_mirana/mirana_moonlight_cast.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"		"CASTER"
+			}
+		}
+
+		"AbilitySpecial"
+		{
+            
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"      	"100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_movement_speed"	"15"
+			}
+		}
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName"	"invis"
+                "Target"		"TARGET"
+                "Duration"      "100"
+                    
+            }
+            
+            "FireEffect"
+            {
+                "EffectName"	"particles/units/heroes/hero_mirana/mirana_moonlight_ray.vpcf"
+                "EffectAttachType"	"follow_origin"
+                "Target"		"TARGET"
+            }
+            
+        }
+        "Modifiers"
+        {
+
+            "invis"
+            {
+                //"Duration"	"100"
+                "IsHidden"			"0"
+                "IsDebuff"			"0"
+
+                "EffectName"	"particles/units/heroes/hero_mirana/mirana_moonlight_owner.vpcf"
+				"EffectAttachType"	"follow_overhead"
+                "OnAttack"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName"	"invis"
+                        "Target"		"TARGET"
+                    }
+                }
+             "MODIFIER_EVENT_ON_ABILITY_EXECUTED"
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName"	"invis"
+                        "Target"		"TARGET"
+                    }
+                }
+                "OnDestroy" 
+                {
+                    "RemoveModifier"
+                    {
+                        "ModifierName"	"invis"
+                        "Target"		"TARGET"
+                    }
+                }
+                "States"
+                {
+                    "MODIFIER_STATE_INVISIBLE"		"MODIFIER_STATE_VALUE_ENABLED"
+                }
+                
+            }
+        }
+    }
+	
+
+	///////////////////////////////////////////////////////////////////////////
+	////////////////////////////BUILDINGS SKILL///////////////////////////////
+	/////////////////////////////////////////////////////////////////////////
+
+	"destroy_farm"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "gyrocopter_call_down"
+        "AbilityCastPoint"              "0.0"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "2"
+        "MaxLevel"                      "1"
+
+        "OnOwnerDied"
+        {
+            "AttachEffect"
+            {
+                "Target" "CASTER"
+                "Duration"  "1"
+                "EffectName" "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_guided_missile_explosion.vpcf"
+                "EffectAttachType" "follow_origin"
+                "EffectLifeDurationScale" "1"
+                "EffectColorA" "255 255 0"
+            }
+            "AttachEffect"
+            {
+                "Target" "CASTER"
+                "Duration"  "1"
+                "EffectName" "particles/units/heroes/hero_invoker/invoker_sun_strike_ground.vpcf"
+                "EffectAttachType" "follow_origin"
+                "EffectLifeDurationScale" "1"
+                "EffectColorA" "255 255 0"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "clearmodel"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName" "doomed"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "doomed"
+            {
+                "IsDebuff"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "0.5"
+                "ThinkInterval" "0.4"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "Target" "CASTER"
+                        "EffectName" "particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "EffectLifeDurationScale" "1"
+                        "EffectColorA" "255 255 0"
+                    }
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "explosionsoundoncaster"
+                    }
+                }
+
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "suicidefarm"
+                    }
+                }
+            }
+        }
+    }
+
+	"gold_ticker"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE" 
+        "AbilityTextureName" "alchemist_goblins_greed"
+
+        "MaxLevel"                      "1"
+
+
+        "OnUpgrade"
+        {
+            "CreateThinker"
+            {
+                "ModifierName" "goldthinkerino"
+                "Target" "CASTER"
+            }
+        }
+        "OnOwnerDied"
+        {
+            "RemoveModifier"
+            {
+                "Target" "CASTER"
+                "ModifierName" "goldthinkerino"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "resetfarm"
+            }
+        }
+        "Modifiers"
+        {
+            "goldthinkerino"
+            {
+                "IsDebuff" "0"
+                "IsPurgable" "0"
+                //"EffectName" "goldthinkerinoeffecterino"              
+                "ThinkInterval" "5.0"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "passiveincome"
+                    }
+                }
+            }
+        }
+
+    }
+
+	"dailygold"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE" 
+        "AbilityTextureName" "alchemist_goblins_greed"
+
+        "MaxLevel"                      "1"
+
+
+        "OnUpgrade"
+        {
+            "CreateThinker"
+            {
+                "ModifierName" "goldthinkerino"
+                "Target" "CASTER"
+            }
+        }
+        
+        "Modifiers"
+        {
+            "goldthinkerino"
+            {
+                "IsDebuff" "0"
+                "IsPurgable" "0"
+                //"EffectName" "goldthinkerinoeffecterino"              
+                "ThinkInterval" "5.0"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "dailygold"
+                    }
+                }
+            }
+        }
+
+    }
+    "dailyinfgold"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE" 
+        "AbilityTextureName" "alchemist_goblins_greed"
+
+        "MaxLevel"                      "1"
+
+
+        "OnUpgrade"
+        {
+            "CreateThinker"
+            {
+                "ModifierName" "goldthinkerino"
+                "Target" "CASTER"
+            }
+        }
+        
+        "Modifiers"
+        {
+            "goldthinkerino"
+            {
+                "IsDebuff" "0"
+                "IsPurgable" "0"
+                //"EffectName" "goldthinkerinoeffecterino"              
+                "ThinkInterval" "5.0"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "dailyinfgold"
+                    }
+                }
+            }
+        }
+
+    }
+	
+    "destroy_unit"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "gyrocopter_call_down"
+        "AbilityCastPoint"              "0.0"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "2"
+        "MaxLevel"                      "1"
+
+        "OnOwnerDied"
+        {
+            "AttachEffect"
+            {
+                "Target" "CASTER"
+                "Duration"  "1"
+                "EffectName" "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_guided_missile_explosion.vpcf"
+                "EffectAttachType" "follow_origin"
+                "EffectLifeDurationScale" "1"
+                "EffectColorA" "255 255 0"
+            }
+            "AttachEffect"
+            {
+                "Target" "CASTER"
+                "Duration"  "1"
+                "EffectName" "particles/units/heroes/hero_invoker/invoker_sun_strike_ground.vpcf"
+                "EffectAttachType" "follow_origin"
+                "EffectLifeDurationScale" "1"
+                "EffectColorA" "255 255 0"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "clearmodel"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName" "doomed"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "doomed"
+            {
+                "IsDebuff"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "0.5"
+                "ThinkInterval" "0.4"
+
+                "OnCreated"
+                {
+                    "AttachEffect"
+                    {
+                        "Target" "CASTER"
+                        "EffectName" "particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf"
+                        "EffectAttachType" "follow_origin"
+                        "EffectLifeDurationScale" "1"
+                        "EffectColorA" "255 255 0"
+                    }
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "explosionsoundoncaster"
+                    }
+                }
+
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "suicide"
+                    }
+                }
+            }
+        }
+    }
+
+    "hire_ent_helper"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "hireenthelper"
+	   
+        "AbilityChannelTime"            "8.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"76"
+
+    
+
+        "OnChannelSucceeded"
+        {
+            
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "hireenthelper"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "75"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+    "train_tree_fighter"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "hiretreefighter"
+	   
+        "AbilityChannelTime"            "8.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"60"
+
+    
+
+        "OnChannelSucceeded"
+        {
+            
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "traintreefighter"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "60"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+    "train_chameleon"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "chameleon"
+	   
+        "AbilityChannelTime"            "8.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"82"
+
+    
+
+        "OnChannelSucceeded"
+        {
+            
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "trainchameleon"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "82"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+    "train_trapper"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "hiretrapper"
+	   
+        "AbilityChannelTime"            "8.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"145"
+
+    
+
+        "OnChannelSucceeded"
+        {
+            
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "traintrapper"
+                "Target"            "POINT"
+                "AbilityGoldCost"		 "145"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	///////////////////////////////////////////////////////
+	////unit skill//////////////////////////////////
+	///////////////////////////////////////////////
+
+	"range600"
+    {
+        "BaseClass" "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+        //"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+
+        "AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+        "AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO"
+
+
+        "AbilityTextureName"            "mirana_arrow"
+
+        "AOERadius" "600"
+
+        "MaxLevel"                      "1"
+
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/turret_stuff.lua"
+                "Function"          "setTurretTarget"
+            }
+        }
+        "OnUpgrade"
+        {
+            "ApplyModifier"
+            {
+                "ModifierName" "initialstun"
+                "Target" "CASTER"
+            }
+            "ApplyModifier"
+            {
+                "ModifierName" "turretantistack"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "initialstun"
+            {
+                "IsDebuff"      "0"
+                "IsHidden"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "0.5"//upgradestunduration
+                "States"
+                {
+                    "MODIFIER_STATE_STUNNED"        "MODIFIER_STATE_VALUE_ENABLED"
+                    "MODIFIER_STATE_DISARMED"       "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+            "turretantistack"
+            {
+                "IsDebuff" "0"
+                "IsPurgable" "0"    
+                "IsHidden" "1"
+                "ThinkInterval" "1.0"
+
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "turretreducedamage"
+                    }
+                }
+                "States"
+                {
+                    "MODIFIER_STATE_ROOTED"                   "MODIFIER_STATE_VALUE_ENABLED"
+                }
+            }
+
+        }
+    }
+
+	"turret_attack_lua"
+    {
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+        //"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "BaseClass"                     "ability_lua"
+        "AbilityTextureName"            "furion_teleportation"
+        "ScriptFile"                    "turret_attack_lua"
+
+        "MaxLevel"                      "1"
+
+        "AbilityCastRange"              "0"
+        "AbilityCastPoint"              "0.5"
+        "AbilityCooldown"               "0.48"
+        "AbilityManaCost"               "0"
+    }
+
+	"reveal_area"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		"AbilityTextureName"			"keeper_of_the_light_blinding_light"
+        "AbilityCastRange"              "1100"
+		
+		"MaxLevel"						"1100"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1400"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"duration"			"0.4"
+			}			
+		}
+
+		"OnUpgrade"
+        {
+            "CreateThinker"
+            {
+                "ModifierName" "revealarea"
+                "Target" "CASTER"
+            }
+        }
+
+		
+
+		"Modifiers"
+        {
+            "revealarea"
+            {
+                "IsDebuff" "0"
+                "IsPurgable" "0"
+                //"EffectName" "goldthinkerinoeffecterino"              
+                "ThinkInterval" "0.4"
+                "OnIntervalThink"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "RevealArea"
+						"TARGET"			"CASTER"
+						"Radius"			"%radius"
+						"Duration"			"%duration"
+                    }
+                }
+            }
+        }
+
+		"OnOwnerDied"
+        {
+            "RemoveModifier"
+            {
+                "Target" "CASTER"
+                "ModifierName" "revealarea"
+            }
+			
+        }
+
+	}
+    
+    "unholy_aura"
+    {
+		"BaseClass"           		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityTextureName"			"unholyaura"
+        "MaxLevel"                      "1"
+        
+        
+	
+		"Modifiers"
+		{
+			"modifier_unholyaura"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"  "35"
+                    "MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"      "5.5"
+				}
+			}
+		}
+	}
+
+    /////////////////////////////////////////////////////////////////////
+    ///////////////////BUILDINGS///////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////
+    "place_mine"
+    {
+        
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+        "AbilityTextureName"            "resourcetree"
+        //"AbilityTextureName"          "earthshaker_fissure"
+        
+        
+        "AbilityCastRange"              "200"
+        "AbilityCastPoint"              "0"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"               "25"
+
+        "AOERadius" "90"
+
+
+        "AbilityChannelTime"            "1.5"
+        "AbilityCooldown"               "1"
+
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+                "unitname"          "npc_treetag_building_mine_1"
+                "unitscale"         "0.32"
+                "AbilityGoldCost"   "25"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeBuilding"
+                "Target"            "POINT"
+                "AbilityGoldCost" "25"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+	}
+
+    "place_wall"
+	{
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "wall"
+       
+	   
+        
+        "AbilityChannelTime"            "3.0"
+        "AbilityCooldown"               "2"
+
+        "AbilityCastRange" "250"
+        "AbilityCastPoint" "0.0"
+
+        "AbilityGoldCost"           "0"
+
+        "AOERadius" "100"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+                "unitname"			"npc_treetag_building_wall_1"
+                "unitscale"			"0.61"
+                "AbilityGoldCost" "4"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeWall"
+                "Target" "POINT"
+                "AbilityGoldCost" "0"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+	}
+
+    "place_wall_helper"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "wall"
+       
+        
+        "AbilityChannelTime"            "3.0"
+        "AbilityCooldown"               "2"
+
+        "AbilityCastRange" "250"
+        "AbilityCastPoint" "0.0"
+
+        "AbilityGoldCost"           "0"
+
+        "AOERadius" "100"
+
+		"OnAbilityPhaseStart"
+        {
+            "ApplyModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+				"Duration"		"3.0"
+			}
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+       
+	   "Modifiers"
+		{
+			"building"
+			{
+			 	"IsDebuff"      "0"
+                "IsHidden"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "3.0"
+			}
+		}
+
+        "OnChannelSucceeded"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeWallHelper"
+                "Target"			 "POINT"
+                "AbilityGoldCost"	 "0"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+
+			"RemoveModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+			}
+        }
+	}
+
+    "place_invisiblewall"
+	{
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "invisiblewall"
+       
+	   
+        
+        "AbilityChannelTime"            "3.0"
+        "AbilityCooldown"               "2"
+        "MaxLevel"              "1"
+
+        "AbilityCastRange" "250"
+        "AbilityCastPoint" "0.0"
+
+        "AbilityGoldCost"           "45"
+        //debugmode "AbilityGoldCost"           "0"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeinvisiblewall"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "45"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+	}
+
+    "place_sentrytower_helper"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "sentry"
+	    
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"25"
+
+        "AOERadius" "45"
+
+		"OnAbilityPhaseStart"
+        {
+            "ApplyModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+				"Duration"		"2.0"
+			}
+
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+		"Modifiers"
+		{
+			"building"
+			{
+			 	"IsDebuff"      "0"
+                "IsHidden"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "2.0"
+			}
+		}
+        
+
+        "OnChannelSucceeded"
+        {	
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+           
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placesentrytowerhelper"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "25"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {	
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+           
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+
+			"RemoveModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+			}
+        }
+
+	}
+
+    "place_sentrytower"
+	{
+	   
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "sentry"
+	    
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"25"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placesentrytower"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "25"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+    "place_littlesaver"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "saver"
+	    
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "5.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"20"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placelittlesaver"
+                "Target" "POINT"
+                "AbilityGoldCost" "20"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	"place_birdoflife"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "birdoflife"
+	   
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"130"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+
+			
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placebirdoflife"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "130"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	"place_barracks"
+	{
+	    
+	    "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "barracks"
+	   
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"130"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+
+			
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placebarracks"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "130"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	////////////////////////////////////////////////////////////////////////
+	/////////////UPGRADE SKILLS//////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////
+    
+
+	"levelmine_2"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"           "65"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+          
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_mine_2"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+	"levelmine_3"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+		"AbilityGoldCost" 			"110"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+
+        
+        "OnSpellStart"
+        {
+            
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+            
+        }
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_mine_3"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+
+	"levelwall_2"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+		"AbilityGoldCost" 			"26"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+           
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_wall_2"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+
+	"levelwall_3"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+		"AbilityGoldCost" 			"35"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+            
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_wall_3"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+
+	"levelwall_4"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+		"AbilityGoldCost" 			"380"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+           
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_wall_4"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+
+	"maxlevel"
+	{
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"		 "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityTextureName"	"maxlevel"
+		"MaxLevel"				"1"
+	}
+	
+    "massive_burst"
+    {
+		"BaseClass"           		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"alacrity"
+        "MaxLevel"                      "1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"			"1000"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_slippers_of_halcyon"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				}
+			}
+		}
+	}
+
+    "slow_poison"
+    {
+		"BaseClass"           		"venomancer_poison_sting"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+        "MaxLevel"                      "1"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"2.5"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"					"5"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_speed"			"-20"
+				
+			}	
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"hp_regen_reduction"		"2"
+			}			
+		}
+	}
+
+    "ensnare"
+	{
+		"BaseClass"                     "naga_siren_ensnare"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		"MaxLevel"				"1"
+		"AbilitySound"					"Hero_NagaSiren.Ensnare.Cast"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0."
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"16"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"55"
+		
+		// Cast Range
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"650"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"4"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"net_speed"					"1500"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"fake_ensnare_distance"		"900"	
+			}
+		}
+		
+	}	
+
+    "evasion25"
+    {
+		"BaseClass"           		"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"evasion25"
+        "MaxLevel"                      "1"
+        
+        
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_evasion"					"25"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_evasion25"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%bonus_evasion"
+				}
+			}
+		}
+	}
+
+    "searing_arrow"
+	{
+		"BaseClass"                     "clinkz_searing_arrows"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilitySound"					"Hero_Clinkz.SearingArrows.Impact"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.0" 
+        "MaxLevel"                      "1"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"8"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_bonus"					"10"
+				
+			}
+		}
+		
+	}
+    //Disabled for now on sentry tower
+    "truesight"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_MOVEMENT"
+		"AbilityTextureName"			"gem"
+		
+		"MaxLevel"						"1"
+		// Special	
+	    //-------------------------------------------------------------------------------------------------------------
+        "AbilitySpecial"
+        {
+            "01"
+            {
+                "var_type"				"FIELD_INTEGER"
+                "radius"				"1100"
+            }
+        }
+
+        "Modifiers"
+        {
+            "modifier_truesight_datadriven"
+            {
+                "Passive"			"1"
+                "IsHidden"			"1"
+        
+                "ThinkInterval"  "1.0"
+                "OnIntervalThink"
+                {
+                    "RemoveModifier"
+                    {
+                        "Target"
+                        {
+                            "Center"  	"TARGET"
+                            "Radius" 	"%radius"
+                            "Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types" 	"DOTA_UNIT_TARGET_ALL"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+                        }
+                        "ModifierName"  "modifier_truesight"
+                    }
+                    "ApplyModifier"
+                    {
+                        "Target"
+                        {
+                            "Center"  	"TARGET"
+                            "Radius" 	"%radius"
+                            "Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types" 	"DOTA_UNIT_TARGET_ALL"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+                        }
+                        "ModifierName"  "modifier_truesight"
+                        "Duration"      "2.0"
+                    }			
+                }		
+            }
+        }
+	}
+    
+    "permanent_invisible"
+	{
+		"BaseClass"             		"ability_datadriven"
+		"MaxLevel" 						"1"
+        "AbilityTextureName"            "riki_permanent_invisibility"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "precache"
+        {
+            "particle"		"particles/dark_smoke_test.vpcf"
+            
+        }
+        "OnUpgrade"
+        {
+            "FireEffect"
+            {
+                "EffectName"	"particles/dark_smoke_test.vpcf"
+                "EffectAttachType"	"follow_origin"
+                "Target"		"CASTER"
+            }
+        }
+		"Modifiers"
+		{
+			"modifier_invisible"
+			{
+				"Passive"			"1"
+				"IsHidden"			"0"
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"	
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE" "MODIFIER_STATE_VALUE_ENABLED" 
+				}
+                "Properties"
+                {
+                   "MODIFIER_PROPERTY_INVISIBILITY_LEVEL"       "1"
+                    
+                }
+               
+    
+			}
+		}		
+	}
+
+    "unitinvi"
+	{
+		//General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              	"ability_lua"
+		"ScriptFile"				"abilities/unitinvi.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		
+		"AbilityTextureName"     	"lycan_summon_wolves_invisibility"
+		"MaxLevel"					"1"
+        "AbilityCastPoint"       	    "0.5"
+        "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+        "AbilityUnitTargetType"            "DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
+		"AbilityManaCost"				"50"
+        "AbilityCastRange"  		    "500"
+
+        "precache"
+		{
+			"soundfile"                     "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		}
+        // Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"      	"100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_movement_speed"	"40"
+			}
+		}
+	}
+
+}
+

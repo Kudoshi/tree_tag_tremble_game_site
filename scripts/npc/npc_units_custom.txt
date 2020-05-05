@@ -1,0 +1,982 @@
+// https://moddota.com/forums/discussion/1415/combining-kv-files-using-base
+#base "units/npc_dota_custom_dummy_unit.txt"
+#base "units/npc_dota_custom_illusion_base.txt"
+
+"DOTAUnits"
+{
+	"Version" 	"1"
+	"npc_dota_sentry_wards"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_ward_base_truesight"	// Class of entity of link to.
+		"Model"						"models/props_gameplay/default_ward.vmdl"	// Model.
+		"SoundSet"					""					// Name of sound set.
+		"Level"						"0"
+		"ModelScale"					"1"
+		"MinimapIcon"					"minimap_ward_invis"
+		"MinimapIconSize"				"300"
+		"skin"						"1"
+  		"wearable"				"7556"
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+		"HealthBarOffset"			"140"
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+	
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"100"		// Base health.
+		"StatusHealthRegen"			"0"			// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"			// Experience earn.
+		"BountyGoldMin"				"100"		// Gold earned min.
+		"BountyGoldMax"				"120"		// Gold earned max.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1400"		// Range of vision during day light.
+		"VisionNighttimeRange"		"1400"		// Range of vision at night time.
+
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////
+	/////////////// Building Helper/////////////////////////////////////
+	//////////////////////////////////////////////////////////////////
+
+  	// note: npc_dota_creature will autolearn abilities to creatureLevel*2.
+	"npc_bh_dummy"
+	{
+		// General
+		//
+		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
+		"Model"						"models/development/invisiblebox.vmdl"	// Model.
+		"SoundSet"					"Creep_Good_Range"					// Name of sound set.
+		"Level"						"0"
+		"UnitLabel"					"healing_ward"
+		
+		// Abilities
+		//----------------------------------------------------------------
+		
+		"Ability1"					"bh_dummy"			// Ability 1.
+		"Ability2"					""			// Ability 2.
+		"Ability3"					""			// Ability 3.
+		"Ability4"					""			// Ability 4.
+		"Ability5"					""			// Ability 5.
+		"Ability6"					""			// Ability 6 - Extra.
+		"Ability7"					""			// Ability 7 - Extra.
+		"Ability8"					""			// Ability 8 - Extra.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"0"			// Physical protection.
+		"MagicalResistance"				"0"			// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"			// Type of attack - melee, ranged, etc.
+		"AttackDamageMin"			"0"			// Damage range min.
+		"AttackDamageMax"			"0"			// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1"			// Speed of attack.
+		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
+		"AttackRange"				"500"		// Range within a target can be attacked.
+		"ProjectileModel"			"" // Particle system model for projectile.
+		"ProjectileSpeed"			"900"		// Speed of projectile.
+
+		// Attributes
+		//----------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"0"			// Base strength
+		"AttributeStrengthGain"		"0"			// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"			// Base intelligence
+		"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"			// Base agility
+		"AttributeAgilityGain"		"0"			// Agility bonus per level.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"0"			// Experience earn.
+		"BountyGoldMin"				"0"			// Gold earned min.
+		"BountyGoldMax"				"0"			// Gold earned max.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+		"MovementSpeed"				"450"		// Speed
+		"MovementTurnRate"			"1.0"		// Turning rate.
+		"FollowRange"				"250"		// Distance to keep when following
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1"			// Base health.
+		"StatusHealthRegen"			"0"			// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"0"		// Range of vision during day light.
+		"VisionNighttimeRange"		"0"		// Range of vision at night time.
+
+		// Bots
+		//----------------------------------------------------------------
+		"AttackDesire"				"1.5"		// How much bots want to attack them vs other non-hero things
+	}
+
+	"npc_treetag_dummybuilding"
+	{
+		"BaseClass"					"npc_dota_ward_base"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+
+		"Model"						"models/buildings/building_plain_reference.vmdl"
+		"ModelScale"				"0.4"
+
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"
+
+		"SoundSet"					"0"
+		"Level"						"1"
+	    
+		"HasInventory"				"0"
+
+		"BountyXP"					"0"
+		"BountyGoldMin"				"0"
+		"BountyGoldMax"				"0"
+
+		"ArmorPhysical"				"100"
+		"StatusHealth"				"1000"
+		"StatusHealthRegen"			"20"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"2.0"
+
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+	}
+
+	"minimap_entity"
+	{
+		"BaseClass"					"npc_dota_building"	// Class of entity of link to.
+		"Model"						"models/development/invisiblebox.vmdl"	// Model.
+
+		// Abilities
+		//----------------------------------------------------------------
+
+		"Ability1"					""			// Ability 1.
+		"Ability2"					""			// Ability 2.
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"					"0"		// Physical protection.
+		"MagicalResistance"				"0"			// Magical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"			// Damage range min.
+		"AttackDamageMax"			"0"			// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0"			// Speed of attack.
+		"AttackAnimationPoint"		"0"			// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"0"			// Range within a target can be acquired.
+		"AttackRange"				"0"			// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			"0"			// Speed of projectile.
+
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+		"MovementSpeed"				"0"			// Speed
+		"MovementTurnRate"			"0"			// Turning rate.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"1500"		// Base health.
+		"StatusHealthRegen"			"5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
+
+		// Team
+		//----------------------------------------------------------------
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRUCTURE"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BARRACKS"
+
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"0"		// Range of vision during day light.
+		"VisionNighttimeRange"		"0"		// Range of vision at night time.
+	} 
+
+	/////////////////////////////////////////////////////////////////////////////
+	//////BUILDINGS///////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////
+
+	// npc_dota_creep = buildings
+	// npc_dota_creature = creeps/minions/units that can walk and not buildings
+	// npc_dota_building = minimap. Dont create any unit on this baseclass
+
+	"npc_treetag_building_minenogold"
+	{
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_minenogold"
+
+	    "Model" "models/items/tiny_01/tiny_haunted_tree.vmdl"
+		"ModelScale" 				"1.4"
+		"StatusHealth"				"100"		// Base health.
+	   "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"		// How big is it. Related to PLACED_BUILDING_RADIUS
+
+		"Ability1"					"levelmine_2"
+		"Ability2"					"gold_ticker"
+		//"Ability3"					"destroy_farm"
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"60"
+		
+		"MagicalResistance"				"0"
+	}
+
+	"npc_treetag_building_mine_1"
+	{
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_mines"
+
+	    "Model" "models/items/tiny_01/tiny_haunted_tree.vmdl"
+		"ModelScale" 				"1.4"
+		"StatusHealth"				"100"		// Base health.
+
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+
+		"Ability1"					"levelmine_2"
+		"Ability2"					"gold_ticker"
+		//"Ability3"					"destroy_farm"
+
+		"BountyXP"					"55"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"60"
+		
+		"MagicalResistance"				"0"
+	}
+
+	"npc_treetag_building_mine_2"
+	{
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		
+	    "Model" "models/props_tree/mango_tree.vmdl"
+		"ModelScale" 				"1.2"
+		"StatusHealth"				"100"
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_mines"
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+
+		"Ability1"					"levelmine_3"
+		"Ability2"					"gold_ticker"
+		"Ability3"					""
+
+		"BountyXP"					"70"
+		"BountyGoldMin"				"55"
+		"BountyGoldMax"				"75"
+		
+		"MagicalResistance"				"0"
+	}
+
+	"npc_treetag_building_mine_3"
+	{
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		
+	    "Model" "models/props_tree/frostivus_tree.vmdl"
+		"ModelScale" 				"1.3"
+		"StatusHealth"				"100"
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_mines"
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+
+		"Ability1"					"maxlevel"
+		"Ability2"					"gold_ticker"
+		"Ability3"					""
+
+		"BountyXP"					"80"
+		"BountyGoldMin"				"65"
+		"BountyGoldMax"				"85"
+		
+		"MagicalResistance"				"0"
+	}
+
+	"npc_treetag_building_wall_1"
+	{
+	    //"BaseClass" "npc_dota_creep"
+
+		"BaseClass"					"npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_walls"
+		"SelectOnSpawn"             "0"
+
+	    "Model" "models/props_structures/good_statue008.vmdl"//"Model" "models/props_rock/riveredge_rock006a.vmdl"
+	    
+		"ModelScale" 				"0.9"
+
+		"StatusHealth"				"190"		// Base health.
+
+	    
+	    "BoundsHullName" "DOTA_HULL_SIZE_HUGE" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+		
+
+		"Ability1"					"levelwall_2"
+		
+		//"Ability3"					"destroy_unit"
+
+		"BountyXP"					"45"
+		"BountyGoldMin"				"25"
+		"BountyGoldMax"				"30"
+
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"0"
+
+
+		"TeamName"					"DOTA_TEAM_GOODGUYS"						// Team name.
+	}
+
+	
+	"npc_treetag_building_wall_2"
+	{
+		//paid wall
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+
+	    "Model" "models/props_structures/radiant_statue001.vmdl"//"Model" "models/props_rock/riveredge_rock006a.vmdl"
+		"ModelScale" 				"0.9"
+		
+		"StatusHealth"				"300"				// Base health.
+
+	    //"BaseClass" "npc_dota_creep"
+
+		"BaseClass"					"npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_walls"
+
+	    "BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+
+		"Ability1"					"levelwall_3"
+		
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"25"
+		"BountyGoldMax"				"32"
+
+		"ArmorPhysical"					"4"
+		
+	}
+
+	"npc_treetag_building_wall_3"
+	{
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+
+	    "Model" "models/props_structures/good_statue010.vmdl"//"Model" "models/props_rock/riveredge_rock006a.vmdl"
+		"ModelScale" 				"0.9"
+		
+		"StatusHealth"				"400"				// Base health.
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_walls"
+	    "BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+
+		"Ability1"					"levelwall_4"
+		
+
+		"BountyXP"					"80"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"60"
+
+		"ArmorPhysical"					"6"
+		
+	}
+
+	"npc_treetag_building_wall_4"
+	{
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		
+	    "Model" "models/props_structures/radiant_statue002.vmdl"//"Model" "models/props_rock/riveredge_rock006a.vmdl"
+		"ModelScale" 				"0.9"
+		
+		"StatusHealth"				"400"				// Base health.
+	    "BaseClass" "npc_dota_creep"
+		"SelectionGroup"			"npc_treetag_walls"
+	    "BoundsHullName" "DOTA_HULL_SIZE_HUGE"
+		
+
+		"Ability1"					"maxlevel"
+		
+
+		"BountyXP"					"110"
+		"BountyGoldMin"				"75"
+		"BountyGoldMax"				"85"
+
+		"ArmorPhysical"					"80"
+		//"MagicalResistance"				"100"
+	}
+	"npc_treetag_building_sentrytower_1"
+	{
+		"SelectionGroup"			"npc_treetag_sentrytower"
+	    "Model" 					"models/items/wards/arcticwatchtower/arcticwatchtower.vmdl"//turretmodel
+		"ModelScale" 				"2.0"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"100"		// Base health.
+	    "BaseClass"					 "npc_dota_creep"
+	    //"BoundsHullName"			 "DOTA_HULL_SIZE_HUGE" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+		"BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+
+		"Ability1"					"levelturret_2"
+		"Ability2"					""				// range indicator
+		//"Ability3"					"truesight"   Cant see wards so disabled for now
+		"Ability4"					"reveal_area"
+
+		"BountyXP"					"50"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"45"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		// Attack furion_base_attack
+		//----------------------------------------------------------------
+		//"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"1"		// Damage range min.
+		"AttackDamageMax"			"1"		// Damage range max.
+		//"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		//"AttackRate"				"1"			// Speed of attack.
+		//"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		//"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
+		//"AttackRange"				"600"		// Range within a target can be attacked.
+		//"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf" // Particle system model for projectile.
+		//"ProjectileSpeed"			"750"		// Speed of projectile.
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"0"
+
+		"VisionDaytimeRange"		"900"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"900"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		
+	}
+
+	"npc_treetag_building_invisible_wall"
+	{
+		"SelectionGroup"			"npc_treetag_invisiblewall"
+	    "Model" 					"maps/cavern_assets/models/crystals/crystal05.vmdl"//turretmodel
+		"ModelScale" 				"1.2"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"200"		// Base health.
+		"StatusMana"        		"300"
+		"StatusManaRegen"     		"1.0"
+	    "BaseClass"					 "npc_dota_creep"
+	    "BoundsHullName"			 "DOTA_HULL_SIZE_HUGE" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+		
+
+		"Ability1"					"permanent_invisible"
+		//"Ability2"					"invisibility"		
+		"Ability2"					"unitinvi"		
+		
+		
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"40"
+		"BountyGoldMax"				"50"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		// Attack furion_base_attack
+		//----------------------------------------------------------------
+		//"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"1"		// Damage range min.
+		"AttackDamageMax"			"1"		// Damage range max.
+		//"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		//"AttackRate"				"1"			// Speed of attack.
+		//"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		//"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
+		//"AttackRange"				"600"		// Range within a target can be attacked.
+		//"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf" // Particle system model for projectile.
+		//"ProjectileSpeed"			"750"		// Speed of projectile.
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"0"
+
+		"VisionDaytimeRange"		"600"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"400"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		
+	}
+
+	"npc_treetag_building_littlesaver"
+	{
+		"SelectionGroup"			"npc_treetag_littlesaver"
+	    "Model" 					"models/items/courier/captain_bamboo/captain_bamboo.vmdl"//turretmodel
+		"ModelScale" 				"1.3"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"75"		// Base health.
+		"StatusHealthRegen"     	"1.0" 
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0"    
+	    "BaseClass"					 "npc_dota_creature"
+	    
+
+		"Ability1"					"savedeadent" //wanted to giv him evasion
+		"Ability2"					"evasion25"
+		//but havent give him yet la lol
+		"BoundsHullName"			"DOTA_HULL_SIZE_REGULAR"	
+	
+
+		"BountyXP"					"55"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"40"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"20"		// Damage range min.
+		"AttackDamageMax"			"25"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.4"			// Speed of attack.
+		"AttackAnimationPoint"		"0.8"		// Normalized time in animation cycle to attack.
+		//"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.
+
+
+		"ArmorPhysical"					"1"
+		"MagicalResistance"				"8"
+
+		"VisionDaytimeRange"		"1400"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"1200"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"285"
+		
+		
+	}
+
+	"npc_treetag_creep_light_archer"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"//turretmodel
+		"ModelScale" 				"0.8"
+		"SelectOnSpawn"             "1"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"550"		// Base health.
+		"StatusHealthRegen"     	"2.2" 
+		"StatusMana"        		"300"
+		"StatusManaRegen"     		"0"    
+	    "BaseClass"					 "npc_dota_creature"
+	    "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		"Ability1"					"massive_burst" //wanted to giv him evasion
+		"Ability2"					"evasion25"
+		"AttackRate"				"0.22"			// Speed of attack.
+		"AttackAnimationPoint"		"0"
+		//but havent give him yet la lol
+
+	
+
+		"BountyXP"					"78"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"55"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"18"		// Damage range min.
+		"AttackDamageMax"			"22"		// Damage range max.
+		
+		
+
+
+		"ArmorPhysical"					"8"
+		"MagicalResistance"				"10"
+
+		"VisionDaytimeRange"		"1200"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"1000"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"275"
+		
+		
+	}
+
+	"npc_treetag_creep_burning_archer"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/heroes/clinkz/clinkz_archer.vmdl"//turretmodel
+		"ModelScale" 				"1.5"
+		"SelectOnSpawn"             "1"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"350"		// Base health.
+		"StatusHealthRegen"     	"3.5" 
+		"StatusMana"        		"300"
+		"StatusManaRegen"     		"2"    
+	    "BaseClass"					 "npc_dota_creature"
+	   "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		"Ability1"					"searing_arrow" 
+
+	
+
+		"BountyXP"					"78"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"45"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"50"		// Damage range min.
+		"AttackDamageMax"			"57"		// Damage range max.
+		
+		
+
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1200"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"1000"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"275"
+		
+		
+	}
+
+	"npc_treetag_building_bird_of_life"
+	{
+		"SelectionGroup"			"npc_treetag_birdoflife"
+	    "Model" 					"models/props_gameplay/npc/shopkeeper_vulture.vmdl"//turretmodel
+		"ModelScale" 				"1.6"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"400"		// Base health.
+	    "BaseClass"					 "npc_dota_creep"
+	    "BoundsHullName"			 "DOTA_HULL_SIZE_REGULAR" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+
+		"Ability1"					"hire_ent_helper"
+		"Ability2"					""			
+
+		"BountyXP"					"75"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"50"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		
+		"AttackDamageMin"			"101"		// Damage range min.
+		"AttackDamageMax"			"110"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"2.0"			// Speed of attack.
+		"AttackAnimationPoint"		"0.8"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"125"		// Range within a target can be acquired.
+		"AttackRange"				"125"		// Range within a target can be attacked.
+		"ArmorPhysical"					"2"
+		"MagicalResistance"				"5"
+
+		"VisionDaytimeRange"		"900"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"600"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		
+	}
+
+	"npc_treetag_creep_ent_helper"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/items/furion/treant/father_treant/father_treant.vmdl"
+		"ModelScale" 				"1.1"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"25"		// Base health.
+		"StatusHealthRegen"     	"0.2" 
+		"StatusMana"        		"100"
+		"StatusManaRegen"     		"0.3"    
+	    "BaseClass"					 "npc_dota_creature"
+	    
+
+		"Ability1"					"place_wall_helper"
+		"Ability2"					"place_sentrytower_helper"
+		
+
+	
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"40"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"AttackDamageMin"			"0"		// Damage range min.
+		"AttackDamageMax"			"0"		// Damage range max.
+		
+		
+
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"265"
+		
+		
+		
+	}
+
+	"npc_treetag_building_barracks"
+	{
+		"SelectionGroup"			"npc_treetag_birdoflife"
+	    "Model" 					"models/props_structures/good_barracks_melee001.vmdl"//turretmodel
+		"ModelScale" 				"0.75"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "1"//xcz
+		"StatusHealth"				"200"		// Base health.
+	    "BaseClass"					 "npc_dota_creep"
+	    "BoundsHullName"			 "DOTA_HULL_SIZE_HUGE" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+
+		"Ability1"					"train_tree_fighter"
+		"Ability2"					"train_chameleon"
+		"Ability3"					"train_trapper"			
+
+		"BountyXP"					"75"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"55"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		
+		"AttackDamageMin"			"0"		// Damage range min.
+		"AttackDamageMax"			"0"		// Damage range max.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		//"AttackRate"				"2.0"			// Speed of attack.
+		//"AttackAnimationPoint"		"0.8"		// Normalized time in animation cycle to attack.
+		//"AttackAcquisitionRange"	"125"		// Range within a target can be acquired.
+		//"AttackRange"				"125"		// Range within a target can be attacked.
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"0"
+
+		"VisionDaytimeRange"		"900"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"600"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0.0"
+		
+	}
+	
+	"npc_treetag_creep_tree_fighter"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/items/furion/treant/fungal_lord_shroomthing/fungal_lord_shroomthing.vmdl"//turretmodel
+		"ModelScale" 				"0.9"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"300"		// Base health.
+		"StatusHealthRegen"     	"1.0" 
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0"    
+	    "BaseClass"					 "npc_dota_creature"
+	    "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		"Ability1"					"slow_poison" //wanted to giv him evasion
+		"Ability2"					"savedeadent"
+		//but havent give him yet la lol
+
+	
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"45"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"50"		// Damage range min.
+		"AttackDamageMax"			"56"		// Damage range max.
+		"AttackRange"				"100"
+		
+		
+		
+
+
+		"ArmorPhysical"					"0"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"275"
+		
+		
+	}
+
+	"npc_treetag_creep_chameleon"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/creeps/lane_creeps/ti9_chameleon_radiant/ti9_chameleon_radiant_ranged_mega.vmdl"//turretmodel
+		"ModelScale" 				"1.2"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"400"		// Base health.
+		"StatusHealthRegen"     	"1.0" 
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0"    
+	    "BaseClass"					 "npc_dota_creature"
+	    "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+		"Ability1"					"savedeadent" //wanted to giv him evasion
+		//but havent give him yet la lol
+
+	
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"45"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"60"		// Damage range min.
+		"AttackDamageMax"			"65" 	// Damage range max.
+		
+		
+		
+		
+
+
+		"ArmorPhysical"					"1"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"275"
+		
+		
+	}
+
+	"npc_treetag_creep_trapper"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/creeps/neutral_creeps/n_creep_troll_dark_b/n_creep_troll_dark_b.vmdl"//turretmodel
+		"ModelScale" 				"1.0"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"450"		// Base health.
+		"StatusHealthRegen"     	"2.0" 
+		"StatusMana"        		"200"
+		"StatusManaRegen"     		"2"    
+	    "BaseClass"					 "npc_dota_creature"
+	   // "BoundsHullName"			 "DOTA_HULL_SIZE_REGULAR" 		// How big is it. Related to PLACED_BUILDING_RADIUS
+	   "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		"Ability1"					"ensnare" //wanted to giv him evasion
+		"Ability2"					"savedeadent"
+		//but havent give him yet la lol
+
+	
+
+		"BountyXP"					"60"
+		"BountyGoldMin"				"35"
+		"BountyGoldMax"				"45"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"35"		// Damage range min.
+		"AttackDamageMax"			"40" 	// Damage range max.
+		
+		
+		
+		
+
+
+		"ArmorPhysical"					"1"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"265"
+		
+		
+	}
+
+	"npc_treetag_creep_undead_lumberjack"
+	{
+		"SelectionGroup"			"npc_treetag_creep"
+	    "Model" 					"models/creeps/lane_creeps/creep_bad_melee/creep_bad_melee_mega.vmdl"//turretmodel
+		"ModelScale" 				"1.0"
+		"SelectOnSpawn"             "0"//xcz
+		"IgnoreAddSummonedToSelection" "0"//xcz
+		"StatusHealth"				"420"		// Base health.
+		"StatusHealthRegen"     	"2.5" 
+		"StatusMana"        		"0"
+		"StatusManaRegen"     		"0"    
+	    "BaseClass"					 "npc_dota_creature"
+	   "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+
+		"Ability1"					"unholy_aura" //wanted to giv him evasion
+		//but havent give him yet la lol
+
+	
+
+		"BountyXP"					"78"
+		"BountyGoldMin"				"45"
+		"BountyGoldMax"				"55"
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"35"		// Damage range min.
+		"AttackDamageMax"			"42"		// Damage range max.
+		
+		
+		
+		
+
+
+		"ArmorPhysical"					"5"
+		"MagicalResistance"				"1"
+
+		"VisionDaytimeRange"		"1000"		// Range of vision during day light.TURRET
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.TURRET
+
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"275"
+		
+		
+	}
+}

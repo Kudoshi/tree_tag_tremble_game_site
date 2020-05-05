@@ -1,0 +1,8 @@
+treetagrebuild
+{
+	material materials/overviews/treetagrebuild.vmat
+	pos_x -7676
+	pos_y 7443
+	scale 14.776
+}
+

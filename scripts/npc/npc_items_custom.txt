@@ -1,0 +1,2507 @@
+"DOTAAbilities"
+{
+	"item_example_item"
+	{
+		"ID"              			"1836"
+		"AbilityBehavior"       	"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"     "DOTA_UNIT_TARGET_HERO"
+		"BaseClass"           		"item_datadriven"
+		"AbilityCastAnimation"      "ACT_DOTA_DISABLED"
+		"AbilityTextureName"		"item_example_item"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"			"900"
+		"AbilityCastPoint"			"0.2"
+		"AbilityCooldown"			"13.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"			"100"
+		"ItemCost"					"750"
+
+		"ItemPurchasable" 			"0"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"precache"
+		{
+			"particle"				"particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+			"particle_folder"		"particles/test_particle"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+		}
+
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"EffectName"		"particles/frostivus_herofx/queen_shadow_strike_linear_parent.vpcf"
+				"MoveSpeed"			"%speed"
+				"FixedDistance"		"%distance"
+				"StartRadius"		"%radius"
+				"EndRadius"			"%radius"
+				"TargetTeams"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"		"DOTA_UNIT_TARGET_HERO"
+				"TargetFlags"		"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"	"0"
+				"ProvidesVision"	"0"
+				"VisionRadius"		"0"
+			}
+
+			"FireSound"
+			{
+				"EffectName"		"Hero_Abaddon.AphoticShield.Cast"
+				"Target"			"CASTER"
+			}
+
+			"ApplyModifier"
+			{
+				"Target"			"CASTER"
+				"ModifierName"		"modifier_item_shield"
+			}
+		}
+		
+		"OnProjectileHitUnit"
+		{     
+			"DeleteOnHit"			"0"
+
+			"Damage"
+			{
+				"Target"			"TARGET"
+				"Type"				"DAMAGE_TYPE_PURE"
+				"Damage"			"%damage"
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_item_shield"
+			{
+				"IsHidden"			"0"
+				"IsBuff"			"1"
+				"IsPurgable"		"1"
+
+				"EffectName"		"particles/test_particle/damage_immunity.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			
+				"Duration"			"%duration"
+				"TextureName"		"abaddon_aphotic_shield"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%damage_reduction"
+				}
+			}
+
+			"modifier_item_example_passive"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsBuff"			"1"
+				"IsPurgable"		"0"
+
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" // This makes duplicate items stack their properties
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"    		"%bonus_agi"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"    	"%bonus_damage"
+				}
+			}
+		}
+		
+		// Special  
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"4"
+			}
+
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_reduction"	"-50"
+			}
+
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"150"
+			}
+
+			"04"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"speed"				"1800"
+			}
+
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"distance"			"900"
+			}
+
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"125"
+			}
+
+			"07"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_agi"			"13"
+			}
+
+			"08"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bonus_damage"		"33"
+			}
+		}
+	}
+
+	"item_mute_inven"
+	{
+		
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		//"AbilityTextureName"            "item_blink"
+		
+		
+		"AbilityCastRange"              "0"
+		
+		"AbilityCooldown"               "0"
+		"AbilityManaCost"               "0"
+		"ItemSellable"					"0"
+		"ItemDisplayCharges"			"0"
+		"ItemDroppable"					"0"
+		"ItemPurchasable" 				"0"
+		
+	}
+
+	"item_checkpos"
+	{
+		"BaseClass"				"item_datadriven"
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityCooldown"		"0"
+		"AbilityManaCost"		"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/checkpos.lua"
+				"Function"		"checkposimmediate"
+				"Target"		"CASTER"
+			}
+		}
+	}
+
+	
+
+	"item_ward_observe"
+
+	{
+
+		// General
+
+		"BaseClass"           		"item_ward_sentry"
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET "
+
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+
+		"Model"							"models/props_gameplay/observer_ward_bundle.vmdl"
+
+		
+
+		
+
+		// Stats
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"AbilityCastRange"				"600"
+
+		"AbilityCastPoint"				"0.0"
+
+		"AbilityCooldown"				"130.0"
+
+		
+
+		// Item Info
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"ItemCost"						"0"
+
+		"ItemShopTags"					""
+
+		"ItemQuality"					"artifact"
+
+		"ItemAliases"					"gem of true sight"
+
+		"ItemStackable"					"0"
+
+		"ItemPermanent"					"1"
+
+		"ItemKillable"					"0"
+
+		"ItemSellable"					"0"
+
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+		"ItemDroppable"				"0"
+
+		"ItemSellable"				"0"
+
+		"ItemPurchasable"				"0"
+
+		// Special	
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"AbilitySpecial"
+
+		{
+
+			"01"
+
+			{
+
+				"var_type"				"FIELD_INTEGER"
+
+				"lifetime"				"200"
+
+			}
+
+		    "02"
+
+			{
+
+				"var_type"				"FIELD_INTEGER"
+
+				"vision_range"			"1400"
+
+			}
+
+			"03"
+
+			{
+
+				"var_type"				"FIELD_INTEGER"
+
+				"health"				"200"
+
+			}
+
+			"04"
+
+			{
+
+				"var_type"				"FIELD_FLOAT"
+
+				"duration_minutes_tooltip"				"2.3"
+
+			}
+
+
+			"05"
+			{
+
+				"var_type"				"FIELD_INTEGER"
+
+				"true_sight_range"		"1400"
+
+			}
+
+
+		}
+
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////ENT'S BUILDING PLACING///////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
+	///place a gold mine for 0 gold. For play testing purposes
+	"item_place_minenogoldtest"
+    {
+        
+        "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+        "AbilityTextureName"            "item_tt_mine"
+        
+        "ItemCost"                      "0"
+        "ItemShopTags"                  ""
+        "ItemKillable"                  "0"
+        "ItemSellable"                  "0"
+        "ItemDroppable"                 "0"
+
+        "ItemPurchasable"               "0"
+        
+        "ItemQuality"                   "epic"
+        "ItemShareability"              "ITEM_NOT_SHAREABLE"
+        
+        "AbilityCastRange"              "200"
+        "AbilityCastPoint"              "0"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"               "0"
+
+        "AOERadius" "90"
+
+
+        "AbilityChannelTime"            "1.5"
+        "AbilityCooldown"               "1"
+
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+                "unitname"          "npc_treetag_building_mine_1"
+                "unitscale"         "0.32"
+                "AbilityGoldCost"   "0"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeminenogold"
+                "Target"            "POINT"
+                "AbilityGoldCost" "0"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+	}
+
+	"item_place_mine"
+    {
+        "ID"                            "1000"
+        "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+        "AbilityTextureName"            "item_tt_mine"
+        //"AbilityTextureName"          "earthshaker_fissure"
+        "ItemCost"                      "0"
+        "ItemShopTags"                  ""
+        "ItemKillable"                  "0"
+        "ItemSellable"                  "0"
+        "ItemDroppable"                 "0"
+
+        "ItemPurchasable"               "0"
+        
+        "ItemQuality"                   "epic"
+        "ItemShareability"              "ITEM_NOT_SHAREABLE"
+        
+        "AbilityCastRange"              "200"
+        "AbilityCastPoint"              "0"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"               "25"
+
+        "AOERadius" "90"
+
+
+        "AbilityChannelTime"            "1.5"
+        "AbilityCooldown"               "1"
+
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+                "unitname"          "npc_treetag_building_mine_1"
+                "unitscale"         "0.32"
+                "AbilityGoldCost"   "25"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeBuilding"
+                "Target"            "POINT"
+                "AbilityGoldCost" "25"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+        }
+
+	}
+	"item_place_wall"
+	{
+	    "ID"                            "1001"
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "item_tt_wall"
+        //"AbilityTextureName"			"earthshaker_fissure"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+        
+        "AbilityChannelTime"            "3.0"
+        "AbilityCooldown"               "2"
+
+        "AbilityCastRange" "250"
+        "AbilityCastPoint" "0.0"
+
+        "AbilityGoldCost"           "0"
+
+        "AOERadius" "100"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+                "unitname"			"npc_treetag_building_wall_1"
+                "unitscale"			"0.61"
+                "AbilityGoldCost" "4"
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeWall"
+                "Target" "POINT"
+                "AbilityGoldCost" "0"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+	}
+
+	"item_place_wall_helper"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "item_tt_wall"
+        //"AbilityTextureName"			"earthshaker_fissure"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+        
+        "AbilityChannelTime"            "3.0"
+        "AbilityCooldown"               "2"
+
+        "AbilityCastRange" "250"
+        "AbilityCastPoint" "0.0"
+
+        "AbilityGoldCost"           "0"
+
+        "AOERadius" "100"
+
+		"OnAbilityPhaseStart"
+        {
+            "ApplyModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+				"Duration"		"3.0"
+			}
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+       
+	   "Modifiers"
+		{
+			"building"
+			{
+			 	"IsDebuff"      "0"
+                "IsHidden"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "3.0"
+			}
+		}
+
+        "OnChannelSucceeded"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeWallHelper"
+                "Target"			 "POINT"
+                "AbilityGoldCost"	 "0"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+
+			"RemoveModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+			}
+        }
+	}
+
+	"item_place_sentrytower_helper"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "item_tt_turret"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"25"
+
+        "AOERadius" "45"
+
+		"OnAbilityPhaseStart"
+        {
+            "ApplyModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+				"Duration"		"2.0"
+			}
+
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+		"Modifiers"
+		{
+			"building"
+			{
+			 	"IsDebuff"      "0"
+                "IsHidden"      "0"
+                "IsPurgable"    "0"
+                "Duration"      "2.0"
+			}
+		}
+        
+
+        "OnChannelSucceeded"
+        {	
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+           
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placesentrytowerhelper"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "25"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {	
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+           
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+
+			"RemoveModifier"
+			{
+				"ModifierName"	"building"
+				"Target"		"CASTER"
+			}
+        }
+
+	}
+
+	"item_place_sentrytower"
+	{
+	    "ID"                            "1002"
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "item_tt_turret"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"25"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placesentrytower"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "25"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	"item_place_littlesaver"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "item_savertemp"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "5.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"20"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placelittlesaver"
+                "Target" "POINT"
+                "AbilityGoldCost" "20"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	"item_place_birdoflife"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "item_birdoflife"
+	   
+		"ItemShopTags"					""
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"130"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+
+			
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placebirdoflife"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "130"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+	////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////ENT ABILITYIES/////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////
+
+
+	"item_ent_tree_cutting"
+	{
+		"BaseClass"             		"item_datadriven"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+		"AbilityCastPoint"       	    "0.5"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"0"
+		"AbilityTextureName"   		    "treegrab"
+		"AbilityCastRange"  		    "1"
+		"MaxLevel" 						""
+		"AbilityCooldown"               "1.1"
+		
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTree"
+			}
+		}
+	}
+
+	"item_ent_aoe_destroy_tree"
+	{
+		// General
+		
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityTextureName"			"lightarray"
+		
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+
+		"AbilityCastRange"				"420"
+		"AbilityCastPoint"				"1.0"
+		"MaxLevel"                      ""
+		"AoERadius"					"%tree_aoe"
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"12"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tree_aoe"			"250"
+			}
+		}
+
+		//OnChannelSucceeded Can be used
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"DestroyTreeAoE"
+				"Radius"			"%tree_aoe"
+				"Target"			"POINT"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_2"
+	}
+
+ "item_ent_blink"
+	{
+	
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityTextureName"			"blinkam"
+
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+			"particle"		"particles/units/heroes/hero_antimage/antimage_blink_end.vpcf"
+			"particle"		"particles/units/heroes/hero_antimage/antimage_blink_start.vpcf"
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.4"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"13"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"10"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"880"
+			}
+			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"min_blink_range"		"200"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/custom_abilities.lua"
+				"Function"		"Blink"
+				"Target"		"POINT"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Antimage.Blink_out"
+				"Target"		"CASTER"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Hero_Antimage.Blink_in"
+				"Target"		"CASTER"
+			}
+	
+			"AttachEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_antimage/antimage_blink_end.vpcf"
+				"Target"		"CASTER"
+				"EffectAttachType"	"follow_origin"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+	}
+	
+
+	"item_regrow_trees"
+
+	{
+
+		"BaseClass"					"item_datadriven"
+
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+
+		"AbilityTextureName"		"regrowtree"
+
+		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_3"
+
+
+		"AbilityCastPoint"				"0.2"
+
+
+		"MaxLevel"					""
+
+		"AbilityCastRange"			"425"
+
+		"AbilityCooldown"			"15"
+
+		"AbilityManaCost"			"15"
+
+		"AoERadius"				 	"%affect_aoe"
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+
+
+
+		"AbilitySpecial"
+
+		{
+
+			"01"
+
+			{
+
+				"var_type"			"FIELD_INTEGER"
+
+				"affect_aoe"		"250"
+
+			}
+
+		}
+
+
+
+		"OnSpellStart"
+
+		{
+
+			"RunScript"
+
+			{
+
+				"ScriptFile"		"abilities/tree_management.lua"
+
+				"Function"			"RegrowTreeAoE"
+
+				"Radius"			"%affect_aoe"
+
+				"Target"			"POINT"
+
+			}
+
+		}
+
+	}
+
+	"item_savedeadent"
+	{
+		"BaseClass"					"item_datadriven"
+		"MaxLevel"					"1"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        "AbilityTextureName"            "savedeadent"
+        
+
+        "AbilityCastPoint"              "0.2"
+        "AbilityCooldown"               "3"
+        "AbilityManaCost"               "0"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"	
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+		
+		"ItemCost"                      "0"
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		
+        "OnSpellStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "savedeadentlua"
+            }
+        }
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+
+	"item_place_barracks"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            "item_barracks"
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "2.0"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"130"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+
+			
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placebarracks"
+                "Target" "POINT"
+                "AbilityGoldCost"		 "130"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+
+	////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////CUSTOM ITEMS INGAME SHOP///////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////
+
+	"item_crystal_ball"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"		"item_crystalball"
+		"AbilityCooldown"				"30"
+		"AbilityCastPoint"			"0.2"
+		"AbilityManaCost"			"50"
+
+		"ItemCost"					"250"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"AbilitySharedCooldown"			"reveal"
+		
+
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1100"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"5"
+			}			
+		}
+		"OnSpellStart"{
+			"RunScript"{
+				"ScriptFile"			"custom_abilities.lua"
+				"Function"				"RevealItemArea"
+				"TARGET"				"POINT"
+				"Radius"				"%radius"
+				"Duration"				"%duration"
+			}
+
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_truesight_datadriven"
+				"Target"				"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_truesight_datadriven"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"ActOnTargets"
+				{
+					"Target"
+					{
+						"Center"	"TARGET"
+						"Radius"	"%radius"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO|DOTA_UNIT_TARGET_BASIC"
+					}
+					"Action"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_truesight_reveal"
+							"Target" 		"TARGET"
+						}
+					}
+				}
+			}
+			"modifier_truesight_reveal"
+			{
+				"IsHidden"			"1"
+				"Priority"                     "MODIFIER_PRIORITY_ULTRA"
+				"Duration"			"5.0"	//The True Sight effect lingers for 0.1 seconds.
+				"States"
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_DISABLED"
+				}
+			}
+		}
+	}
+	"item_gem_of_true_sight"
+	{
+		"BaseClass"						"item_gem"
+		"ItemPurchasable"				"1"
+		"ItemDroppable"					"1"
+		"ItemCost"						"750"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		"AbilityCastRange"				"1400"
+
+		"Model"							"models/props_gameplay/gem01.vmdl"
+
+		"Effect"						"particles/generic_gameplay/dropped_gem.vpcf"
+
+
+
+		// Item Info
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		//"ItemCost"						"900"
+		"ItemCost"						"600"
+
+		
+		"ItemSellable"					"1"
+
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+		
+
+		"ItemStockMax"					"1"
+
+		"ItemStockTime"					"1"
+
+		
+
+		"ItemKillable"					"1"
+
+	
+
+		"AllowedInBackpack"				"1"
+
+		
+
+		
+
+		// Sound
+
+		//-------------------------------------------------------------------------------------------------------------			
+
+		"UIPickupSound"					"Item.PickUpGemShop"
+
+		"UIDropSound"					"Item.DropGemShop"
+
+		"WorldDropSound"				"Item.DropGemWorld"
+
+		
+
+		// Special	
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"AbilitySpecial"
+
+		{
+
+			"01"
+
+			{
+
+				"var_type"				"FIELD_INTEGER"
+
+				"radius"				"1400"
+
+			}
+
+		}
+	}
+
+	"item_recipe_activate_crystal_ball_of_true_eye"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_activate_crystal_ball_of_true_eye"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						"item_crystal_ball;item_gem_of_true_sight"
+
+		}
+	}
+	"item_activate_crystal_ball_of_true_eye"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"		"item_activatetrueeyeball"
+		"AbilityCooldown"				"1"
+		"AbilityCastPoint"			"0.2"
+		"AbilityManaCost"			"0"
+
+		"ItemCost"					"1150"
+		
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+				"Function"          "crystalball"
+				"Target"				"CASTER"
+			}
+		}
+		
+		
+	}
+
+	"item_crystal_ball_of_true_eye"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"		"item_trueeyeball"
+		"AbilityCooldown"				"30"
+		"AbilityCastPoint"			"0.2"
+		"AbilityManaCost"			"50"
+
+		"ItemCost"					"1150"
+		
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"AbilitySharedCooldown"			"reveal"
+		
+
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"1400"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"5"
+			}			
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"custom_abilities.lua"
+				"Function"				"RevealItemArea"
+				"TARGET"				"POINT"
+				"Radius"				"%radius"
+				"Duration"				"%duration"
+			}			
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center"  	"CASTER"
+					"Radius" 	"9999999"
+					"Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 	"DOTA_UNIT_TARGET_ALL"
+					"Flags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+				}
+				"ModifierName"  "modifier_truesight"
+				"Duration"      "5.0"
+			}			
+		}
+		
+		
+		"Modifiers"
+		{
+			"modifier_replaceitem"
+			{
+				"Passive"			"1"
+                "IsHidden"			"1"
+				"RunScript"
+				{
+					"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+               		"Function"          "crystalball"
+				}
+			}
+			"modifier_truesight_datadriven"
+            {
+                "Passive"			"1"
+                "IsHidden"			"1"
+        
+                "ThinkInterval"  "0.5"
+                "OnIntervalThink"
+                {
+                    "RemoveModifier"
+                    {
+                        "Target"
+                        {
+                            "Center"  	"TARGET"
+                            "Radius" 	"%radius"
+                            "Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types" 	"DOTA_UNIT_TARGET_ALL"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+                        }
+                        "ModifierName"  "modifier_truesight"
+                    }
+                    "ApplyModifier"
+                    {
+                        "Target"
+                        {
+                            "Center"  	"TARGET"
+                            "Radius" 	"%radius"
+                            "Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+                            "Types" 	"DOTA_UNIT_TARGET_ALL"
+                            "Flags"     "DOTA_UNIT_TARGET_FLAG_NONE"
+                        }
+                        "ModifierName"  "modifier_truesight"
+                        "Duration"      "1.0"
+                    }			
+                }		
+            }
+		}
+	}
+	
+	
+	"item_royal_mask"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_royalmask"
+		"ItemCost"					"400"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_mana_regen"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_tick"			"5" //lil bit op but will see how soon
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_mana_regen" //percentage not working
+			{
+				"Passive" 	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%bonus_mana_regen"
+				}
+			}
+			"modifier_mana_regen_surplusroyal"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	"%mana_per_tick"
+				}
+			}
+		}
+		
+	}
+	"item_king_mask"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_kingmask"
+		"ItemCost"					"800"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_mana_regen"			"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_tick"			"10" //lil bit op but will see how soon
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_mana_regen" //percentage not working
+			{
+				"Passive" 	"1"
+				"IsHidden"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%bonus_mana_regen"
+				}
+			}
+			"modifier_mana_regen_surplusking"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	"%mana_per_tick"
+				}
+			}
+		}
+	}
+
+	"item_god_mask"
+	{"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_godmask"
+		"ItemCost"					"1600"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_mana_regen"			"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_tick"			"20" //lil bit op but will see how soon
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_mana_regengod" //percentage not working
+			{
+				"Passive" 	"1"
+				"IsHidden"	"1"
+				
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"			"%bonus_mana_regen"
+				}
+			}
+			"modifier_mana_regen_surplusgod"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" 	"%mana_per_tick"
+				}
+			}
+		}
+	}
+	"item_recipe_king_mask"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_king_mask"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						"item_royal_mask;item_royal_mask"
+
+		}
+	}
+	"item_recipe_god_mask"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_god_mask"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						"item_king_mask;item_king_mask"
+
+		}
+	}
+	"item_shoe_of_hell"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_bootsofhell"
+		"ItemCost"					"350"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"55"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_shoeofhell"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"  "%bonus_movement"
+				}
+			}
+		}
+	}
+
+	"item_twinkling_metal"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_twinklingmetal"
+		"ItemCost"					"125"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"35"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_twinklingmetal"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"  "%bonus_movement"
+				}
+			}
+		}
+	}
+
+	"item_blink"
+	{
+		"ItemPurchasable"				"1"
+		"ItemDroppable"					"1"
+		"ItemCost"					"2850"
+		"AbilityCooldown"				"25.0"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"550"
+		"AbilityCastPoint"				"0.1"
+		
+		"AbilityManaCost"				"0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		
+		"ItemShopTags"					"teleport"
+		"ItemQuality"					"component"
+		"ItemAliases"					"blink dagger"
+		
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"550"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"blink_damage_cooldown"	"25.0"
+			}
+			
+		}
+	}
+
+	"item_power_boots"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_powerboots"
+		"ItemCost"					"425"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_movement"		"85"
+			}
+		}
+
+		
+		"Modifiers"
+		{
+			"modifier_powerboots"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_UNIQUE"  "%bonus_movement"
+				}
+			}
+		}
+	}
+
+	"item_recipe_power_boots"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_power_boots"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						"item_shoe_of_hell;item_twinkling_metal"
+
+		}
+	}
+	
+	"item_hire_light_archer"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET" 
+	    "AbilityTextureName"            "item_lightarcher"
+	    "ItemCost"                      "600"
+		
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "1"
+	    "ItemDroppable"                 "1"
+
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"6.0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/custom_abilities.lua"
+				"Function"				"hirelightarcher"
+				"Target"				"CASTER"
+			}
+		}
+		
+	}
+
+	"item_hire_undead_lumberjack"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET" 
+	    "AbilityTextureName"            "item_hireundeadlumberjack"
+	    "ItemCost"                      "300"
+		
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "1"
+	    "ItemDroppable"                 "1"
+
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"6.0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/custom_abilities.lua"
+				"Function"				"hireundeadlumberjack"
+				"Target"				"CASTER"
+			}
+		}
+		
+	}
+
+	"item_hire_burning_archer"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET" 
+	    "AbilityTextureName"            "item_burningarcher"
+	    "ItemCost"                      "325"
+		
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "1"
+	    "ItemDroppable"                 "1"
+
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"0"
+		
+		"ItemQuality"					"epic"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"6.0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/custom_abilities.lua"
+				"Function"				"hireburningarcher"
+				"Target"				"CASTER"
+			}
+		}
+		
+	}
+
+
+	"item_blinking_scroll"
+
+	{
+
+		// General
+
+		"BaseClass"           		"item_datadriven"
+
+		//-------------------------------------------------------------------------------------------------------------
+
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"            "blinkdaggerconsumable"
+
+		
+		"AbilityCastRange"				"450"
+
+		"AbilityCastPoint"				"0.2"
+
+		"ItemCost"						"250"
+
+
+		"ItemStackable"					"0"
+
+		"ItemPermanent"					"0"
+
+		"ItemKillable"					"1"
+
+		"ItemSellable"					"1"
+
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+		"ItemDroppable"				"1"
+
+		"ItemPurchasable"				"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+				"Function"          "blinkconsumable"
+				"TARGET"			"POINT"
+			}
+		}
+	}
+
+	"item_pot_of_healing"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET" 
+	    "AbilityTextureName"            ""
+	    "ItemCost"                      "450"
+		"AbilityTextureName"            "item_potofhealing"
+	    "ItemKillable"                  "1"
+	    "ItemSellable"                  "1"
+	    "ItemDroppable"                 "1"
+
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"1"
+		
+		
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/custom_abilities.lua"
+				"Function"				"potofhealing"
+				"Target"				"CASTER"
+			}
+		}
+		
+	}
+
+	"item_pot_of_mana"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET" 
+	    "AbilityTextureName"            ""
+	    "ItemCost"                      "500"
+		"AbilityTextureName"            "item_potofmana"
+	    "ItemKillable"                  "1"
+	    "ItemSellable"                  "1"
+	    "ItemDroppable"                 "1"
+
+		"ItemPurchasable"				"1"
+		"ItemStackable"					"1"
+		
+		
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/custom_abilities.lua"
+				"Function"				"potofmana"
+				"Target"				"CASTER"
+			}
+		}
+		
+	}
+
+	"item_protective_talisman"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_protectivetalisman"
+		"ItemCost"					"750"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		
+
+		
+		"Modifiers"
+		{
+			"modifier_talisman"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"20"
+				}
+			}
+		}
+	}
+
+	"item_necklace_of_immunity"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_necklaceofimmunity"
+		"ItemCost"					"400"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		
+		"Modifiers"
+		{
+			"modifier_necklaceofimmunity"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "0"
+				"States"
+				{
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
+
+	"item_berserker_gauntlet"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"berserkergauntlet"
+		"ItemCost"					"750"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		
+
+		
+		"Modifiers"
+		{
+			"modifier_berserkergauntlet"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				
+				"Properties"
+				{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"60"
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE" "75"
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"		"30"
+				}
+			}
+		}
+	}
+
+	
+
+	"item_vladmir"
+	{
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityCastRange"				"1200"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"2275"
+		"ItemShopTags"					"lifesteal;damage;armor;regen_mana"
+		"ItemQuality"					"rare"
+		"ItemAliases"					"vladmir's offering;vlads"
+		
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"mana_regen_aura"		"1.0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_aura"			"5"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"vampiric_aura"			"100"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aura_radius"	"1200"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_all_stats"		"5"
+			}
+		}
+	}
+
+	"item_blade_mail"
+	{
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+
+		// Stats		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"22"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"25"
+		"ItemCost"						"2100"
+		"ItemShopTags"					"damage;armor;int;hard_to_tag"
+		"ItemQuality"					"epic"
+		"ItemAliases"					"bm;blade mail;blademail"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES | DECLARE_PURCHASES_TO_SPECTATORS"
+		"ShouldBeSuggested"				"1"
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"0"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_intellect"		"0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"10.0"
+			}
+		}
+	}
+
+	"item_superior_orb"
+	{
+		"BaseClass"           		"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_necklaceofimmunity"
+		"ItemCost"					"1050"
+		"ItemPurchasable" 			"1"
+		"ItemDroppable"				"1"
+		"ItemSellable"				"1"
+		"ItemShareability"			"ITEM_NOT_SHAREABLE"
+
+		
+		"Modifiers"
+		{
+			"modifier_superiororb"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "0"
+				"States"
+				{
+					
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"20"
+				}
+
+			}
+		}
+	}
+	"item_recipe_superior_orb"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_superior_orb"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						"item_protective_talisman;item_necklace_of_immunity"
+
+		}
+	}
+
+	"item_recipe_superior_orb"
+	{
+		"BaseClass"                     "item_datadriven"
+		"ItemCost"						"0"
+		"ItemRecipe"					"1"
+ 
+		"ItemResult"					"item_superior_orb"
+
+		"ItemRequirements"
+
+		{
+
+			"01"						""
+
+		}
+	}
+}

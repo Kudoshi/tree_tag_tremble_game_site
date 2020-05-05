@@ -1,0 +1,94 @@
+"dota_shops"
+{
+	"consumables"
+	{
+		"item"			"item_hire_light_archer"
+		"item"			"item_hire_burning_archer"
+		"item"			"item_hire_undead_lumberjack"
+		"item"			"item_blinking_scroll"
+		"item"			"item_pot_of_healing"
+		"item"			"item_pot_of_mana"
+		
+	}
+
+	"attributes"
+	{
+		//"item"		"item_health_1"
+		"item"			"item_shoe_of_hell"
+		"item"			"item_twinkling_metal"
+	}
+
+	"weapons_armor"
+	{
+		//"item"		"item_blades_1"
+		"item"			"item_royal_mask"
+		"item"			"item_blink"
+		"item"			"item_protective_talisman"
+		"item"			"item_necklace_of_immunity"
+		"item"			"item_berserker_gauntlet"
+		"item"			"item_vladmir"
+		"item"			"item_blade_mail"
+		
+		
+	}
+	
+	"misc"
+	{
+		"item"		"item_crystal_ball"
+		"item"		"item_gem_of_true_sight"
+		
+		
+	}	
+	
+	// Level 1 - Green Recipes
+	"basics"
+	{
+		
+	}
+
+	// Level 2 - Blue Recipes
+	"support"
+	{
+		//"item"		"item_crystal_ball_of_true_eye" Item currently broken and disabled
+		
+	}
+	
+	"magics"
+	{
+		"item"			"item_king_mask"
+		"item"			"item_god_mask"
+		"item"			"item_activate_crystal_ball_of_true_eye"
+	}
+	
+	// Level 3 - Purple Recipes
+	"defense"
+	{
+		"item"			"item_superior_orb"
+	}
+	
+	"weapons"
+	{
+		"item"		"item_power_boots"
+	}
+	
+	// Level 4 - Orange / Orb / Artifacts
+	"artifacts"
+	{
+		
+	}
+
+	"sideshop1"
+	{
+
+	}
+
+	"sideshop2"
+	{
+
+	}
+	
+	"secretshop"
+	{
+	
+	}
+}

@@ -1,0 +1,2 @@
+TREETAG_DEBUG_SPEW = true
+
