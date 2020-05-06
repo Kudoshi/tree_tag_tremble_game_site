@@ -215,6 +215,27 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
     end
 end
 
+function CTreeTagGameMode:UnitLevelUp(keys)
+	
+	DebugPrint("------")
+	local instance = PlayerInstanceFromIndex(keys.player)
+	DebugPrint(tostring(instance))
+	local hero = instance:GetAssignedHero()
+	DebugPrint(tostring(hero))
+	local heroname = hero:GetUnitName()
+	DebugPrint(heroname)
+	--update choptree skill for inferno at certain levels
+	if heroname == "npc_dota_hero_doom_bringer" then
+		if 	keys.level > 4 then
+			hero:FindAbilityByName("inferno_tree_cutting"):SetLevel(4)
+		elseif keys.level > 3 then
+			hero:FindAbilityByName("inferno_tree_cutting"):SetLevel(3)
+		else
+			hero:FindAbilityByName("inferno_tree_cutting"):SetLevel(2)
+		end				
+	end
+end
+
 function checkinfernovictory()
     
 
