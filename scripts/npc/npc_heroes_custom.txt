@@ -6,7 +6,8 @@
 	
 	"npc_dota_hero_doom_bringer"
 	{
-		"override_hero"				"npc_dota_hero_doom_bringer"			// Hero to override	
+		"override_hero"				"npc_dota_hero_doom_bringer"			// Hero to override
+		"Model"					"models/heroes/invoker/forge_spirit.vmdl"
 		"Ability1" 					"inferno_tree_cutting"
 		"Ability2" 					"inferno_aoe_destroy_tree"
 		"Ability3"					"melting_sun"
@@ -26,7 +27,7 @@
 		//"Ability16"       		""
 		
 		"ModelScale"				"1.2"
-		"BoundsHullName"			 "DOTA_HULL_SIZE_REGULAR"
+		"BoundsHullName"			 "DOTA_HULL_SIZE_BUILDING"
 		
 		"ArmorPhysical"       		"5"                 	// Physical protection.
 		"MagicalResistance"       	"5"                 	// Magical protection (percentage).
@@ -77,8 +78,8 @@
 		"Ability8"      		  	"generic_hidden"
 		"Ability9"      		  	"dailygold"
 		"Ability10"     		  	"generic_hidden"
-		"Ability11"    		   	"generic_hidden"
-	    "Ability12"      		 	"generic_hidden"
+		"Ability11"    		   		"generic_hidden"
+	    	"Ability12"      		 	"generic_hidden"
 		"Ability13"      		 	"generic_hidden"
 		"Ability14"      		 	"generic_hidden"
 		"Ability15"       		""
@@ -181,6 +182,7 @@
 	"npc_dota_hero_wisp"
 	{
 		"override_hero"				"npc_dota_hero_wisp"
+		"Model"					"models/heroes/phoenix/phoenix_egg.vmdl"
 
 		"Ability1"				""
 		"Ability2"				""
@@ -213,7 +215,8 @@
 		"HasInventory"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"	
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
+		"MovementSpeed"			"0"
 	}
 	"npc_dota_hero_bounty_hunter"
 	{
