@@ -70,6 +70,7 @@ function CTreeTagGameMode:InitGameMode()
 
 	ListenToGameEvent('npc_spawned', Dynamic_Wrap(CTreeTagGameMode, 'OnNPCSpawned'), self)
 	ListenToGameEvent('entity_killed', Dynamic_Wrap(CTreeTagGameMode, 'OnEntityKilled'), self)
+	ListenToGameEvent('dota_player_gained_level', Dynamic_Wrap(CTreeTagGameMode, 'UnitLevelUp'), self)
 	
 	--Global Variables
 
