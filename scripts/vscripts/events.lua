@@ -138,8 +138,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
 		Notifications:BottomToAll({text=killedPlayerN .. " has been saved ", duration=5, style={color="green"}, continue=true})
                 
                 --function to spawn unit in middle point
-                xpos = 0
-                ypos = 0
+                xpos = -608
+                ypos = -224
                 local position = Vector(xpos, ypos, 136)
                 FindClearSpaceForUnit(hero, position, true)
                 
@@ -174,8 +174,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 local hero = pickDeadEnt(killedPlayerID, "npc_dota_hero_earth_spirit")
                 hero:SetGold(1, false)
                 hero:SetRespawnsDisabled(true)
-                xpos = 0
-                ypos = 0
+                xpos = -608
+                ypos = -224
                 local position = Vector(xpos, ypos, 136)
                 FindClearSpaceForUnit(hero, position, true)
 

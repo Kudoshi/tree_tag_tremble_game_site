@@ -1,0 +1,8 @@
+tree_tag_tremble
+{
+	material materials/overviews/tree_tag_tremble.vmat
+	pos_x -6976
+	pos_y 8096
+	scale 14.438
+}
+
