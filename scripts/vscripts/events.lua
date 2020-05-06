@@ -112,10 +112,12 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
     --Killed entity
     local killed = EntIndexToHScript(keys.entindex_killed)
     local killedPlayerID = killed:GetPlayerOwnerID()
+    local killedPlayerN = PlayerResource:GetPlayerName(killedPlayerID)
     --Killer entity
     local attacker = EntIndexToHScript(keys.entindex_attacker)
     local attackerPlayerID = attacker:GetPlayerOwnerID()
     local team = killed:GetTeamNumber()
+    local attackPlayerN = PlayerResource:GetPlayerName(attackerPlayerID)
     local baseclass = killed:GetClassname()
     
     --CHECK IF ENTITITY KILLED IS HERO
@@ -132,7 +134,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 CTreeTagGameMode.DeadEntCount = CTreeTagGameMode.DeadEntCount - 1
                 CTreeTagGameMode.ExtraDeadEntCount = CTreeTagGameMode.ExtraDeadEntCount - 1
                 local hero = pickHero(killedPlayerID, "npc_dota_hero_treant")
-
+		Notifications:ClearBottomFromAll()
+		Notifications:BottomToAll({text=killedPlayerN .. " has been saved ", duration=5, style={color="green"}, continue=true})
                 
                 --function to spawn unit in middle point
                 xpos = 0
@@ -151,6 +154,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
 
                 CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
                 CTreeTagGameMode.DeadEntCount  = CTreeTagGameMode.DeadEntCount + 1
+		Notifications:ClearTopFromAll()
+		Notifications:TopToAll({text=attackPlayerN .. " has killed " .. killedPlayerN, duration=5, style={color="red"}, continue=true})
                 --entering as killed ent
                 
                
