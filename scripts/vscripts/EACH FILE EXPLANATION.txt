@@ -42,6 +42,7 @@ PRECAUTION OR WARNING
 
 Use DebugPrint("Example messages for debugging purposes") to print messages for debugging mode as it can disabled easily when releasing to public 
 
+DO NOT upload any single files above 100 mb to github or else it will cause problems
 
 
 

@@ -193,7 +193,7 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
         --KILL MINIMAP ENTITY FUNCTION 
 
         --kills minimap entity when building is killed
-        DebugPrint("Dota Creature Killed")
+        DebugPrint("Dota Creature Killed: ")
         local minimapEntities = Entities:FindAllByClassname("npc_dota_building")
         killed.minimapEntity.correspondingEntity = "dead"
 		for k, minimapEntity in pairs(minimapEntities) do

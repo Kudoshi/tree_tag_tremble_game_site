@@ -1378,6 +1378,42 @@
 
 	}
 
+	"item_destroy_building"
+	{
+		"BaseClass"                     "item_lua"
+		"ScriptFile"				"abilities/destroybuilding.lua"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    "AbilityTextureName"            "destroy"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+
+		
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"AbilityChannelTime"			"3.0"
+		"ItemPurchasable"				"0"
+		
+		
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.5"
+        
+        "AbilityCooldown"               "4.0"
+
+        "MaxLevel"                  	"1"
+        
+
+       
+	}
+
+
 
 	////////////////////////////////////////////////////////////////////////////////////////
 	///////////////////////CUSTOM ITEMS INGAME SHOP///////////////////////////////////////
