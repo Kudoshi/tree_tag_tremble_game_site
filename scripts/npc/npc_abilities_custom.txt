@@ -2846,6 +2846,34 @@
 			}
 		}
 	}
+	"Burnin"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities\Burnin"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"				"elder_titan_echo_stomp"
+		"MaxLevel"						"1"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.5"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"35.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"
+			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"	
+		}
+	}
 
 }
 
