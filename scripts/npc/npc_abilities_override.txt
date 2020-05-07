@@ -68,6 +68,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_boots"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_ring_of_tarrasque"
 	{
 		"ItemPurchasable"				"0"

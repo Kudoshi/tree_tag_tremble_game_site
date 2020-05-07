@@ -152,10 +152,10 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 DebugPrint("Treant -> deadent loaded")
 
 
-                --CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
+                CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
                 CTreeTagGameMode.DeadEntCount  = CTreeTagGameMode.DeadEntCount + 1
-		Notifications:ClearTopFromAll()
-		Notifications:TopToAll({text=attackPlayerN .. " has killed " .. killedPlayerN, duration=5, style={color="red"}, continue=true})
+	        	Notifications:ClearTopFromAll()
+	        	Notifications:TopToAll({text=attackPlayerN .. " has killed " .. killedPlayerN, duration=5, style={color="red"}, continue=true})
                 --entering as killed ent
                 
                

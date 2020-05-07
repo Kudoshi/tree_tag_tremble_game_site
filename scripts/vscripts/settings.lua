@@ -1,2 +1,2 @@
-TREETAG_DEBUG_SPEW = true
+TREETAG_DEBUG_SPEW = false
 

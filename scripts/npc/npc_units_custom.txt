@@ -624,8 +624,8 @@
 		"BountyGoldMax"				"55"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"18"		// Damage range min.
-		"AttackDamageMax"			"22"		// Damage range max.
+		"AttackDamageMin"			"5"		// Damage range min.
+		"AttackDamageMax"			"6"		// Damage range max.
 		
 		
 
@@ -665,8 +665,8 @@
 		"BountyGoldMax"				"45"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"50"		// Damage range min.
-		"AttackDamageMax"			"57"		// Damage range max.
+		"AttackDamageMin"			"75"		// Damage range min.
+		"AttackDamageMax"			"87"		// Damage range max.
 		
 		
 
@@ -964,8 +964,9 @@
 		"BountyGoldMax"				"55"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"35"		// Damage range min.
-		"AttackDamageMax"			"42"		// Damage range max.
+		"AttackDamageMin"			"65"		// Damage range min.
+		"AttackDamageMax"			"67"		// Damage range max.
+		"AttackRange"				"100"
 		
 		
 		
