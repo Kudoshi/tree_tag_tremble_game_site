@@ -43,7 +43,7 @@
 		"AttributeAgilityGain"    	"2.5"                   	// Agility bonus per level.
 
 		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       		"295"
+		"MovementSpeed"       		"315"
 		"MovementTurnRate"      	"1.0"                 	// Turning rate.
 
 		"StatusHealth"        		"3300"                 	// Base health.

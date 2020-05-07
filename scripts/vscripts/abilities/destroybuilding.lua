@@ -18,10 +18,26 @@ function item_destroy_building:GetAbilityTextureName()
 end 
 
 function item_destroy_building:OnChannelFinish(bInterrupted)
+    
     local target = self:GetCursorTarget()
+    
+    
     if bInterrupted then
         return nil
     else
-        target:ForceKill(false)
+        ApplyDamage({
+
+            victim		= target,
+
+            attacker	= self:GetCaster(),
+
+            damage		= 500,
+
+            damage_type	= DAMAGE_TYPE_MAGICAL,
+
+            ability		= self.ability,
+
+        })
+       -- target:ForceKill(false)
     end
 end

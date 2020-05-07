@@ -239,7 +239,7 @@
 
 		"AbilityCastPoint"				"0.0"
 
-		"AbilityCooldown"				"130.0"
+		"AbilityCooldown"				"100.0"
 
 		
 
@@ -1395,7 +1395,7 @@
 	    "ItemSellable"                  "0"
 	    "ItemDroppable"                 "0"
 
-		"AbilityChannelTime"			"3.0"
+		"AbilityChannelTime"			"2.5"
 		"ItemPurchasable"				"0"
 		
 		
@@ -1403,9 +1403,9 @@
 		
 
         "AbilityCastRange" 				"200"
-        "AbilityCastPoint"				"0.5"
+        "AbilityCastPoint"				"0.1"
         
-        "AbilityCooldown"               "4.0"
+        "AbilityCooldown"               "1"
 
         "MaxLevel"                  	"1"
         
@@ -1939,7 +1939,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movement"		"55"
+				"bonus_movement"		"35"
 			}
 		}
 
@@ -1974,7 +1974,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movement"		"35"
+				"bonus_movement"		"15"
 			}
 		}
 
@@ -2050,7 +2050,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_movement"		"85"
+				"bonus_movement"		"60"
 			}
 		}
 
