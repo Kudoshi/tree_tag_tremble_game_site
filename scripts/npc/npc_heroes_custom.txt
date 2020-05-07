@@ -215,8 +215,7 @@
 		"HasInventory"				"0"
 
 		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"	
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_FLY"
-		"MovementSpeed"			"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
 	}
 	"npc_dota_hero_bounty_hunter"
 	{
