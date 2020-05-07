@@ -149,12 +149,12 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 DebugPrint("Treant -> deadent loaded")
 
 
-                CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
+                --CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
                 CTreeTagGameMode.DeadEntCount  = CTreeTagGameMode.DeadEntCount + 1
                 --entering as killed ent
                 
                
-
+                
                 
 
                 --================================================================KILL ALL UNITS FUNCTION================
@@ -162,6 +162,9 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 for _, unit in pairs(allEntities) do
                     if unit:GetPlayerOwnerID() == killedPlayerID then 
                         unit:ForceKill(false)
+                        local bounty = unit:GetGoldBounty()
+                        attacker:ModifyGold(bounty, false, 0)
+                        attacker:AddExperience(60, 0, false, false)
                         UTIL_Remove(minimapEntity)
                     end
                 end
