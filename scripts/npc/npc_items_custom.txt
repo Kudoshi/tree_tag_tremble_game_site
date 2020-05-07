@@ -1055,7 +1055,7 @@
 		
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"420"
+		"AbilityCastRange"				"470"
 		"AbilityCastPoint"				"1.0"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
