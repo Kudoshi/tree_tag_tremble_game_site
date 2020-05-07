@@ -218,7 +218,9 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			--autopick inferno. Could be removed and used for picking different inferno heroes
 			Timers:CreateTimer(35, function()
 				if heroname == "npc_dota_hero_wisp" then
-						
+					
+					local point = hero:GetAbsOrigin()
+					GridNav:DestroyTreesAroundPoint(point, 500, false)
 					local hero = pickBadHero(wispid, "npc_dota_hero_doom_bringer")
 					
 					hero:SetRespawnsDisabled(false)
