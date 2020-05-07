@@ -82,7 +82,7 @@
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"420"
+		"AbilityCastRange"				"470"
 		"AbilityCastPoint"				"0.6"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
@@ -2842,7 +2842,7 @@
 			"02"
 			{
 				"var_type"			"FIELD_INTEGER"
-				"bonus_movement_speed"	"40"
+				"bonus_movement_speed"	"30"
 			}
 		}
 	}

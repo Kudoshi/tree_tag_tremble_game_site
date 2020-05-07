@@ -33,7 +33,8 @@ function addRadiantItems(hero)
         'item_ent_aoe_destroy_tree',
         "item_ent_blink",
         "item_regrow_trees",
-        "item_savedeadent"
+        "item_savedeadent",
+        "item_destroy_building"
        
     }
     for _, itemName in pairs(itemNames) do

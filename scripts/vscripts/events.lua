@@ -152,14 +152,14 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 DebugPrint("Treant -> deadent loaded")
 
 
-                CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
+                --CTreeTagGameMode.EntCount = CTreeTagGameMode.EntCount - 1
                 CTreeTagGameMode.DeadEntCount  = CTreeTagGameMode.DeadEntCount + 1
 		Notifications:ClearTopFromAll()
 		Notifications:TopToAll({text=attackPlayerN .. " has killed " .. killedPlayerN, duration=5, style={color="red"}, continue=true})
                 --entering as killed ent
                 
                
-
+                
                 
 
                 --================================================================KILL ALL UNITS FUNCTION================
@@ -167,6 +167,9 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 for _, unit in pairs(allEntities) do
                     if unit:GetPlayerOwnerID() == killedPlayerID then 
                         unit:ForceKill(false)
+                        local bounty = unit:GetGoldBounty()
+                        attacker:ModifyGold(bounty, false, 0)
+                        attacker:AddExperience(60, 0, false, false)
                         UTIL_Remove(minimapEntity)
                     end
                 end
@@ -198,7 +201,7 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
         --KILL MINIMAP ENTITY FUNCTION 
 
         --kills minimap entity when building is killed
-        DebugPrint("Dota Creature Killed")
+        DebugPrint("Dota Creature Killed: ")
         local minimapEntities = Entities:FindAllByClassname("npc_dota_building")
         killed.minimapEntity.correspondingEntity = "dead"
 		for k, minimapEntity in pairs(minimapEntities) do
