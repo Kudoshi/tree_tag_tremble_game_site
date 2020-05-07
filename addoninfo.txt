@@ -1,9 +1,9 @@
 "AddonInfo"
 {
   
-  "maps"      "treetagrebuild"
+  "maps"      "tree_tag_tremble"
   "IsPlayable"  "1"
-  "treetagrebuild"
+  "tree_tag_tremble"
   {
     "MaxPlayers"                    "11"
   }
