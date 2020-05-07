@@ -208,15 +208,15 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 
 			--initializing inferno
 
-			hero:AddAbility("pickinferno")
-			ability = hero:FindAbilityByName("pickinferno")
+			hero:AddAbility("Burnin")
+			ability = hero:FindAbilityByName("Burnin")
 			ability:SetLevel(1)
 			ability:StartCooldown(35)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 			
-			--autopick inferno. Could be removed and used for picking different inferno heroes
-			Timers:CreateTimer(35, function()
+			--autopick inferno if did not choose in 15.
+			Timers:CreateTimer(50, function()
 				if heroname == "npc_dota_hero_wisp" then
 					
 					local point = hero:GetAbsOrigin()
