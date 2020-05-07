@@ -214,20 +214,21 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			ability:StartCooldown(35)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
-			
+
+--Auto pick currently doesn't work with picking inferno
 			--autopick inferno if did not choose in 15.
-			Timers:CreateTimer(50, function()
-				if heroname == "npc_dota_hero_wisp" then
+--			Timers:CreateTimer(50, function()
+--				if heroname == "npc_dota_hero_wisp" then
 					
-					local point = hero:GetAbsOrigin()
-					GridNav:DestroyTreesAroundPoint(point, 500, false)
-					local hero = pickBadHero(wispid, "npc_dota_hero_doom_bringer")
+--					local point = hero:GetAbsOrigin()
+--					GridNav:DestroyTreesAroundPoint(point, 500, false)
+--					local hero = pickBadHero(wispid, "npc_dota_hero_doom_bringer")
 					
-					hero:SetRespawnsDisabled(false)
-					hero:RemoveAbility("pickinferno")
-					giveitemsdire(hero)
-				end
-			end)
+--					hero:SetRespawnsDisabled(false)
+--					hero:RemoveAbility("pickinferno")
+--					giveitemsdire(hero)
+--				end
+--			end)
 			
 		end
 		
