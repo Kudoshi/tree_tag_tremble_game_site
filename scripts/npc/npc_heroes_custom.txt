@@ -44,7 +44,7 @@
 		"AttributeAgilityGain"    	"2.5"                   	// Agility bonus per level.
 
 		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"       		"295"
+		"MovementSpeed"       		"315"
 		"MovementTurnRate"      	"1.0"                 	// Turning rate.
 
 		"StatusHealth"        		"3300"                 	// Base health.
@@ -82,7 +82,7 @@
 	    	"Ability12"      		 	"generic_hidden"
 		"Ability13"      		 	"generic_hidden"
 		"Ability14"      		 	"generic_hidden"
-		"Ability15"       		""
+		"Ability15"       		"generic_hidden"
 		"Ability16"       		""
 		
 		"ModelScale"				"0.4"
@@ -92,7 +92,7 @@
 
 		"AttackCapabilities"    	"DOTA_UNIT_CAP_NO_ATTACK"
 		"AttackDamageMin"     		"1"                   	// Damage range min.
-		"AttackDamageMax"     		"2"                   	// Damage range max.
+		"AttackDamageMax"     		"1"                   	// Damage range max.
 		
 		"AttributeBaseStrength"   	"0"                   	// Base strength
 		"AttributeStrengthGain"   	"0"                   	// Strength bonus per level.
