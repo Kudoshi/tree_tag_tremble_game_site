@@ -2854,7 +2854,7 @@
 		"ScriptFile"					"abilities\Burnin"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"				"elder_titan_echo_stomp"
+		"AbilityTextureName"				"invoker_forge_spirit"
 		"MaxLevel"						"1"
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
