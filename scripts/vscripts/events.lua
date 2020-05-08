@@ -102,8 +102,63 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 
        StartMessagePopup()
     end
-    
-     
+    if heroname == "npc_treetag_building_wall_1"
+	or heroname == "npc_treetag_building_sentrytower_1"
+	or heroname == "npc_treetag_building_bird_of_life"
+	or heroname == "npc_treetag_building_barracks"
+	or heroname == "npc_treetag_building_invisible_wall"
+	or heroname == "npc_treetag_building_mine_1"
+	then
+		
+		npc:SetHealth(1)
+		local base_regen = npc:GetBaseHealthRegen()
+		local temp_regen = 40
+		local regen_duration = (npc:GetMaxHealth()/temp_regen) + 1
+		npc:SetBaseHealthRegen(temp_regen)
+		
+		--Make abilities cooldown while building constructing
+		if npc:HasAbility("levelmine_2") then
+			ability = npc:FindAbilityByName("levelmine_2")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("levelwall_2") then
+			ability = npc:FindAbilityByName("levelwall_2")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("train_chameleon") then
+			ability = npc:FindAbilityByName("train_chameleon")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("train_trapper") then
+			ability = npc:FindAbilityByName("train_trapper")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("train_tree_fighter") then
+			ability = npc:FindAbilityByName("train_tree_fighter")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("hire_ent_helper") then
+			ability = npc:FindAbilityByName("hire_ent_helper")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		
+		
+		Timers:CreateTimer(regen_duration, function()
+				npc:SetBaseHealthRegen(base_regen)
+		end)
+	end
 end
 
 function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is killed
