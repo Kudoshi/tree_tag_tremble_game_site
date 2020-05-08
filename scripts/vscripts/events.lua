@@ -192,8 +192,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 CTreeTagGameMode.DeadEntCount = CTreeTagGameMode.DeadEntCount - 1
                 CTreeTagGameMode.ExtraDeadEntCount = CTreeTagGameMode.ExtraDeadEntCount - 1
                 local hero = pickHero(killedPlayerID, "npc_dota_hero_treant")
-		Notifications:ClearBottomFromAll()
-		Notifications:BottomToAll({text=killedPlayerN .. " has been saved ", duration=5, style={color="green"}, continue=true})
+                Notifications:ClearBottomFromAll()
+                Notifications:BottomToAll({text=killedPlayerN .. " has been saved ", duration=5, style={color="green"}, continue=true})
                 
                 --function to spawn unit in middle point
                 xpos = -608
@@ -216,7 +216,8 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
 	        	Notifications:TopToAll({text=attackPlayerN .. " has killed " .. killedPlayerN, duration=5, style={color="red"}, continue=true})
                 --entering as killed ent
                 
-               
+               --=================================================================GIVE EXP TO KILLER ====================================
+               attacker:AddExperience(250, 0, false, false)
                 
                 
 

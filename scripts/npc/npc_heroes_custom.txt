@@ -79,7 +79,7 @@
 		"Ability9"      		  	"dailygold"
 		"Ability10"     		  	"generic_hidden"
 		"Ability11"    		   		"generic_hidden"
-	    	"Ability12"      		 	"generic_hidden"
+	    "Ability12"      		 	"generic_hidden"
 		"Ability13"      		 	"generic_hidden"
 		"Ability14"      		 	"generic_hidden"
 		"Ability15"       		"generic_hidden"
@@ -112,9 +112,9 @@
 
 		"VisionDaytimeRange"    	"1700"                  // Range of vision at night time.
 		"VisionNighttimeRange"    	"1450"                  // Range of vision at night time.
-		"BountyXP"					"700"
-		"BountyGoldMin"				"450"
-		"BountyGoldMax"				"750"
+		"BountyXP"					"400"
+		"BountyGoldMin"				"400"
+		"BountyGoldMax"				"450"
 	}	
 
 	"npc_dota_hero_earth_spirit"
