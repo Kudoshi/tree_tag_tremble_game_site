@@ -75,6 +75,9 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 
         local position = npc:GetAbsOrigin()
         FindClearSpaceForUnit(npc, position, true)
+	Timers:CreateTimer(0.1, function()
+		npc:SetModel("models/heroes/warlock/warlock_demon.vmdl")
+	end)
     end
         
    
