@@ -12,3 +12,4 @@ desktop.ini
 maps/
 *.sublime-workspace
 panorama/layout/custom_game/custom_ui_manifest.vxml_c
+tools_asset_info.bin

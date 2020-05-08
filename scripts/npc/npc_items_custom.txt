@@ -1113,7 +1113,7 @@
 	    "ItemDroppable"                 "0"
 
 		"ItemPurchasable"				"0"
-		"AbilityCastRange"				"1000"
+		
 	
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -1143,7 +1143,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"1000"
+				"blink_range"			"1450"
 			}
 			
 			"02"
