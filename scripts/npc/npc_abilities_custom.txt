@@ -1467,8 +1467,8 @@
         "AOERadius" "90"
 
 
-        "AbilityChannelTime"            "1.5"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
 
         "OnAbilityPhaseStart"
@@ -1532,8 +1532,8 @@
        
 	   
         
-        "AbilityChannelTime"            "3.0"
-        "AbilityCooldown"               "2"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "AbilityCastRange" "250"
         "AbilityCastPoint" "0.0"
@@ -1677,8 +1677,8 @@
        
 	   
         
-        "AbilityChannelTime"            "3.0"
-        "AbilityCooldown"               "2"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
         "MaxLevel"              "1"
 
         "AbilityCastRange" "250"
@@ -1837,8 +1837,8 @@
 	    
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"25"
@@ -1972,8 +1972,8 @@
 	   
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"130"
@@ -2042,8 +2042,8 @@
 	   
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"130"
