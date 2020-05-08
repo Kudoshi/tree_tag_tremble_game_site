@@ -40,8 +40,15 @@ function DestroyTreeAoE(event)
 	local caster_team = caster:GetTeam()
 	local target_point = event.target_points[1]
 	local radius = event.Radius
-    
-    
+
+
+	-- Emit particle + sound
+	local blast_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(blast_pfx, 0, target_point)
+	ParticleManager:SetParticleControl(blast_pfx, 1, Vector(radius, 0, 0))
+	ParticleManager:ReleaseParticleIndex(blast_pfx)
+	EmitSoundOnLocationWithCaster(target_point, "Ability.LightStrikeArray", caster)
+
     
 	local trees = GridNav:GetAllTreesAroundPoint(target_point, radius, false)
 	for i, tree in ipairs(trees) do
