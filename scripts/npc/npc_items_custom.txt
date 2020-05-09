@@ -1057,6 +1057,7 @@
 
 		"AbilityCastRange"				"470"
 		"AbilityCastPoint"				"1.0"
+		"AbilitySound"					"Ability.LightStrikeArray"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
 		"ItemCost"                      "0"
@@ -1072,6 +1073,14 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"5"
+
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+			"particle"					"particles/units/heroes/hero_lina/lina_spell_light_strike_array.vpcf"
+		}
 
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
