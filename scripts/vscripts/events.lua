@@ -15,7 +15,7 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
     --function to remove excess dead ent from reviving due to bug 
     if npc.bFirstSpawned == true then   
         if heroname == "npc_dota_hero_earth_spirit" then
-            npc:SetRespawnsDisabled(true) 
+           npc:SetRespawnsDisabled(true) 
             CTreeTagGameMode.ExtraDeadEntCount = CTreeTagGameMode.ExtraDeadEntCount + 1
            
             
@@ -217,7 +217,9 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 --entering as killed ent
                 
                --=================================================================GIVE EXP TO KILLER ====================================
-               attacker:AddExperience(250, 0, false, false)
+               if attacker:IsRealHero() then 
+                  attacker:AddExperience(250, 0, false, false)
+               end
                 
                 
 
