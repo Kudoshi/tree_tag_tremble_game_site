@@ -167,7 +167,7 @@ end
 function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is killed
     DebugPrint("====================================================")
     DebugPrint("ENTITY KILLED = : ")
-    --Killed entity
+   --Killed entity
     local killed = EntIndexToHScript(keys.entindex_killed)
     local killedPlayerID = killed:GetPlayerOwnerID()
     local killedPlayerN = PlayerResource:GetPlayerName(killedPlayerID)
@@ -217,9 +217,10 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 --entering as killed ent
                 
                --=================================================================GIVE EXP TO KILLER ====================================
-               if attacker:IsRealHero() then 
-                  attacker:AddExperience(250, 0, false, false)
+               if attacker:IsRealHero() then
+                    attacker:AddExperience(250, 0, false, false)
                end
+               
                 
                 
 
@@ -229,8 +230,10 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                     if unit:GetPlayerOwnerID() == killedPlayerID then 
                         unit:ForceKill(false)
                         local bounty = unit:GetGoldBounty()
-                        attacker:ModifyGold(bounty, false, 0)
-                        attacker:AddExperience(60, 0, false, false)
+                        if attacker:IsRealHero() then 
+                            attacker:ModifyGold(bounty, false, 0)
+                            attacker:AddExperience(60, 0, false, false)
+                        end
                         UTIL_Remove(minimapEntity)
                     end
                 end
