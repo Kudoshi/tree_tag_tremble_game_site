@@ -1055,7 +1055,7 @@
 		
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"470"
+		"AbilityCastRange"				"1300"
 		"AbilityCastPoint"				"1.0"
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"MaxLevel"                      ""
@@ -1152,7 +1152,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"1450"
+				"blink_range"			"1100"
 			}
 			
 			"02"
