@@ -91,6 +91,7 @@ function doom_scorch(event)
 end
 
 function RegrowTreeAoE(event)
+	local caster = event.caster
 	local target_point = event.target_points[1]
     local radius = event.Radius
     
@@ -98,7 +99,14 @@ function RegrowTreeAoE(event)
 	
     local trees = GetDestroyedTreesAroundPoint(target_point, radius)
     
-    print("function after local trees worked and accessed")
+	print("function after local trees worked and accessed")
+
+	local regrow_pfx = ParticleManager:CreateParticle("particles/units/heroes/hero_treant/treant_overgrowth_cast_growing_wood.vpcf", PATTACH_CUSTOMORIGIN, nil)
+	ParticleManager:SetParticleControl(regrow_pfx, 0, target_point)
+	ParticleManager:SetParticleControl(regrow_pfx, 1, Vector(radius, 0, 0))
+	ParticleManager:ReleaseParticleIndex(regrow_pfx)
+	EmitSoundOnLocationWithCaster(target_point, "Hero_Treant.Overgrowth.Cast", caster)
+
 	for i, tree in ipairs(trees) do
 		tree:GrowBack()
         RemoveDestroyedTree(tree)
