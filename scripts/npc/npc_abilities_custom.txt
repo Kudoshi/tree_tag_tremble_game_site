@@ -82,7 +82,7 @@
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"470"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.6"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
@@ -419,7 +419,7 @@
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"420"
+		"AbilityCastRange"				"1300"
 		"AbilityCastPoint"				"1.0"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
@@ -485,7 +485,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"880"
+				"blink_range"			"1100"
 				
 			}
 			"02"
