@@ -171,12 +171,14 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
     local killed = EntIndexToHScript(keys.entindex_killed)
     local killedPlayerID = killed:GetPlayerOwnerID()
     local killedPlayerN = PlayerResource:GetPlayerName(killedPlayerID)
+    local baseclass = killed:GetClassname()					--CEntityInstance
     --Killer entity
-    local attacker = EntIndexToHScript(keys.entindex_attacker)
-    local attackerPlayerID = attacker:GetPlayerOwnerID()
-    local team = killed:GetTeamNumber()
-    local attackPlayerN = PlayerResource:GetPlayerName(attackerPlayerID)
-    local baseclass = killed:GetClassname()
+    local attacker = EntIndexToHScript(keys.entindex_attacker)			--CDOTA_BaseNPC
+    local attackerOwner = attacker:GetPlayerOwner()				--CDOTAPlayer
+    local attackerPlayerID = attacker:GetPlayerOwnerID()			--PlayerID
+    local team = killed:GetTeamNumber()						--team
+    local attackPlayerN = PlayerResource:GetPlayerName(attackerPlayerID)	--Player Name
+    local attackerH = attackerOwner:GetAssignedHero()				--Assigned hero of the attacker
     
     --CHECK IF ENTITITY KILLED IS HERO
    if killed:IsRealHero() then     
@@ -217,9 +219,7 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                 --entering as killed ent
                 
                --=================================================================GIVE EXP TO KILLER ====================================
-               if attacker:IsRealHero() then
-                    attacker:AddExperience(250, 0, false, false)
-               end
+               attackerH:AddExperience(250, 0, false, false)
                
                 
                 
@@ -232,7 +232,7 @@ function CTreeTagGameMode:OnEntityKilled(keys) --entered everytime an entity is 
                         local bounty = unit:GetGoldBounty()
                         if attacker:IsRealHero() then 
                             attacker:ModifyGold(bounty, false, 0)
-                            attacker:AddExperience(60, 0, false, false)
+                            attackerH:AddExperience(60, 0, false, false)
                         end
                         UTIL_Remove(minimapEntity)
                     end
