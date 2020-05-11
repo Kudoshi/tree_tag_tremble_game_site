@@ -11,7 +11,7 @@
 		"Ability1" 					"inferno_tree_cutting"
 		"Ability2" 					"inferno_aoe_destroy_tree"
 		"Ability3"					"melting_sun"
-		"Ability4"					"inferno_dragon_wave"
+		"Ability4"					"Shockwave"
 		"Ability5"					"generic_hidden"
 		
 		"Ability6"					"doom_scorch"
