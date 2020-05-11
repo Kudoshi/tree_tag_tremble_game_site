@@ -1467,6 +1467,11 @@
 				"Radius"				"%radius"
 				"Duration"				"%duration"
 			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.Cloud.Cast"
+				"Target"		"POINT"
+			}
 
 			"ApplyModifier"
 			{
@@ -1689,7 +1694,12 @@
 				}
 				"ModifierName"  "modifier_truesight"
 				"Duration"      "5.0"
-			}			
+			}
+			"FireSound"
+			{
+				"EffectName"	"Hero_Zuus.Cloud.Cast"
+				"Target"		"POINT"
+			}
 		}
 		
 		
