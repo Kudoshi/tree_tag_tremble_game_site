@@ -123,18 +123,18 @@
 	"inferno_dragon_wave"
 	{
 		// General
-		"BaseClass"                     "lina_dragon_slave"
+		"BaseClass"                     		"magnataur_shockwave"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"				"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitDamageType"				"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Lina.DragonSlave"
+		"AbilitySound"					"Hero_Magnataur.ShockWave.Cast"
 	
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
+		"AbilityCastRange"				"880"
 		"AbilityCastPoint"				"0.45"
 
 		// Time		
@@ -157,24 +157,39 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_speed"		"350"
+				"shock_speed"				"900"
 			}
 			
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_initial"	"240"
+				"shock_width"				"200"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_end"		"280"
+				"shock_damage"				"75 150 225 300"
+				"LinkedSpecialBonus"	"special_bonus_unique_magnus_4"
 			}
-			
 			"04"
 			{
+				"var_type"					"FIELD_FLOAT"
+				"pull_duration"				"0.2"
+			}
+			"05"
+			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_distance"			"925"
+				"movement_slow"				"60"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"slow_duration"				"2"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"pull_distance"		"150"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
