@@ -1334,7 +1334,6 @@ function RevealItemArea( event )
 	AddFOWViewer(caster:GetTeamNumber(), point, visionRadius, visionDuration, false)
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), point , nil, visionRadius , DOTA_UNIT_TARGET_TEAM_BOTH, DOTA_UNIT_TARGET_ALL , DOTA_UNIT_TARGET_FLAG_NONE, 0 , false)
 	local timeElapsed = 0
-	local cloud_radius = 1100
 	
 	-- Create nimbus cloud particle
 	local particle_main_fx = ParticleManager:CreateParticle("particles/units/heroes/hero_zeus/zeus_cloud.vpcf", PATTACH_ABSORIGIN, caster)
@@ -1343,12 +1342,12 @@ function RevealItemArea( event )
 	-- Position of ground effect
 	ParticleManager:SetParticleControl(particle_main_fx, 0, Vector(point.x, point.y, point.z))
 	-- Radius of ground effect
-	ParticleManager:SetParticleControl(particle_main_fx, 1, Vector(cloud_radius, 0, 0))
+	ParticleManager:SetParticleControl(particle_main_fx, 1, Vector(visionRadius, 0, 0))
 	-- Position of cloud 
 	ParticleManager:SetParticleControl(particle_main_fx, 2, Vector(point.x, point.y, point.z + 450))
 	
 	--remove effects
-	Timers:CreateTimer(5, function()
+	Timers:CreateTimer(visionDuration, function()
 		ParticleManager:DestroyParticle(particle_main_fx, false)
 		ParticleManager:DestroyParticle(strike_particle_fx, false)
 	end)
