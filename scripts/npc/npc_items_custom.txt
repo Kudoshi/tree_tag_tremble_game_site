@@ -447,8 +447,8 @@
         "AOERadius" "90"
 
 
-        "AbilityChannelTime"            "1.5"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
 
         "OnAbilityPhaseStart"
@@ -521,8 +521,8 @@
 		"ItemQuality"					"epic"
 		"ItemShareability"				"ITEM_NOT_SHAREABLE"
         
-        "AbilityChannelTime"            "3.0"
-        "AbilityCooldown"               "2"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "AbilityCastRange" "250"
         "AbilityCastPoint" "0.0"
@@ -667,6 +667,75 @@
 			}
         }
 	}
+	"item_place_invisiblewall"
+	{
+	 	"BaseClass"                     "item_datadriven"
+        	"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
+	    	"AbilityTextureName"            "invisiblewall"
+       
+	   
+        
+        	"AbilityChannelTime"            "0.2"
+        	"AbilityCooldown"               "0"
+        	"MaxLevel"              "1"
+
+        	"AbilityCastRange" "250"
+        	"AbilityCastPoint" "0.0"
+
+        	"AbilityGoldCost"           "45"
+        	//debugmode "AbilityGoldCost"           "0"
+
+        	"AOERadius" "95"
+
+        	"OnAbilityPhaseStart"
+        	{
+            		"RunScript"
+            		{
+                		"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                		"Function"          "removeGhost"
+                		"Target"            "POINT"
+            		}
+			"RunScript"
+            		{
+                		"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                		"Function"          "placeGhost"
+                		"Target"            "POINT"
+
+            		}
+        	}
+
+        	"OnChannelSucceeded"
+        	{
+            		"RunScript"
+            		{
+                	"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                	"Function"          "removeGhost"
+                	"Target"            "POINT"
+            		}
+            		"RunScript"
+            		{
+                	"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                	"Function"          "placeinvisiblewall"
+                	"Target" "POINT"
+                	"AbilityGoldCost"		 "45"
+            		}
+        	}
+
+        	"OnChannelInterrupted"
+        	{
+            		"RunScript"
+            		{
+                		"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+               	 		"Function"          "removeGhost"
+                		"Target"            "POINT"
+            		}
+            		"RunScript"
+           		{
+				"ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+				"Function"          "refundcost"
+            		}
+        	}
+	}
 
 	"item_place_sentrytower_helper"
 	{
@@ -787,8 +856,8 @@
 
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"25"
@@ -946,8 +1015,8 @@
 
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"130"
@@ -1327,8 +1396,8 @@
 
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "2.0"
-        "AbilityCooldown"               "1"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "0"
 
         "MaxLevel"                  	"1"
         "AbilityGoldCost"           	"130"
@@ -2558,6 +2627,71 @@
 
 			"01"						""
 
+		}
+	}
+	"item_ent_cancel"
+	{
+		"BaseClass"				"item_datadriven"
+
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ItemCost"				"0"
+		"ItemIsNeutralDrop"			"1"
+		"ItemPurchasable"			"0"
+		"AbilityCooldown"			"0"
+		"AbilityTextureName"            "ecodebuff"
+		
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ent/build_management"
+				"Function"		"Cancel"
+				"Target"		"CASTER"
+			}
+		}
+	}
+	"item_basic_buildings"
+	{
+		"BaseClass"				"item_datadriven"
+
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ItemCost"				"0"
+		"ItemIsNeutralDrop"			"0"
+		"ItemPurchasable"			"0"
+		"AbilityCooldown"			"0"
+		"AbilityTextureName"            "logs"
+		
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ent/build_management"
+				"Function"		"addCategory1"
+				"Target"		"CASTER"
+			}
+		}
+	}
+	"item_summoning_buildings"
+	{
+		"BaseClass"				"item_datadriven"
+
+		"AbilityBehavior"		"DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"ItemCost"				"0"
+		"ItemIsNeutralDrop"			"0"
+		"ItemPurchasable"			"0"
+		"AbilityCooldown"			"0"
+		"AbilityTextureName"            "techies"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"abilities/ent/build_management"
+				"Function"		"addCategory2"
+				"Target"		"CASTER"
+			}
 		}
 	}
 }
