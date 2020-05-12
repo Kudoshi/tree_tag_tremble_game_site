@@ -1,3 +1,6 @@
+LinkLuaModifier("modifier_shockwave_pull", "abilities/Shockwave", LUA_MODIFIER_MOTION_HORIZONTAL)
+LinkLuaModifier("modifier_shockwave_slow", "abilities/Shockwave", LUA_MODIFIER_MOTION_NONE)
+
 Shockwave = class({})
 
 
@@ -46,11 +49,11 @@ function Shockwave:OnSpellStart()
 	
 	EmitGlobalSound(sound_cast)
 	
-	local damage = self:GetSpecialValueFor("damage")
+	local damage = self:GetSpecialValueFor("shock_damage")
 	local distance = self:GetCastRange(caster_loc,caster) + caster:GetCastRangeBonus()
 	
-	local speed = self:GetSpecialValueFor("speed")
-	local radius = self:GetSpecialValueFor("radius")
+	local speed = self:GetSpecialValueFor("shock_speed")
+	local radius = self:GetSpecialValueFor("shock_width")
 	local direction = (target_loc - caster_loc):Normalized()
 	
 	-- Creating a unique list of hit-Targets, delete it after 15 secs
@@ -76,8 +79,8 @@ function Shockwave:OnSpellStart()
 		
 		EffectName					= shockwave_particle,
 		fDistance					= distance,
-		fStartRadius				= self:GetSpecialValueFor("shock_width"),
-		fEndRadius					= self:GetSpecialValueFor("shock_width"),
+		fStartRadius				= radius,
+		fEndRadius					= radius,
 		vVelocity					= (self:GetCursorPosition() - self:GetCaster():GetAbsOrigin()):Normalized() * self:GetSpecialValueFor("shock_speed") * Vector(1, 1, 0),
 
 		bProvidesVision				= false,
@@ -111,4 +114,91 @@ function Shockwave:OnProjectileThink_ExtraData(location, data)
 	end
 	
 	GridNav:DestroyTreesAroundPoint(location, 100, true)
+end
+
+function Shockwave:OnProjectileHit_ExtraData(target, location, ExtraData)
+	if target then
+		local caster = self:GetCaster()
+
+		target:AddNewModifier(caster, self, "modifier_shockwave_pull", {duration = self:GetSpecialValueFor("pull_duration") * (1 - target:GetStatusResistance()), x = location.x, y = location.y})
+		target:AddNewModifier(caster, self, "modifier_shockwave_slow", {duration = self:GetSpecialValueFor("slow_duration") * (1 - target:GetStatusResistance())})
+		ApplyDamage({victim = target, attacker = caster, ability = self, damage = ExtraData.damage, damage_type = self:GetAbilityDamageType()})
+	end
+end
+
+
+-----------------------------
+-- SHOCKWAVE PULL MODIFIER --
+-----------------------------
+
+modifier_shockwave_pull = class({})
+		
+function modifier_shockwave_pull:OnCreated(params)
+	if not IsServer() then return end
+	
+	self.ability				= self:GetAbility()
+	self.parent					= self:GetParent()
+	
+	-- AbilitySpecials
+	self.pull_duration		= self.ability:GetSpecialValueFor("pull_duration")
+	self.pull_distance		= self.ability:GetSpecialValueFor("pull_distance")
+	
+	-- Calculate speed at which modifier owner will be pulled towards
+	self.pull_speed				= self.pull_distance / self.pull_duration
+	
+	-- Get the center of the shockwave to know which direction to get pulled towards
+	self.position	= GetGroundPosition(Vector(params.x, params.y, 0), nil)
+
+	self.parent:StartGesture(ACT_DOTA_FLAIL)
+	
+	if self:ApplyHorizontalMotionController() == false then 
+		self:Destroy()
+		return
+	end
+end
+
+function modifier_shockwave_pull:UpdateHorizontalMotion( me, dt )
+	if not IsServer() then return end
+
+	local distance = (self.position - me:GetOrigin()):Normalized()
+	
+	me:SetOrigin( me:GetOrigin() + distance * self.pull_speed * dt )
+end
+
+function modifier_shockwave_pull:OnDestroy()
+	if not IsServer() then return end
+
+	-- Destroy trees around landing zone
+	GridNav:DestroyTreesAroundPoint( self.parent:GetOrigin(), self.parent:GetHullRadius(), true )
+	
+	self.parent:FadeGesture(ACT_DOTA_FLAIL)
+	
+	self.parent:RemoveHorizontalMotionController( self )
+end
+
+-----------------------------
+-- SHOCKWAVE SLOW MODIFIER --
+-----------------------------
+
+modifier_shockwave_slow = class({})
+
+function modifier_shockwave_slow:GetEffectName()
+	return "particles/units/heroes/hero_magnataur/magnataur_shockwave_hit.vpcf"
+end
+
+function modifier_shockwave_slow:OnCreated()
+	self.movement_slow	= self:GetAbility():GetSpecialValueFor("movement_slow") * (-1)
+end
+
+function modifier_shockwave_slow:DeclareFunctions()
+	local decFuncs =
+	{
+		MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE
+	}
+	
+	return decFuncs
+end
+
+function modifier_shockwave_slow:GetModifierMoveSpeedBonus_Percentage()
+	return self.movement_slow
 end
