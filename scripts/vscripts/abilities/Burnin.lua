@@ -52,7 +52,7 @@ function Burnin:OnSpellStart()
 		ParticleManager:SetParticleControl(particle_main_fx, 1, Vector(radius, 0, 0))
 		ParticleManager:ReleaseParticleIndex(particle_main_fx)
 		
-		local hero = PlayerResource:ReplaceHeroWith(caster:GetPlayerOwnerID(), "npc_dota_hero_doom_bringer", 100, 0)
+		local hero = PlayerResource:ReplaceHeroWith(caster:GetPlayerOwnerID(), "npc_dota_hero_ember_spirit", 100, 0)
 		DebugPrint(tostring(caster:GetPlayerOwnerID()))
 		hero:SetRespawnsDisabled(false)
 		
