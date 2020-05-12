@@ -186,6 +186,7 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 			
+			
 			--auto picks hero
 			Timers:CreateTimer(5, function()
 				if heroname == "npc_dota_hero_wisp" then
@@ -214,6 +215,14 @@ function CTreeTagGameMode:OnHeroInGame(hero)
 			ability:StartCooldown(35)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
+			hero:AddAbility("Blaze")
+			if hero:HasAbility("Blaze") then
+				ability = hero:FindAbilityByName("Blaze")
+				ability:SetLevel(1)
+				ability:StartCooldown(35)
+				ability:SetHidden(false)
+				ability:SetActivated(true)
+			end
 
 --Auto pick currently doesn't work with picking inferno
 			--autopick inferno if did not choose in 15.
