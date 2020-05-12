@@ -113,7 +113,7 @@ function Shockwave:OnProjectileThink_ExtraData(location, data)
 		EntIndexToHScript(data.dummy_index):SetAbsOrigin(location)
 	end
 	
-	GridNav:DestroyTreesAroundPoint(location, 100, true)
+	GridNav:DestroyTreesAroundPoint(location, 50, true)
 end
 
 function Shockwave:OnProjectileHit_ExtraData(target, location, ExtraData)
