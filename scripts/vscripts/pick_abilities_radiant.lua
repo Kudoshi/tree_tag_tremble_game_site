@@ -29,12 +29,10 @@ end
 --Ent's item
 function addRadiantItems(hero)
     local itemNames = {
-        'item_ent_tree_cutting',
-        'item_ent_aoe_destroy_tree',
-        "item_ent_blink",
-        "item_regrow_trees",
-        "item_savedeadent",
-        "item_destroy_building"
+        'item_ent_cancel',
+        'item_basic_buildings',
+        "item_summoning_buildings",
+	"item_destroy_building"
        
     }
     for _, itemName in pairs(itemNames) do
