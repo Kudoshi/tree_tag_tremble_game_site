@@ -2927,7 +2927,9 @@
 		// Precache
 		"precache"
 		{
-			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf"	
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf"
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave_cast.vpcf"
 		}
 
 		// Special
@@ -2948,7 +2950,7 @@
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"shock_damage"				"75 150 225 300"
+				"shock_damage"				"220 320 420 520"
 				"LinkedSpecialBonus"	"special_bonus_unique_magnus_4"
 			}
 			"04"
