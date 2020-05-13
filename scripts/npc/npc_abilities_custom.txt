@@ -3013,7 +3013,7 @@
 		"ScriptFile"					"abilities\Blaze"
 		
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-		"AbilityTextureName"				"invoker_forge_spirit"
+		"AbilityTextureName"				"Pick_Blaze"
 		"MaxLevel"						"1"
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
