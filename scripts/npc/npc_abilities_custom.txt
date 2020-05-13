@@ -677,6 +677,20 @@
 				"Target"			"POINT"
 
 			}
+			
+			"RunScript"
+
+			{
+
+				"ScriptFile"		"abilities/Shockwave.lua"
+
+				"Function"			"regrowTree"
+
+				"Radius"			"%affect_aoe"
+
+				"Target"			"POINT"
+
+			}
 
 		}
 
