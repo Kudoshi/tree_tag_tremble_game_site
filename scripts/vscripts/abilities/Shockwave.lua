@@ -113,7 +113,11 @@ function Shockwave:OnProjectileThink_ExtraData(location, data)
 		EntIndexToHScript(data.dummy_index):SetAbsOrigin(location)
 	end
 	
-	GridNav:DestroyTreesAroundPoint(location, 50, true)
+	local trees = GridNav:GetAllTreesAroundPoint(location, 70, true)
+	for i, tree in ipairs(trees) do
+		AddDestroyedTree(tree)
+		tree:CutDown(data.caster_team)
+	end
 end
 
 function Shockwave:OnProjectileHit_ExtraData(target, location, ExtraData)
@@ -201,4 +205,8 @@ end
 
 function modifier_shockwave_slow:GetModifierMoveSpeedBonus_Percentage()
 	return self.movement_slow
+end
+--Function that allows shockwaved trees to be regrown
+function regrowTree(event)
+	RegrowTreeAoE(event)
 end
