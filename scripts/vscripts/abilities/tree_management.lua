@@ -3,6 +3,7 @@
 destroyed_trees = {}
 
 function AddDestroyedTree(tree)
+	print("Adde destroyed tree hit in")
 	local origin = tree:GetOrigin()
 	destroyed_trees[origin] = tree
 end
@@ -57,6 +58,35 @@ function DestroyTreeAoE(event)
 	end
 end
 
+function forceofnature(event)
+	local caster = event.caster 
+	local radius = event.Radius
+	local target_point = event.target_points[1]
+	local trees = GridNav:GetAllTreesAroundPoint(target_point, radius, false)
+    local amounttrees = 0
+    local caster_team = caster:GetTeam()
+	
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local creepcount = 0
+   
+    for i, tree in ipairs(trees) do
+		tree:CutDown(caster_team)
+        AddDestroyedTree(tree)
+        amounttrees = amounttrees + 1
+	end
+	
+
+    while(amounttrees>creepcount and creepcount>=0 and creepcount<3)
+    do
+        local creep = CreateUnitByName("npc_treetag_creep_elite_tree_fighter", target_point, true, nil, nil, caster:GetTeamNumber())
+        creep:SetOwner(hero)
+        creep:SetControllableByPlayer(playerID,true)
+        local position = creep:GetAbsOrigin()
+     FindClearSpaceForUnit(creep, position, true)
+        creepcount = creepcount + 1
+    end
+end
 function UltDestroyTree(event)
 	DebugPrint("[DEBUGGING]UltDestroytree function accessed")
 	local caster = event.caster
@@ -71,6 +101,8 @@ function UltDestroyTree(event)
 		tree:CutDown(caster_team)
 		AddDestroyedTree(tree)
 	end
+
+	
 end
 
 function doom_scorch(event)

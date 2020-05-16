@@ -73,7 +73,7 @@
 		"Ability4"					"place_littlesaver"
 		"Ability5"					"place_birdoflife"
 		"Ability6"					"place_barracks"
-		"Ability7"      		  	"generic_hidden"
+		
 		"Ability7"					"place_invisiblewall"
 		"Ability8"      		  	"generic_hidden"
 		"Ability9"      		  	"dailygold"
@@ -228,7 +228,63 @@
 		
 	}
 
-	
+	"npc_dota_hero_tiny"
+	{
+		"override_hero"				"npc_dota_hero_tiny"			// Hero to override
+		"Model" 					"models/creeps/nian/nian_creep.vmdl"
+		"BaseClass"			"npc_dota_hero_tiny"
+		"Ability1" 					"savedeadent"
+		"Ability2" 					""
+		"Ability3"					""
+		"Ability4"					"inferno_dragon_wave"
+		"Ability5"					"generic_hidden"
+		
+		"Ability6"					"doom_scorch"
+		"Ability7"					""
+		"Ability8"      		  	"generic_hidden"
+		"Ability9"      		  	"generic_hidden"
+		//"Ability10"     		  	""
+		//"Ability11"    		   	""
+		//"Ability12"      		 	""
+		//"Ability13"      		 	""
+		//"Ability14"      		 	""
+		//"Ability15"       		""
+		//"Ability16"       		""
+		"HasInventory"                "1"
+		
+		"ModelScale"				"0.4"
+		
+		"BoundsHullName"      "DOTA_HULL_SIZE_REGULAR"
+		
+		"ArmorPhysical"       		"6"                 	// Physical protection.
+		"MagicalResistance"       	"15"                 	// Magical protection (percentage).
+
+		"AttackCapabilities"    	"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"     		"125"                   	// Damage range min.
+		"AttackDamageMax"     		"245"                   	// Damage	 range max.
+		"AttributePrimary"      	"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"   	"20"                   	// Base strength
+		"AttributeStrengthGain"   	"3.0"                   	// Strength bonus per level.
+		"AttributeBaseIntelligence" "20"                   	// Base intelligence
+		"AttributeIntelligenceGain" "3.0"                   	// Intelligence bonus per level.
+		"AttributeBaseAgility"    	"25"                   	// Base agility
+		"AttributeAgilityGain"    	"4.0"                   	// Agility bonus per level.
+
+		"MovementCapabilities"    	"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"       		"285"
+		"MovementTurnRate"      	"1.0"                 	// Turning rate.
+
+		"StatusHealth"        		"1400"                 	// Base health.
+		"StatusHealthRegen"     	"2.5"                 	// Base health regeneration
+		"StatusMana"        		"300"                   // Base mana.
+		"StatusManaRegen"     		"0.6"                 // Base mana regeneration 
+
+		"VisionDaytimeRange"    	"1800"                  // Range of vision at night time.
+		"VisionNighttimeRange"    	"1550"                  // Range of vision at night time.
+		"BountyXP"          "225"                 // Experience earn.
+		"BountyGoldMin"       "125"                   // Gold earned min.
+		"BountyGoldMax"       "150"                   // Gold earned max.
+	}	
 }
 
 

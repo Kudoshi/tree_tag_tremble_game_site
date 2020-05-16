@@ -1462,12 +1462,120 @@ function traintreefighter(event)
     
 end
 
+function trainelitetreefighter(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local unit = CreateUnitByName("npc_treetag_creep_elite_tree_fighter", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    unit:SetOwner(hero)
+    unit:SetControllableByPlayer(playerID,true)
+    learnabilities(unit)
+    unit:SpendMana(100, nil)
+
+    --function to debug its spawn
+
+    local position = unit:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+
+    
+end
+
+function traintreantarcher(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local unit = CreateUnitByName("npc_treetag_creep_treant_archer", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    unit:SetOwner(hero)
+    unit:SetControllableByPlayer(playerID,true)
+    learnabilities(unit)
+    
+
+    --function to debug its spawn
+
+    local position = unit:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+
+    
+end
+
+function trainicespirit(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local unit = CreateUnitByName("npc_treetag_creep_ice_spirit", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    unit:SetOwner(hero)
+    unit:SetControllableByPlayer(playerID,true)
+    learnabilities(unit)
+    
+
+    --function to debug its spawn
+
+    local position = unit:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+
+    
+end
+
+function trainfiredragon(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local unit = CreateUnitByName("npc_treetag_creep_fire_dragon", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    unit:SetOwner(hero)
+    unit:SetControllableByPlayer(playerID,true)
+    learnabilities(unit)
+    
+
+    --function to debug its spawn
+
+    local position = unit:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+
+    
+end
+
+function CheckNight(keys)
+	local caster = keys.caster
+	if GameRules:IsDaytime() then
+		caster:Interrupt()
+        sendError(keys.caster:GetPlayerOwnerID(), "Cannot build there")
+        
+	end
+end
+
+function CheckNightInvis(keys)
+	local caster = keys.caster
+	if GameRules:IsDaytime() then
+		if caster:HasModifier("modifier_stand_invis") then
+			caster:RemoveModifierByName("modifier_stand_invis")
+		end
+	end
+end
+
 function trainchameleon(event)
     
     local caster = event.caster
     local playerID = caster:GetPlayerOwnerID()
     local hero = PlayerResource:GetSelectedHeroEntity(playerID)
     local unit = CreateUnitByName("npc_treetag_creep_chameleon", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    unit:SetOwner(hero)
+    unit:SetControllableByPlayer(playerID,true)
+    learnabilities(unit)
+    local position = unit:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+    
+end
+
+function trainelitechampion(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local unit = CreateUnitByName("npc_treetag_creep_elite_champion", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
     unit:SetOwner(hero)
     unit:SetControllableByPlayer(playerID,true)
     learnabilities(unit)
@@ -1548,4 +1656,86 @@ function crystalball(keys)
     caster:RemoveItem(caster:FindItemInInventory("item_activate_crystal_ball_of_true_eye"))
     local item = CreateItem("item_crystal_ball_of_true_eye", caster, caster)
     caster:AddItem(item)
+end
+
+function levelbarracks_2(keys)
+    local caster = keys.caster 
+    --Barracks info
+    caster:SetMaxHealth(400)
+    caster:SetPhysicalArmorBaseValue(1)
+    caster:SetBaseMagicalResistanceValue(5.0)
+    caster:SetHealth(400)
+    
+
+    caster:SetUnitName("npc_treetag_building_barracks_lv2")
+    --Hiring abilities
+    caster:RemoveAbility("levelbarracks_2")
+    caster:AddAbility("levelbarracks_3")
+    caster:AddAbility("train_elite_tree_fighter")
+    caster:AddAbility("train_elite_champion")
+    --caster:RemoveAbility("--")
+
+    local hp = caster:GetMaxHealth()
+    DebugPrint("HP: " .. hp)
+    learnabilities(caster)
+end
+
+function levelbarracks_3(keys)
+    local caster = keys.caster 
+    --Barracks info
+    caster:SetMaxHealth(600)
+    caster:SetHealth(600)
+    caster:SetPhysicalArmorBaseValue(2)
+    caster:SetBaseMagicalResistanceValue(10.0)
+
+    caster:SetUnitName("npc_treetag_building_barracks_lv3")
+    --Hiring abilities
+    caster:RemoveAbility("levelbarracks_3")
+    caster:AddAbility("generic_hidden")
+    caster:AddAbility("train_treant_archer")
+    caster:AddAbility("train_ice_spirit")
+    caster:AddAbility("train_fire_dragon")
+    local hp = caster:GetMaxHealth()
+    DebugPrint("HP: " .. hp)
+    learnabilities(caster)
+end
+
+
+function trainhero(event)
+    
+    local caster = event.caster
+    local playerID = caster:GetPlayerOwnerID()
+    local hero = PlayerResource:GetSelectedHeroEntity(playerID)
+    local player = PlayerResource:GetPlayer(playerID)
+    
+   -- local unit = CreateUnitByName("npc_dota_hero_tiny", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+    
+    --unit:SetOwner(hero)
+   -- unit:SetControllableByPlayer(playerID,true)
+   -- unit:SetRespawnsDisabled(true)
+   -- unit:SetHasInventory(true)
+    --unit:SetCanSellItems(true)
+   -- learnabilities(unit)
+    
+   ----------------------DEBUG UNIT--------------------------------------
+
+   local unit2 = CreateUnitByName("npc_treetag_creep_dragon_of_nature", caster:GetAbsOrigin() , true, nil, nil, hero:GetTeamNumber())
+   unit2:SetOwner(hero)
+   unit2:SetControllableByPlayer(playerID,true)
+   
+   unit2:SetChampion(true)
+   unit2:SetXPGain(50)
+   
+   --unit2:CreatureLevelUp(2)
+   
+
+
+
+
+    --function to debug its spawn
+
+    local position = unit2:GetAbsOrigin()
+    FindClearSpaceForUnit(unit, position, true)
+
+    
 end

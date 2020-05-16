@@ -155,6 +155,12 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 			ability:StartCooldown(regen_duration)
 			ability:SetHidden(false)
 			ability:SetActivated(true)
+        end
+        if npc:HasAbility("levelbarracks_2") then
+			ability = npc:FindAbilityByName("levelbarracks_2")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
 		end
 		
 		
