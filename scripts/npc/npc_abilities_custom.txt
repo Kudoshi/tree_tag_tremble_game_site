@@ -508,7 +508,7 @@
 		"AbilityTextureName"   		    "tiny_tree_grab"
 		"AbilityCastRange"  		    "1"
 		"MaxLevel" 						""
-		"AbilityCooldown"               "1.5"
+		"AbilityCooldown"               "1"
 		//ability sound effect not inserted yet. 
 		
 
