@@ -82,8 +82,6 @@ function preCacheResources(context)
     --PrecacheResource("sound", "sound/items/item_handofmidas.wav", context)
     --PrecacheResource("sound", "sounds/items/item_handofmidas.vsnd", context)
 
-    
-    
     PrecacheResource("particle", "particles/items2_fx/true_sight_debuff.vpcf", context)
     
     PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_ambient_d.vpcf", context)
@@ -92,16 +90,17 @@ function preCacheResources(context)
     PrecacheResource("particle", "particles/units/heroes/hero_wisp/wisp_tether.vpcf", context)
     PrecacheResource("particle", "particles/generic_gameplay/dropped_gem.vpcf", context)
     
-
-
-   
-    
     PrecacheUnitByNameSync("npc_dota_goodguys_tower1_top", context)
-   
-    
-    
+
     PrecacheUnitByNameSync("npc_dota_hero_treant", context)
     PrecacheUnitByNameSync("npc_dota_hero_doom_bringer", context)
     PrecacheUnitByNameSync("npc_dota_hero_wisp", context)
     PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)
+
+    --Sounds
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_lina.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_warlock.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts", context)
+    PrecacheResource("soundfile", "soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts", context)
 end

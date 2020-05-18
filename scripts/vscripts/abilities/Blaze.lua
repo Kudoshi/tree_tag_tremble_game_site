@@ -1,7 +1,7 @@
-Burnin = class({})
+Blaze = class({})
 
 
-function Burnin:OnAbilityPhaseStart()
+function Blaze:OnAbilityPhaseStart()
 	local caster = self:GetCaster()
 	local ability = self
 	local sound_precast = "Hero_Warlock.RainOfChaos_buildup"
@@ -12,7 +12,7 @@ function Burnin:OnAbilityPhaseStart()
 	return true
 end
 
-function Burnin:OnAbilityPhaseInterrupted()
+function Blaze:OnAbilityPhaseInterrupted()
 	-- Ability properties
 	local caster = self:GetCaster()
 	local ability = self
@@ -23,7 +23,7 @@ function Burnin:OnAbilityPhaseInterrupted()
 end
 
 
-function Burnin:OnSpellStart()
+function Blaze:OnSpellStart()
 
 	local caster = self:GetCaster()
 	local point = caster:GetAbsOrigin()
@@ -52,7 +52,7 @@ function Burnin:OnSpellStart()
 		ParticleManager:SetParticleControl(particle_main_fx, 1, Vector(radius, 0, 0))
 		ParticleManager:ReleaseParticleIndex(particle_main_fx)
 		
-		local hero = PlayerResource:ReplaceHeroWith(caster:GetPlayerOwnerID(), "npc_dota_hero_ember_spirit", 100, 0)
+		local hero = PlayerResource:ReplaceHeroWith(caster:GetPlayerOwnerID(), "npc_dota_hero_doom_bringer", 100, 0)
 		DebugPrint(tostring(caster:GetPlayerOwnerID()))
 		hero:SetRespawnsDisabled(false)
 		

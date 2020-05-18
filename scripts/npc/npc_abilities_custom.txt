@@ -69,6 +69,7 @@
 				"Function"			"DestroyTree"
 			}
 		}
+		"AbilityCastAnimation"			"ACT_DOTA_ATTACK"
 	}
 
 	"inferno_aoe_destroy_tree"
@@ -82,7 +83,7 @@
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"470"
+		"AbilityCastRange"				"600"
 		"AbilityCastPoint"				"0.6"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
@@ -123,18 +124,18 @@
 	"inferno_dragon_wave"
 	{
 		// General
-		"BaseClass"                     "lina_dragon_slave"
+		"BaseClass"                     		"magnataur_shockwave"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_ALL"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"				"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitDamageType"				"DAMAGE_TYPE_MAGICAL"	
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"FightRecapLevel"				"1"
-		"AbilitySound"					"Hero_Lina.DragonSlave"
+		"AbilitySound"					"Hero_Magnataur.ShockWave.Cast"
 	
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"500"
+		"AbilityCastRange"				"880"
 		"AbilityCastPoint"				"0.45"
 
 		// Time		
@@ -157,30 +158,146 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_speed"		"350"
+				"shock_speed"				"900"
 			}
 			
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_initial"	"240"
+				"shock_width"				"200"
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_width_end"		"280"
+				"shock_damage"				"75 150 225 300"
+				"LinkedSpecialBonus"	"special_bonus_unique_magnus_4"
 			}
-			
 			"04"
 			{
+				"var_type"					"FIELD_FLOAT"
+				"pull_duration"				"0.2"
+			}
+			"05"
+			{
 				"var_type"					"FIELD_INTEGER"
-				"dragon_slave_distance"			"925"
+				"movement_slow"				"60"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"slow_duration"				"2"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"pull_distance"		"150"
 			}
 		}
 		"AbilityCastAnimation"		"ACT_DOTA_CAST_ABILITY_1"
 	}
+	
+	"Shockwave"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"					"ability_lua"
+		"ScriptFile"					"abilities\Shockwave"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"				"magnataur_shockwave"
+		"AbilityUnitTargetTeam"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"				"DOTA_UNIT_TARGET_ALL"
+		"AbilityUnitDamageType"				"DAMAGE_TYPE_MAGICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"FightRecapLevel"				"1"
+		"AbilitySound"					"Hero_Magnataur.ShockWave.Cast"
 
- "doom_scorch"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"880"
+		"AbilityCastPoint"				"0.45"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"25 22 18 15"
+		"AbilityDuration"				"0.6875 0.6875 0.6875 0.6875"
+
+		// Damage
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"220 320 420 520"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"155 165 175 180"
+
+		// Precache
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf"
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave_hit.vpcf"
+			"particle"	"particles/units/heroes/hero_magnataur/magnataur_shockwave_cast.vpcf"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shock_speed"				"900"
+			}
+			
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shock_width"				"100"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"shock_damage"				"220 320 420 520"
+				"LinkedSpecialBonus"	"special_bonus_unique_magnus_4"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"pull_duration"				"0.2"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"movement_slow"				"60"
+			}
+			"06"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"slow_duration"				"2"
+			}
+			"07"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"scepter_distance"		"2000"
+			}
+			"08"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"scepter_speed"		"1500"
+			}
+			"09"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"pull_distance"		"50"
+			}
+			"10"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"basic_slow_duration"		"0.9"
+			}
+		}
+		"AbilityCastAnimation"		"ACT_DOTA_ATTACK"
+	}
+	
+ 	"doom_scorch"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------		
@@ -419,7 +536,7 @@
 		"AbilitySound"					"Ability.LightStrikeArray"
 		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
 
-		"AbilityCastRange"				"420"
+		"AbilityCastRange"				"1300"
 		"AbilityCastPoint"				"1.0"
 		"MaxLevel"                      ""
 		"AoERadius"					"%tree_aoe"
@@ -485,7 +602,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"880"
+				"blink_range"			"1100"
 				
 			}
 			"02"
@@ -554,6 +671,20 @@
 				"ScriptFile"		"abilities/tree_management.lua"
 
 				"Function"			"RegrowTreeAoE"
+
+				"Radius"			"%affect_aoe"
+
+				"Target"			"POINT"
+
+			}
+			
+			"RunScript"
+
+			{
+
+				"ScriptFile"		"abilities/Shockwave.lua"
+
+				"Function"			"regrowTree"
 
 				"Radius"			"%affect_aoe"
 
@@ -3531,6 +3662,27 @@
 			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"	
 		}
 	}
+	"Blaze"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_lua"
+		"ScriptFile"					"abilities\Blaze"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityTextureName"				"Pick_Blaze"
+		"MaxLevel"						"1"
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.5"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"35.0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
 
     "faerie_fire"
     {
@@ -3703,6 +3855,11 @@
             }
         }
 
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"
+			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"	
+		}
 	}
 }
 

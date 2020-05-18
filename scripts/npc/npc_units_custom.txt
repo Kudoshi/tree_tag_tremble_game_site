@@ -612,7 +612,7 @@
 	"npc_treetag_creep_light_archer"
 	{
 		"SelectionGroup"			"npc_treetag_creep"
-	    "Model" 					"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"//turretmodel
+	    "Model" 					"models/heroes/clinkz/clinkz_archer.vmdl"//turretmodel
 		"ModelScale" 				"0.8"
 		"SelectOnSpawn"             "1"//xcz
 		"IgnoreAddSummonedToSelection" "1"//xcz
@@ -621,7 +621,7 @@
 		"StatusMana"        		"300"
 		"StatusManaRegen"     		"0"    
 	    "BaseClass"					 "npc_dota_creature"
-	    "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+	    "BoundsHullName"			"DOTA_HULL_SIZE_BUILDING"	
 
 		"Ability1"					"massive_burst" //wanted to giv him evasion
 		"Ability2"					"evasion25"
@@ -666,7 +666,7 @@
 		"StatusMana"        		"300"
 		"StatusManaRegen"     		"2"    
 	    "BaseClass"					 "npc_dota_creature"
-	   "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+	   "BoundsHullName"			"DOTA_HULL_SIZE_BUILDING"	
 
 		"Ability1"					"searing_arrow" 
 
@@ -1291,7 +1291,7 @@
 		"StatusMana"        		"0"
 		"StatusManaRegen"     		"0"    
 	    "BaseClass"					 "npc_dota_creature"
-	   "BoundsHullName"			"DOTA_HULL_SIZE_SMALL"	
+	   "BoundsHullName"			"DOTA_HULL_SIZE_BUILDING"	
 
 		"Ability1"					"unholy_aura" //wanted to giv him evasion
 		//but havent give him yet la lol
