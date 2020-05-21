@@ -120,6 +120,9 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 	or heroname == "npc_treetag_building_barracks"
 	or heroname == "npc_treetag_building_invisible_wall"
 	or heroname == "npc_treetag_building_mine_1"
+	or heroname == "npc_treetag_building_pissed_off_tree"
+	or heroname == "npc_treetag_building_infernal_killer"
+	or heroname == "npc_treetag_building_littlesaver"
 	then
 
 		npc:SetHealth(1)
@@ -127,6 +130,10 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 		local temp_regen = 40
 		local regen_duration = (npc:GetMaxHealth()/temp_regen) + 1
 		npc:SetBaseHealthRegen(temp_regen)
+
+		--Apply stun during building time
+		npc:AddNewModifier(nil, nil, "modifier_stunned", {duration = regen_duration})
+
 
 		--Make abilities cooldown while building constructing
 		if npc:HasAbility("levelmine_2") then
@@ -171,6 +178,15 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 		end
+		if npc:HasAbility("levelpissedofftree_lv2") then
+			ability = npc:FindAbilityByName("levelpissedofftree_lv2")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+
+		--littlesaver pissedoftree and inf killer skill not putted yet
+
 
 
 		Timers:CreateTimer(regen_duration, function()

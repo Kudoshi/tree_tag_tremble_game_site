@@ -74,11 +74,19 @@ function preCacheResources(context)
     PrecacheResource("model", "models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/ti9_crocodilian_dire/ti9_crocodilian_dire_ranged.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl", context)
+    PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+    PrecacheResource("model", "models/courier/baby_rosh/babyroshan_alt.vmdl", context)
+    PrecacheResource("model", "models/courier/baby_rosh/babyroshan_ti9.vmdl", context)
+    PrecacheResource("model", "models/courier/baby_rosh/babyroshan_winter18.vmdl", context)
+    PrecacheResource("model", "models/props_structures/rock_golem/tower_radiant_rock_golem.vmdl", context)
+    PrecacheResource("model", "models/props_structures/rock_golem/tower_dire_rock_golem.vmdl", context)
 
     PrecacheResource("particle", "particles/units/heroes/hero_antimage/antimage_blink_start.vpcf", context)
     PrecacheResource("particle", "particles/dark_smoke_test.vpcf", context)
     PrecacheResource("particle", "particles/econ/events/ti8/ti8_hero_effect_core.vpcf", context)
+    PrecacheResource("particle", "particles/base_attacks/ranged_tower_bad.vpcf", context)
     
+
     --PrecacheResource("sound", "sound/items/item_handofmidas.wav", context)
     --PrecacheResource("sound", "sounds/items/item_handofmidas.vsnd", context)
 

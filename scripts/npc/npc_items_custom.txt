@@ -935,7 +935,7 @@
 
         "AbilityCastRange" 				"200"
         "AbilityCastPoint"				"0.0"
-        "AbilityChannelTime"            "5.0"
+        "AbilityChannelTime"            "0.2"
         "AbilityCooldown"               "1"
 
         "MaxLevel"                  	"1"
@@ -2694,4 +2694,162 @@
 			}
 		}
 	}
+
+	"item_place_pissed_off_tree"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            ""
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"30"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placelittlesaver"
+                "Target" "POINT"
+                "AbilityGoldCost" "30	"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
+	
+	"item_place_infernal_killer"
+	{
+	    
+	    "BaseClass"                     "item_datadriven"
+        "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
+	    "AbilityTextureName"            ""
+	    "ItemCost"                      "0"
+		"ItemShopTags"					""
+	    "ItemKillable"                  "0"
+	    "ItemSellable"                  "0"
+	    "ItemDroppable"                 "0"
+
+		"ItemPurchasable"				"0"
+		
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		
+
+        "AbilityCastRange" 				"200"
+        "AbilityCastPoint"				"0.0"
+        "AbilityChannelTime"            "0.2"
+        "AbilityCooldown"               "1"
+
+        "MaxLevel"                  	"1"
+        "AbilityGoldCost"           	"1000"
+
+        "AOERadius" "95"
+
+        "OnAbilityPhaseStart"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+			"RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeGhost"
+                "Target"            "POINT"
+
+            }
+        }
+
+        "OnChannelSucceeded"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "placeinfernalkiller"
+                "Target" "POINT"
+                "AbilityGoldCost" "1000"
+            }
+        }
+
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "removeGhost"
+                "Target"            "POINT"
+            }
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+        }
+
+	}
+
 }

@@ -1323,4 +1323,328 @@
 		
 		
 	}
+
+	"npc_treetag_building_pissed_off_tree"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creep"
+		"Model"						"models/creeps/roshan/roshan.vmdl"
+	    
+		"ModelScale"                "0.5"
+	    //"ModelRotation"             "270"
+		//"HealthBarOffset"			"150"
+		
+
+	    // Stats
+	    //----------------------------- 
+	    "Level"                     "1"
+	    
+		
+		
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"levelpissedofftree_lv2"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+	    
+	    // General
+	    //-----------------------------
+	    
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.8"			// Speed of attack.
+		"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"800"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"1200"		// Speed of projectile.
+	    "SoundSet"                  "Tower.Fire"
+		
+	
+		"AttackDamageMin"			"85"		// Damage range min.
+		"AttackDamageMax"			"96"		// Damage range max.
+	    "ArmorPhysical"             "4"
+		"StatusHealth"              "400"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "300"
+	    "StatusManaRegen"           "1.5"
+	    "MagicalResistance"         "8"
+		
+		
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+	    
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"
+	    "VisionNighttimeRange"      "100"  
+	    
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+
+	"npc_treetag_building_pissed_off_tree_lv2"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creep"
+		"Model"						"models/courier/baby_rosh/babyroshan_alt.vmdl"
+	    
+		"ModelScale"                "1.2"
+	    //"ModelRotation"             "270"
+		//"HealthBarOffset"			"150"
+		
+
+	    // Stats
+	    //----------------------------- 
+	    "Level"                     "1"
+	    
+		
+		
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"levelpissedofftree_lv3"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+	    
+	    // General
+	    //-----------------------------
+	    
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"1.3"			// Speed of attack.
+		"AttackAnimationPoint"		"0.57"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"800"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"1200"		// Speed of projectile.
+	    "SoundSet"                  "Tower.Fire"
+		
+	
+		"AttackDamageMin"			"81"		// Damage range min.
+		"AttackDamageMax"			"90"		// Damage range max.
+	    "ArmorPhysical"             "1"
+		"StatusHealth"              "200"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "300"
+	    "StatusManaRegen"           "1.5"
+	    "MagicalResistance"         "5"
+		
+		
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+	    
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1400"
+	    "VisionNighttimeRange"      "100"  
+	    
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+	"npc_treetag_building_pissed_off_tree_lv3"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creep"
+		"Model"						"models/courier/baby_rosh/babyroshan_ti9.vmdl"
+	    
+		"ModelScale"                "1.2"
+	    //"ModelRotation"             "270"
+		//"HealthBarOffset"			"150"
+		
+
+	    // Stats
+	    //----------------------------- 
+	    "Level"                     "1"
+	    
+		
+		
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					"levelpissedofftree_lv4"
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+	    
+	    // General
+	    //-----------------------------
+	    
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0.9"			// Speed of attack.
+		"AttackAnimationPoint"		"0.55"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"800"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"1600"		// Speed of projectile.
+	    "SoundSet"                  "Tower.Fire"
+		
+	
+		"AttackDamageMin"			"146"		// Damage range min.
+		"AttackDamageMax"			"156"		// Damage range max.
+	    "ArmorPhysical"             "15"
+		"StatusHealth"              "1350"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "300"
+	    "StatusManaRegen"           "2.5"
+	    "MagicalResistance"         "15"
+		
+		
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+	    
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"
+	    "VisionNighttimeRange"      "100"  
+	    
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+	"npc_treetag_building_pissed_off_tree_lv4"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creep"
+		"Model"						"models/courier/baby_rosh/babyroshan_winter18.vmdl"
+	    
+		"ModelScale"                "1.2"
+	    //"ModelRotation"             "270"
+		//"HealthBarOffset"			"150"
+		
+
+	    // Stats
+	    //----------------------------- 
+	    "Level"                     "1"
+	    
+		
+		
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		"Ability10"					""
+	    
+	    // General
+	    //-----------------------------
+	    
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0.6"			// Speed of attack.
+		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"800"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"2000"		// Speed of projectile.
+	    "SoundSet"                  "Tower.Fire"
+		
+	
+		"AttackDamageMin"			"221"		// Damage range min.
+		"AttackDamageMax"			"320"		// Damage range max.
+	    "ArmorPhysical"             "30"
+		"StatusHealth"              "4500"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "300"
+	    "StatusManaRegen"           "5.0"
+	    "MagicalResistance"         "35"
+		
+		
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+	    
+	    "CombatClassDefend"         "DOTA_COMBAT_CLASS_DEFEND_HERO"
+	    "UnitRelationshipClass"     "DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	    "VisionDaytimeRange"        "1200"
+	    "VisionNighttimeRange"      "100"  
+	    
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+
+	"npc_treetag_building_infernal_killer"
+	{
+	    // Visual
+	    //-----------------------------
+		"BaseClass"                 "npc_dota_creep"
+		"Model"						"models/props_structures/tower_dragon_white.vmdl"
+	    
+		"ModelScale"                "1.0"
+	    //"ModelRotation"             "270"
+		//"HealthBarOffset"			"150"
+		
+
+	    // Stats
+	    //----------------------------- 
+	    "Level"                     "1"
+	    
+		
+		
+		
+		// Abilities
+		//----------------------------------------------------------------
+		"AbilityLayout"				"4"
+		"Ability1"					""
+		"Ability2"					""
+		"Ability3"					""
+		"Ability4"					""
+		
+	    
+	    // General
+	    //-----------------------------
+	    
+		
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+		"AttackRate"				"0.3"			// Speed of attack.
+		"AttackAnimationPoint"		"1.0"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
+		"AttackRange"				"800"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
+		"ProjectileSpeed"			"2000"		// Speed of projectile.
+	    "SoundSet"                  "Tower.Fire"
+		
+	
+		"AttackDamageMin"			"1001"		// Damage range min.
+		"AttackDamageMax"			"1005"		// Damage range max.
+	    "ArmorPhysical"             "0"
+		"StatusHealth"              "300"
+	    "StatusHealthRegen"         "0"
+	    "StatusMana"                "200"
+	    "StatusManaRegen"           "1.5"
+	    "MagicalResistance"         "8"
+		
+		
+	    "BoundsHullName"	"DOTA_HULL_SIZE_REGULAR"
+	    
+	    
+	    "VisionDaytimeRange"        "1200"
+	    "VisionNighttimeRange"      "100"  
+	    
+	    "RingRadius"                "100"
+	    "MovementCapabilities"      "DOTA_UNIT_CAP_MOVE_NONE"
+	    "MovementSpeed"             "0"
+	}
+
 }
+

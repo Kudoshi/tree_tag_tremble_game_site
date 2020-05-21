@@ -45,7 +45,9 @@ function addCategory1(keys)
         'item_place_mine',
         'item_place_wall',
         "item_place_sentrytower",
-		"item_place_invisiblewall"
+        "item_place_invisiblewall",
+        "item_place_pissed_off_tree",
+        "item_place_infernal_killer"
     }
 	ClrInv(caster)
     for _, itemName in pairs(itemNames) do

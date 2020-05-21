@@ -3683,6 +3683,7 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"0"
+    }
 
     "faerie_fire"
     {
@@ -3861,5 +3862,246 @@
 			"particle"	"particles/units/heroes/hero_warlock/warlock_rain_of_chaos.vpcf"	
 		}
 	}
+
+    "levelpissedofftree_lv2"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"           "65"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+          
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_pissed_off_tree_lv2"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+    "levelpissedofftree_lv3"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"           "1250"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+          
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_pissed_off_tree_lv3"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
+     "levelpissedofftree_lv4"
+    {
+        "BaseClass"                     "ability_datadriven"
+        "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+        "AbilityTextureName"            "upicon"
+        "MaxLevel"                      "1"
+        "AbilityGoldCost"           "25000"
+
+        "AbilityCastPoint"              "0"
+        "AbilityCooldown"               "2"
+        "AbilityManaCost"               "0"
+        "AbilityChannelTime"            "6.0"
+
+        "OnSpellStart"
+        {
+            
+            "ApplyModifier"//upef
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+          
+        }
+
+        "OnChannelSucceeded"
+        {
+            "ReplaceUnit"
+            {
+                "OnSpawn"
+                {
+                    "RunScript"
+                    {
+                        "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                        "Function"          "learnyourfuckingspells"
+                    }
+                }
+                "UnitName"  "npc_treetag_building_pissed_off_tree_lv4"
+                "Target" "CASTER"
+            }
+        }
+        "OnChannelInterrupted"
+        {
+            "RunScript"
+            {
+                "ScriptFile"        "scripts/vscripts/custom_abilities.lua"
+                "Function"          "refundcost"
+            }
+            "RemoveModifier"
+            {
+                "ModifierName" "upeffect"
+                "Target" "CASTER"
+            }
+        }
+        "Modifiers"
+        {
+            "upeffect"
+            {
+                "IsDebuff" "0"
+                "IsHidden" "0"
+                "IsPurgable" "0"
+
+                "OnCreated"
+                {
+                    //"AttachEffect"
+                    //{
+                    //    "Target" "CASTER"
+                    //    "EffectName" "particles/econ/items/tinker/boots_of_travel/teleport_end_bots.vpcf"//zxcvjsd345
+                    //    "ControlPointEntities"
+                    //    {
+                    //        "CASTER"        "deliberatelywrong"
+                    //         "CASTER"    "deliberatelywrong"
+                    //    }
+                    //    "EffectAttachType" "follow_origin"
+                    //    "EffectLifeDurationScale" "1"
+                    //    "EffectColorA" "255 255 0"
+                    //}
+                }
+            }
+        }
+    }
 }
 

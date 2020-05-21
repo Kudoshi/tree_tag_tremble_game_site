@@ -1757,3 +1757,90 @@ function trainhero(event)
 
     
 end
+
+
+function placelittlesaver(keys)
+    if(keys.caster:GetTeam()==3) then
+        return nil;
+    end
+    PLACED_BUILDING_RADIUS = 45.0;
+
+    blocking_counter = 0
+   
+
+    groundclickpos = GetGroundPosition(keys.target_points[1], nil)
+    xpos = GridNav:WorldToGridPosX(groundclickpos.x)
+    ypos = GridNav:WorldToGridPosY(groundclickpos.y)
+    groundclickpos.x = GridNav:GridPosToWorldCenterX(xpos)
+    groundclickpos.y = GridNav:GridPosToWorldCenterY(ypos)
+
+    if GridNav:IsTraversable(groundclickpos) then
+    else
+        blocking_counter = blocking_counter + 1
+    end
+
+    for _,thing in pairs(Entities:FindAllInSphere(groundclickpos, PLACED_BUILDING_RADIUS) )  do
+        if thing:GetClassname() == "npc_dota_creep" or string.match(thing:GetClassname(),"npc_dota_hero") then
+            blocking_counter = blocking_counter + 1
+        end
+    end
+
+    if( blocking_counter < 1) then
+        tower = CreateUnitByName("npc_treetag_building_pissed_off_tree", groundclickpos, false, keys.caster, keys.caster:GetOwner(), keys.caster:GetTeamNumber())
+        if tower ~= nil then
+            
+            tower:SetAngles(0.0,270.0,0.0)
+            tower:SetControllableByPlayer(keys.caster:GetPlayerID(), true);
+            tower:SetOwner(keys.caster:GetPlayerOwner():GetAssignedHero());
+            learnabilities(tower)
+        end
+        local position = keys.caster:GetAbsOrigin()
+        FindClearSpaceForUnit(keys.caster, position, true)
+    else
+        keys.caster:ModifyGold(keys.AbilityGoldCost,false,0)
+        sendError(keys.caster:GetPlayerOwnerID(), "Cannot build there")
+    end
+end
+
+function placeinfernalkiller(keys)
+    if(keys.caster:GetTeam()==3) then
+        return nil;
+    end
+    PLACED_BUILDING_RADIUS = 45.0;
+
+    blocking_counter = 0
+   
+
+    groundclickpos = GetGroundPosition(keys.target_points[1], nil)
+    xpos = GridNav:WorldToGridPosX(groundclickpos.x)
+    ypos = GridNav:WorldToGridPosY(groundclickpos.y)
+    groundclickpos.x = GridNav:GridPosToWorldCenterX(xpos)
+    groundclickpos.y = GridNav:GridPosToWorldCenterY(ypos)
+
+    if GridNav:IsTraversable(groundclickpos) then
+    else
+        blocking_counter = blocking_counter + 1
+    end
+
+    for _,thing in pairs(Entities:FindAllInSphere(groundclickpos, PLACED_BUILDING_RADIUS) )  do
+        if thing:GetClassname() == "npc_dota_creep" or string.match(thing:GetClassname(),"npc_dota_hero") then
+            blocking_counter = blocking_counter + 1
+        end
+    end
+
+    if( blocking_counter < 1) then
+        tower = CreateUnitByName("npc_treetag_building_infernal_killer", groundclickpos, false, keys.caster, keys.caster:GetOwner(), keys.caster:GetTeamNumber())
+        if tower ~= nil then
+            
+            tower:SetAngles(0.0,270.0,0.0)
+            tower:SetControllableByPlayer(keys.caster:GetPlayerID(), true);
+            tower:SetOwner(keys.caster:GetPlayerOwner():GetAssignedHero());
+            learnabilities(tower)
+        end
+        local position = keys.caster:GetAbsOrigin()
+        FindClearSpaceForUnit(keys.caster, position, true)
+    else
+        keys.caster:ModifyGold(keys.AbilityGoldCost,false,0)
+        sendError(keys.caster:GetPlayerOwnerID(), "Cannot build there")
+    end
+end
