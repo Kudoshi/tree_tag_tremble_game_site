@@ -74,7 +74,7 @@ function preCacheResources(context)
     PrecacheResource("model", "models/items/furion/treant/shroomling_treant/shroomling_treant.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/ti9_crocodilian_dire/ti9_crocodilian_dire_ranged.vmdl", context)
     PrecacheResource("model", "models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged_mega.vmdl", context)
-    PrecacheResource("model", "models/creeps/roshan/roshan.vmdl", context)
+    PrecacheResource("model", "models/courier/baby_rosh/babyroshan.vmdl", context)
     PrecacheResource("model", "models/courier/baby_rosh/babyroshan_alt.vmdl", context)
     PrecacheResource("model", "models/courier/baby_rosh/babyroshan_ti9.vmdl", context)
     PrecacheResource("model", "models/courier/baby_rosh/babyroshan_winter18.vmdl", context)
@@ -88,7 +88,8 @@ function preCacheResources(context)
     
 
     --PrecacheResource("sound", "sound/items/item_handofmidas.wav", context)
-    --PrecacheResource("sound", "sounds/items/item_handofmidas.vsnd", context)
+    PrecacheResource("sound", "sounds/weapons/hero/zuus/general_attack3.vsnd", context)
+    PrecacheResource("sound", "sounds/weapons/hero/tiny/tree_grab.vsnd", context)
 
     PrecacheResource("particle", "particles/items2_fx/true_sight_debuff.vpcf", context)
     

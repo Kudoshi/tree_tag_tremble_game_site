@@ -4103,5 +4103,170 @@
             }
         }
     }
+    "shock"
+	{
+		//General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              	"ability_lua"
+		"ScriptFile"				"abilities/unit/shock.lua"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
+		
+		"AbilityTextureName"     	"fireclaw"
+		"MaxLevel"					"1"
+        
+        
+		
+        "AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+
+        "precache"
+		{
+			"soundfile"                     "sounds/weapons/hero/zuus/righteous_cast.vsnd"
+            "soundfile"                     "sounds/weapons/hero/zuus/righteous_target.vsnd"
+            "soundfile"                     "sounds/weapons/hero/zuus/gods_wrath_target.vsnd"
+            
+            "particle"                      "particles/econ/items/lina/lina_fire_lotus/lina_fire_lotus_ambient.vpcf"
+            "particle"                      "particles/units/heroes/hero_lina/lina_flame_generic.vpcf"
+		}
+        // Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{   
+                //% to get crit
+				"var_type"			"FIELD_INTEGER"
+				"critchance"      	"16"
+			}
+			"02"
+			{
+                //%damage increase crit
+				"var_type"			"FIELD_FLOAT"
+				"critperc"	"1.6"
+			}
+		}
+	}
+    "abolish_magic"
+	{
+		//General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"              	"ability_lua"
+		"ScriptFile"				"abilities/unit/abolish_magic.lua"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		
+		"AbilityTextureName"     	""
+		"MaxLevel"					"1"
+        "AbilityCastPoint"       	    "0.4"
+        "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_BOTH"
+        "AbilityUnitTargetType"            "DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
+		"AbilityManaCost"				"75"
+        "AbilityCastRange"  		    "500"
+        "AbilityCooldown"               "8"
+
+        "precache"
+		{
+			"soundfile"                    "sounds/items/nullifier_cast.vsnd"
+		}
+        // Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"      	"100"
+			}
+            
+			
+		}
+        "AbilityCastAnimation"			"ACT_DOTA_ATTACK" 
+	}
+    "eat_tree"
+	{
+		"BaseClass"             		"ability_datadriven"
+		
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_TREE"
+		"AbilityCastPoint"       	    "0.3"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityManaCost"				"0"
+		"AbilityTextureName"   		    "treant_living_armor"
+		"AbilityCastRange"  		    "400"
+		"AbilityCooldown"               "60"
+		
+		"precache"
+		{
+			"particle"                     "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_livingarmor_seedlings_parent.vpcf"
+		}
+       
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"abilities/tree_management.lua"
+				"Function"			"EatTreeLua"
+			}
+            "ApplyModifier"
+            {
+                "ModifierName"	"modifier_eat_tree"
+                "Target"		"CASTER"
+                "Duration"		"30" // <-- duration for effect particle
+            }
+		}
+
+        "OnDeath"
+        {
+            "RemoveModifier"
+            {
+                "ModifierName"	"modifier_eat_tree"
+                "Target"		"TARGET"
+            }
+        }
+
+        "AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"      	"30"
+			}
+            "02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"healamt"      	"500"
+			}
+            "03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"tempregen"      	"14"
+			}
+			
+		}
+
+       //* "Modifiers"
+       // {
+        //    "modifier_eat_tree"
+       //     { 
+       //         "IsDebuff" "0"
+       //         "IsHidden" "0"
+       //         "IsPurgable" "1"
+
+        //        "OnCreated"
+       //         {
+        //           "AttachEffect"
+       //             {
+       //                "Target" "CASTER"
+       //                 "EffectName" "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_livingarmor_seedlings_parent.vpcf"
+                       // "EffectAttachType"		"follow_origin"
+        //            }
+        //        }
+        //    }
+       // }
+		//"AbilityCastAnimation"			"ACT_DOTA_ATTACK" 
+	}
 }
 

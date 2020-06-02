@@ -1329,9 +1329,9 @@
 	    // Visual
 	    //-----------------------------
 		"BaseClass"                 "npc_dota_creep"
-		"Model"						"models/creeps/roshan/roshan.vmdl"
+		"Model"						"models/courier/baby_rosh/babyroshan_alt.vmdl"
 	    
-		"ModelScale"                "0.5"
+		"ModelScale"                "1.2"
 	    //"ModelRotation"             "270"
 		//"HealthBarOffset"			"150"
 		
@@ -1347,8 +1347,8 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
 		"Ability1"					"levelpissedofftree_lv2"
-		"Ability2"					""
-		"Ability3"					""
+		"Ability2"					"abolish_magic"
+		"Ability3"					"eat_tree"
 		"Ability4"					""
 		"Ability10"					""
 	    
@@ -1359,7 +1359,7 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"1.8"			// Speed of attack.
-		"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+		"AttackAnimationPoint"		"0.8"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"1000"		// Range within a target can be acquired.
 		"AttackRange"				"800"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
@@ -1369,8 +1369,8 @@
 	
 		"AttackDamageMin"			"85"		// Damage range min.
 		"AttackDamageMax"			"96"		// Damage range max.
-	    "ArmorPhysical"             "4"
-		"StatusHealth"              "400"
+	    "ArmorPhysical"             "1"
+		"StatusHealth"              "200"
 	    "StatusHealthRegen"         "0"
 	    "StatusMana"                "300"
 	    "StatusManaRegen"           "1.5"
@@ -1394,7 +1394,7 @@
 	    // Visual
 	    //-----------------------------
 		"BaseClass"                 "npc_dota_creep"
-		"Model"						"models/courier/baby_rosh/babyroshan_alt.vmdl"
+		"Model"						"models/courier/baby_rosh/babyroshan.vmdl"
 	    
 		"ModelScale"                "1.2"
 	    //"ModelRotation"             "270"
@@ -1412,8 +1412,8 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
 		"Ability1"					"levelpissedofftree_lv3"
-		"Ability2"					""
-		"Ability3"					""
+		"Ability2"					"eat_tree"
+		"Ability3"					"abolish_magic"
 		"Ability4"					""
 		"Ability10"					""
 	    
@@ -1434,8 +1434,8 @@
 	
 		"AttackDamageMin"			"81"		// Damage range min.
 		"AttackDamageMax"			"90"		// Damage range max.
-	    "ArmorPhysical"             "1"
-		"StatusHealth"              "200"
+	    "ArmorPhysical"             "4"
+		"StatusHealth"              "400"
 	    "StatusHealthRegen"         "0"
 	    "StatusMana"                "300"
 	    "StatusManaRegen"           "1.5"
@@ -1476,8 +1476,8 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
 		"Ability1"					"levelpissedofftree_lv4"
-		"Ability2"					""
-		"Ability3"					""
+		"Ability2"					"eat_tree"
+		"Ability3"					"abolish_magic"
 		"Ability4"					""
 		"Ability10"					""
 	    
@@ -1539,8 +1539,8 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
-		"Ability1"					""
-		"Ability2"					""
+		"Ability1"					"eat_tree"
+		"Ability2"					"abolish_magic"
 		"Ability3"					""
 		"Ability4"					""
 		"Ability10"					""
@@ -1604,7 +1604,7 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
-		"Ability1"					""
+		"Ability1"					"shock"
 		"Ability2"					""
 		"Ability3"					""
 		"Ability4"					""
@@ -1622,7 +1622,7 @@
 		"AttackRange"				"800"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/base_attacks/ranged_tower_bad.vpcf"		// Particle system model for projectile.
 		"ProjectileSpeed"			"2000"		// Speed of projectile.
-	    "SoundSet"                  "Tower.Fire"
+	    "SoundSet"                  "Hero_Zuus"
 		
 	
 		"AttackDamageMin"			"1001"		// Damage range min.

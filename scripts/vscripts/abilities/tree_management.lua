@@ -145,3 +145,51 @@ function RegrowTreeAoE(event)
         print("regrow tree in the for function nice function accessed")
 	end
 end
+
+function EatTree(event)
+	local caster = event.caster
+	local caster_team = caster:GetTeam()
+    local target = event.target
+    
+	target:CutDown(caster_team)
+	AddDestroyedTree(target)
+	
+	local base_regen = caster:GetBaseHealthRegen()
+	--Hard coding The values done. Screw it
+	--local temp_regen = ability:GetLevelSpecialValueFor("tempregen", (ability:GetLevel() - 1))
+	--local regen_duration = ability:GetLevelSpecialValueFor("duration", (ability:GetLevel() - 1))
+
+	local temp_regen = 14
+	local regen_duration = 30
+
+
+
+
+	caster:SetBaseHealthRegen(temp_regen)
+
+	EmitSoundOn("Hero_Tiny.Tree.Grab" , target)
+
+	--self.particle = ParticleManager:CreateParticle("particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_livingarmor_beam_c.vpcf", PATTACH_OVERHEAD_FOLLOW, self.parent)
+	--ParticleManager:SetParticleControl(self.particle, 0, self.parent:GetAbsOrigin())
+	--self:AddParticle(self.particle, false, false, -1, false, true)
+
+	Timers:CreateTimer(regen_duration, function()
+		caster:SetBaseHealthRegen(base_regen)
+		
+		
+	end)
+	
+end
+
+function EatTreeLua(event)
+	local caster = event.caster
+	local caster_team = caster:GetTeam()
+    local target = event.target
+
+	target:CutDown(caster_team)
+	AddDestroyedTree(target)
+	EmitSoundOn("Hero_Tiny.Tree.Grab" , target)
+
+	LinkLuaModifier("modifier_eat_tree_regen", "modifiers/modifier_eat_tree_regen.lua", LUA_MODIFIER_MOTION_NONE)
+	caster:AddNewModifier(caster, event.ability, "modifier_eat_tree_regen", { duration = 30 } )
+end

@@ -15,7 +15,7 @@ function modifier_fire_claw:OnCreated()
 
     self.caster = self:GetCaster()
     self.parent = self:GetParent()
-    self.damage = self:GetAbility():GetSpecialValueFor("duration")
+    self.damage = self:GetAbility():GetSpecialValueFor("duration") --for some reason its self.damage but meh dont care since its not used
 end
 
 function modifier_fire_claw:DeclareFunctions()
