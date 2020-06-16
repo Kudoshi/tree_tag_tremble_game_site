@@ -184,8 +184,26 @@ function CTreeTagGameMode:OnNPCSpawned(keys) --All entity spawned will start her
 			ability:SetHidden(false)
 			ability:SetActivated(true)
 		end
+		if npc:HasAbility("abolish_magic") then
+			ability = npc:FindAbilityByName("abolish_magic")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("eat_tree") then
+			ability = npc:FindAbilityByName("eat_tree")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
+		if npc:HasAbility("shock") then
+			ability = npc:FindAbilityByName("shock")
+			ability:StartCooldown(regen_duration)
+			ability:SetHidden(false)
+			ability:SetActivated(true)
+		end
 
-		--littlesaver pissedoftree and inf killer skill not putted yet
+		
 
 
 
