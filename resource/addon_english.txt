@@ -318,6 +318,10 @@
 		//"dota_tooltip_modifier_invis"								"Invisible"
 		//"dota_tooltip_modifier_invis_description"					"This unit is invisible"
 
+		"dota_tooltip_modifier_eat_tree_regen"			"Unit is healing"
+		"dota_tooltip_modifier_eat_tree_regen_description" 		"Healing 14 hp per sec over 30 seconds"
+
+
 		"npc_dota_sentry_wards"										"Observer Ward"
 		"npc_treetag_building_mine_1"								"Resource Tree Lv1"
 		"npc_treetag_building_mine_2"								"Resource Tree Lv2"
