@@ -426,7 +426,7 @@
         "ID"                            "1000"
         "BaseClass"                     "item_datadriven"
         "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
-        "AbilityTextureName"            "item_tt_mine"
+        "AbilityTextureName"            "item_resourcetree"
         //"AbilityTextureName"          "earthshaker_fissure"
         "ItemCost"                      "0"
         "ItemShopTags"                  ""
@@ -508,7 +508,7 @@
 	    "ID"                            "1001"
 	    "BaseClass"                     "item_datadriven"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED" 
-	    "AbilityTextureName"            "item_tt_wall"
+	    "AbilityTextureName"            "wall"
         //"AbilityTextureName"			"earthshaker_fissure"
 	    "ItemCost"                      "0"
 		"ItemShopTags"					""
@@ -841,7 +841,7 @@
 	    "ID"                            "1002"
 	    "BaseClass"                     "item_datadriven"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
-	    "AbilityTextureName"            "item_tt_turret"
+	    "AbilityTextureName"            "sentry"
 	    "ItemCost"                      "0"
 		"ItemShopTags"					""
 	    "ItemKillable"                  "0"
@@ -2638,7 +2638,7 @@
 		"ItemIsNeutralDrop"			"1"
 		"ItemPurchasable"			"0"
 		"AbilityCooldown"			"0"
-		"AbilityTextureName"            "ecodebuff"
+		"AbilityTextureName"            "cancel"
 		
 
 		"OnSpellStart"
@@ -2660,7 +2660,7 @@
 		"ItemIsNeutralDrop"			"0"
 		"ItemPurchasable"			"0"
 		"AbilityCooldown"			"0"
-		"AbilityTextureName"            "logs"
+		"AbilityTextureName"            "hammer"
 		
 
 		"OnSpellStart"
@@ -2682,7 +2682,7 @@
 		"ItemIsNeutralDrop"			"0"
 		"ItemPurchasable"			"0"
 		"AbilityCooldown"			"0"
-		"AbilityTextureName"            "techies"
+		"AbilityTextureName"            "pawn"
 
 		"OnSpellStart"
 		{
@@ -2700,7 +2700,7 @@
 	    
 	    "BaseClass"                     "item_datadriven"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
-	    "AbilityTextureName"            ""
+	    "AbilityTextureName"            "roshan"
 	    "ItemCost"                      "0"
 		"ItemShopTags"					""
 	    "ItemKillable"                  "0"
@@ -2779,7 +2779,7 @@
 	    
 	    "BaseClass"                     "item_datadriven"
         "AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE" 
-	    "AbilityTextureName"            ""
+	    "AbilityTextureName"            "infkiller"
 	    "ItemCost"                      "0"
 		"ItemShopTags"					""
 	    "ItemKillable"                  "0"

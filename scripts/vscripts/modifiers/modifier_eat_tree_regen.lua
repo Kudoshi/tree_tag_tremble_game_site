@@ -15,26 +15,32 @@ function modifier_eat_tree_regen:OnCreated()
 
    
     
+    
+    
+    
+    --particles 
+
+    particle_heal = ParticleManager:CreateParticle("particles/items2_fx/tranquil_boots_healing_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.caster)
+    ParticleManager:SetParticleControl(particle_heal, 0, self.caster:GetAbsOrigin())
+    self:AddParticle(particle_heal, false, false, -1, false, true)
+
     Timers:CreateTimer(regen_duration, function()
         if self.caster:IsAlive() then
             self.caster:SetBaseHealthRegen(base_regen)
+            ParticleManager:DestroyParticle(particle_heal,false)
+            self.caster:RemoveModifierByName("modifier_eat_tree_regen")
         end
-		
-		
     end)
-    
-    DebugPrint("Modifier accessed")
-    --particles 
 
-    self.particle = ParticleManager:CreateParticle("particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_livingarmor_seedlings_parent.vpcf", PATTACH_ABSORIGIN_FOLLOW, self.caster)
-    ParticleManager:SetParticleControl(self.particle, 0, self.caster:GetAbsOrigin())
-    self:AddParticle(self.particle, false, false, -1, false, true)
+    --sound
+
+    EmitSoundOn("DOTA_Item.HealingSalve.Activate", self.caster)
 
 end
 
 function modifier_eat_tree_regen:DeclareFunctions()
 	local funcs = {
-        MODIFIER_EVENT_ON_DEATH
+        MODIFIER_EVENT_ON_ATTACK_LANDED
     }
 	return funcs
 end
@@ -42,14 +48,25 @@ end
 function modifier_eat_tree_regen:IsHidden() return false end
 
 
-function modifier_eat_tree_regen:OnDeath(keys)
-    local target = keys.unit    
+function modifier_eat_tree_regen:OnAttackLanded(keys)
+    local target = keys.target
+    local attacker = keys.attacker
     local caster = self:GetCaster()
-
-    for k, v in ipairs(keys) do
-        DebugPrint(keys)
+    local ability = self:GetAbility()
     
+    if caster:PassivesDisabled() then return end
+
+    if target == self.caster then 
+       
+        if target:IsAlive() then
+            DebugPrint("target in 2")
+            self:Destroy()
+            local base_regen = 0
+          caster:SetBaseHealthRegen(0)
+        end
     end
+    
+   
 end
     
     

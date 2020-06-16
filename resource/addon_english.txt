@@ -13,29 +13,29 @@
 
 		//items ent
 		"npc_dota_hero_treant"									"Ent"
-		"dota_tooltip_ability_place_mine"					"Build Resource Tree"
-		"dota_tooltip_ability_place_mine_description"		"Build a Resource Tree at the targeted position.\n\nGives 1 gold per 5 second. Most important building. Build this first"
+		"dota_tooltip_ability_item_place_mine"					"Build Resource Tree"
+		"dota_tooltip_ability_item_place_mine_description"		"Build a Resource Tree at the targeted position.\n\nGives 1 gold per 5 second. Most important building. Build this first"
 
-		"dota_tooltip_ability_place_wall"					"Build Wall"
-		"dota_tooltip_ability_place_wall_description"		"Build a Wall at the targeted position.\n\nA little building that can be used to block inferno for a short time"
+		"dota_tooltip_ability_item_place_wall"					"Build Wall"
+		"dota_tooltip_ability_item_place_wall_description"		"Build a Wall at the targeted position.\n\nA little building that can be used to block inferno for a short time"
 
-		"dota_tooltip_ability_place_sentrytower"			"Build Sentry Tower"
-		"dota_tooltip_ability_place_sentrytower_description"	"Build a Sentry Tower at the targeted position.\n\nA building that provides a huge vision"
+		"dota_tooltip_ability_item_place_sentrytower"			"Build Sentry Tower"
+		"dota_tooltip_ability_item_place_sentrytower_description"	"Build a Sentry Tower at the targeted position.\n\nA building that provides a huge vision"
 
-		"dota_tooltip_ability_place_littlesaver"			"Build Little Saver"
-		"dota_tooltip_ability_place_littlesaver_description" "Build a Little Saver at the targeted position.\n\nThis little saver is very useful to save your allies. But its quite fragile."
+		"dota_tooltip_ability_item_place_littlesaver"			"Build Little Saver"
+		"dota_tooltip_ability_item_place_littlesaver_description" "Build a Little Saver at the targeted position.\n\nThis little saver is very useful to save your allies. But its quite fragile."
 
-		"dota_tooltip_ability_place_barracks"				"Build Barracks"
-		"dota_tooltip_ability_place_barracks_description"	"Build Barracks at the targeted position.\n\nTrains Units to fight against the infernos"
+		"dota_tooltip_ability_item_place_barracks"				"Build Barracks"
+		"dota_tooltip_ability_item_place_barracks_description"	"Build Barracks at the targeted position.\n\nTrains Units to fight against the infernos"
 
-		"dota_tooltip_ability_place_birdoflife"			"Build Bird of Life"
-		"dota_tooltip_ability_place_birdoflife_description" "Build Bird of Life at the targeted position.\n\nA structure that can train Ent Helper"
+		"dota_tooltip_ability_item_place_birdoflife"			"Build Bird of Life"
+		"dota_tooltip_ability_item_place_birdoflife_description" "Build Bird of Life at the targeted position.\n\nA structure that can train Ent Helper"
 
-		"dota_tooltip_ability_place_wall_helper"			"Build Wall"
-		"dota_tooltip_ability_place_wall_helper_description"	"Build a Wall at the targeted position.\n\nA little building that can be used to block inferno for a short time"
+		"dota_tooltip_ability_item_place_wall_helper"			"Build Wall"
+		"dota_tooltip_ability_item_place_wall_helper_description"	"Build a Wall at the targeted position.\n\nA little building that can be used to block inferno for a short time"
 
-		"dota_tooltip_ability_place_sentrytower_helper"	"Build Sentry Tower"
-		"dota_tooltip_ability_place_sentrytower_helper_description"	"Build a Sentry Tower at the targeted position.\n\nA building that provides a huge vision"
+		"dota_tooltip_ability_item_place_sentrytower_helper"	"Build Sentry Tower"
+		"dota_tooltip_ability_item_place_sentrytower_helper_description"	"Build a Sentry Tower at the targeted position.\n\nA building that provides a huge vision"
 
 		
 
@@ -232,8 +232,8 @@
 		"dota_tooltip_ability_searing_arrow"						"Searing arrow"
 		"dota_tooltip_ability_searing_arrow_description"			"+10 damage every shot"
 
-		"dota_tooltip_ability_place_invisiblewall"					"Build Invisible Crystal"
-		"dota_tooltip_ability_place_invisiblewall_description"			"Build Invisible Crystal at the targeted position\nA mysterious invisible crystal that can only be seen by the Ents."
+		"dota_tooltip_ability_item_place_invisiblewall"					"Build Invisible Crystal"
+		"dota_tooltip_ability_item_place_invisiblewall_description"			"Build Invisible Crystal at the targeted position\nA mysterious invisible crystal that can only be seen by the Ents."
 
 		"dota_tooltip_ability_permanent_invisible"					"Permanent Invisibility"
 		"dota_tooltip_ability_permanent_invisible_description"		"This myterious crystal is permanently invisible to enemy"
@@ -286,12 +286,32 @@
 		"dota_tooltip_ability_poison_arrow"				"Poison Arrow"
 		"dota_tooltip_ability_poison_arrow_description"		"Treant Archer fires an arrow coated with poison dealing 50 damage per second, reducing enemy movement speed by 25 second and reducing enemy regen hp by 6"
 
+		"dota_tooltip_ability_item_ent_cancel"			"Back"
+		"dota_tooltip_ability_item_ent_cancel_description"			"Go back to building category"
 
+		"dota_tooltip_ability_item_basic_buildings" "Basic Buildings"
+		"dota_tooltip_ability_item_summoning_buildings" "Summoning Buildings" 
 
+		"dota_tooltip_ability_item_place_pissed_off_tree"	"Build Pissed Off Roshan"
+		"dota_tooltip_ability_item_place_pissed_off_tree_description" "Build Pissed Off Roshan at targeted position\nRoshan lends a hand to the nature. Weak tower that can attack. Useful to deal against infernal's minion"
 
+		"dota_tooltip_ability_item_place_infernal_killer" "Build Infernal Killer"
+		"dota_tooltip_ability_item_place_infernal_killer_description" 	"Build Infernal Killer at targeted position\nA strong but slow tower that deals huge amount of damage. Painful when multiple inf killer are built."
+		
+		"dota_tooltip_ability_levelpissedofftree_lv2"		"Upgrade Raging Off Roshan"
+		"dota_tooltip_ability_levelpissedofftree_lv3"		"Upgrade Rampaging Roshan"
+		"dota_tooltip_ability_levelpissedofftree_lv4"		"Upgrade Guardian of Nature "
+
+		"dota_tooltip_ability_shock"	"Shock"
+		"dota_tooltip_ability_shock_description"	"Have 16% chance to shock enemy for 160% more damage"
+		
+		"dota_tooltip_ability_abolish_magic"  "Abolish Magic"
+		"dota_tooltip_ability_abolish_magic_description"	"Dispels positive buffs from enemy units and negative buffs from friendly units."
+
+		"dota_tooltip_ability_eat_tree"		"Eat Tree"
+		"dota_tooltip_ability_eat_tree_description"		"Consume a tree to restore 500 HP over 30s. Dispelled when hit by enemies"
 		
 		
-
 		//"dota_tooltip_ability_invisibility"							"Invisibility"
 		//"dota_tooltip_ability_invisibility_description"				"Makes target unit become invisible for 100 seconds\nTargeted unit becomes visible when unit uses ability or item"
 
@@ -324,6 +344,11 @@
 		"npc_treetag_creep_chameleon"							"Chameleon"
 		"npc_treetag_creep_elite_tree_fighter"					"Elite Tree Fighter"
 		"npc_treetag_creep_ice_spirit"							"Ice Spirit"
+		"npc_treetag_building_pissed_off_tree"	"Pissed Off Tree"
+		"npc_treetag_building_pissed_off_tree_lv2"	"Raging Tree"
+		"npc_treetag_building_pissed_off_tree_lv3"	"Rampaging Tree"
+		"npc_treetag_building_pissed_off_tree_lv4"	"Guardian of Nature"
+		"npc_treetag_building_infernal_killer"	"Infernal Killer"
 		
 	}
 }

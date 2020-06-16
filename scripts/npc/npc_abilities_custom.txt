@@ -4113,7 +4113,7 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"SpellDispellableType"			"SPELL_DISPELLABLE_YES"
 		
-		"AbilityTextureName"     	"fireclaw"
+		"AbilityTextureName"     	"shock"
 		"MaxLevel"					"1"
         
         
@@ -4158,7 +4158,7 @@
 		"ScriptFile"				"abilities/unit/abolish_magic.lua"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
 		
-		"AbilityTextureName"     	""
+		"AbilityTextureName"     	"abolishmagic"
 		"MaxLevel"					"1"
         "AbilityCastPoint"       	    "0.4"
         "AbilityUnitTargetTeam"            "DOTA_UNIT_TARGET_TEAM_BOTH"
@@ -4200,8 +4200,9 @@
 		
 		"precache"
 		{
-			"particle"                     "particles/econ/items/treant_protector/ti7_shoulder/treant_ti7_livingarmor_seedlings_parent.vpcf"
-		}
+			"particle"                     "particles/items2_fx/tranquil_boots_healing_wave.vpcf"
+            "soundfile"                         "sounds/items/healing_salve.vsnd"
+    	}
        
 		"OnSpellStart"
 		{

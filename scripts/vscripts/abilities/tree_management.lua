@@ -164,7 +164,7 @@ function EatTree(event)
 
 
 
-
+	DebugPrint("Eat Tree not Lua")
 	caster:SetBaseHealthRegen(temp_regen)
 
 	EmitSoundOn("Hero_Tiny.Tree.Grab" , target)
@@ -185,7 +185,7 @@ function EatTreeLua(event)
 	local caster = event.caster
 	local caster_team = caster:GetTeam()
     local target = event.target
-
+	DebugPrint("This is a lua stuff")
 	target:CutDown(caster_team)
 	AddDestroyedTree(target)
 	EmitSoundOn("Hero_Tiny.Tree.Grab" , target)
