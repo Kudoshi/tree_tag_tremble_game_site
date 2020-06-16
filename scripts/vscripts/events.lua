@@ -373,7 +373,9 @@ function StartVictoryTimer()
 	end)
 
 	--Give inferno special power at last 2.5 min. Placed here just because i lazy lol
-	--1805 refer to min 32.5 when he get the power up ... 1955 for reference
+	--1955 refer to min 32.5 when he get the power up ... 1955 for reference
+	-- Putting 2 min 30 sec for now
+	--STORED FOR NOW - 2015 refer to min 33.5 when he get the power up ... so lasts for 1 min 30 sec
 	Timers:CreateTimer(1955, function()
 		local allinferno = Entities:FindAllByClassname("npc_dota_hero_doom_bringer")
 		DebugPrint("Inferno Special Power Activated")

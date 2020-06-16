@@ -425,7 +425,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"explodedamage"		"100"
+				"explodedamage"		"25"
 								
 			}
 			
@@ -457,7 +457,7 @@
                 "IsPurgable" "0"
                 
 				"ThinkInterval" "0.5"
-				"Duration"		"305"
+				"Duration"		"120" 
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -478,7 +478,7 @@
 							"Center"    "CASTER"
 							"Teams"     "DOTA_UNIT_TARGET_TEAM_ENEMY"
 							"Type"      "DOTA_UNIT_TARGET_ALL"
-							"Radius"    "550"
+							"Radius"    "0"
 							
 						}
 					}
